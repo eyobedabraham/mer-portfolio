@@ -7,11 +7,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Amiri&family=Montserrat:wght@400;600;800&display=swap');
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Montserrat', sans-serif;
@@ -27,7 +23,6 @@
                 radial-gradient(circle at 80% 50%, rgba(180, 200, 100, 0.2) 0%, transparent 50%);
         }
 
-        /* Floating leaves effect */
         .leaf {
             position: absolute;
             opacity: 0.1;
@@ -106,7 +101,7 @@
             padding: 20px 30px;
             border: 1px solid rgba(255,255,255,0.25);
             transition: all 0.4s ease;
-            cursor: default;
+            cursor: pointer;
             min-width: 120px;
         }
 
@@ -136,11 +131,12 @@
             justify-content: center;
             gap: 25px;
             flex-wrap: wrap;
+            margin-bottom: 20px;
         }
 
         .btn {
             display: inline-block;
-            padding: 20px 45px;
+            padding: 20px 35px;
             border-radius: 60px;
             font-weight: 700;
             font-size: 1.2rem;
@@ -149,9 +145,10 @@
             transition: all 0.4s ease;
             box-shadow: 0 15px 30px rgba(0,0,0,0.3);
             border: 2px solid transparent;
-            min-width: 250px;
+            min-width: 200px;
             text-align: center;
             backdrop-filter: blur(10px);
+            cursor: pointer;
         }
 
         .btn-marketplace {
@@ -176,9 +173,86 @@
             background: linear-gradient(135deg, #27AE60, #6FCF97);
         }
 
+        .btn-about {
+            background: linear-gradient(135deg, #56CCF2, #2F80ED);
+            color: #fff;
+            border-color: rgba(255,255,255,0.3);
+        }
+        .btn-about:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 40px rgba(86, 204, 242, 0.5);
+            background: linear-gradient(135deg, #2F80ED, #56CCF2);
+        }
+
         .btn-icon {
             font-size: 1.5rem;
             margin-right: 8px;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.7);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: linear-gradient(145deg, #143d26, #1f5233);
+            color: #fff;
+            margin: 5% auto;
+            padding: 40px;
+            border-radius: 30px;
+            max-width: 600px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+            border: 1px solid rgba(255,255,255,0.2);
+            animation: fadeInUp 0.5s ease;
+            text-align: center;
+        }
+
+        .close {
+            color: #fff;
+            float: right;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            opacity: 0.7;
+        }
+        .close:hover { opacity: 1; }
+
+        .modal-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #d4c07a;
+            margin-bottom: 20px;
+        }
+
+        .modal h3 {
+            font-size: 2rem;
+            margin-bottom: 5px;
+            color: #F7E08A;
+        }
+        .modal h4 {
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: #d4c07a;
+            margin-bottom: 20px;
+        }
+        .modal p {
+            line-height: 1.8;
+            font-size: 1rem;
+            opacity: 0.9;
+            margin-bottom: 15px;
         }
 
         .footer-text {
@@ -189,38 +263,20 @@
         }
 
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(60px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(60px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Mobile */
         @media (max-width: 700px) {
-            .card {
-                padding: 50px 25px;
-            }
-            .logo {
-                font-size: 4rem;
-            }
-            .amharic-tagline {
-                font-size: 1.7rem;
-            }
-            .founders {
-                gap: 15px;
-            }
-            .btn {
-                width: 100%;
-            }
+            .card { padding: 50px 25px; }
+            .logo { font-size: 4rem; }
+            .amharic-tagline { font-size: 1.7rem; }
+            .founders { gap: 15px; }
+            .btn { width: 100%; min-width: auto; }
         }
     </style>
 </head>
 <body>
-    <!-- Floating decorative elements -->
     <div class="leaf leaf1">🌿</div>
     <div class="leaf leaf2">🍃</div>
     <div class="leaf leaf3">🌱</div>
@@ -232,15 +288,15 @@
             <div class="english-tagline">Premium Livestock & Dairy Hub</div>
 
             <div class="founders">
-                <div class="founder-card">
+                <div class="founder-card" onclick="openModal('miky')">
                     <span class="founder-name">Miky</span>
                     <span class="founder-name-am">ሚኪ</span>
                 </div>
-                <div class="founder-card">
+                <div class="founder-card" onclick="openModal('eyobed')">
                     <span class="founder-name">Eyobed</span>
                     <span class="founder-name-am">እዮቤድ</span>
                 </div>
-                <div class="founder-card">
+                <div class="founder-card" onclick="openModal('rodas')">
                     <span class="founder-name">Rodas</span>
                     <span class="founder-name-am">ሮዳስ</span>
                 </div>
@@ -253,6 +309,9 @@
                 <a href="https://rodas.pythonanywhere.com" target="_blank" class="btn btn-tutorial">
                     <span class="btn-icon">📚</span> ነጻ ትምህርቶች (Tutorials)
                 </a>
+                <div class="btn btn-about" onclick="openModal('about')">
+                    <span class="btn-icon">ℹ️</span> ስለ እኛ (About Us)
+                </div>
             </div>
 
             <div class="footer-text">
@@ -260,5 +319,94 @@
             </div>
         </div>
     </div>
+
+    <!-- Founder Modals -->
+    <div id="eyobed-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('eyobed')">&times;</span>
+            <img src="https://via.placeholder.com/120" alt="Eyobed Abraham" class="modal-img">
+            <h3>Eyobed Abraham</h3>
+            <h4>Co-Founder & Web/IT Lead</h4>
+            <p>
+                Eyobed has over 3 years of experience in cybersecurity and manages all web‑related operations for MER.
+                He is also an experienced livestock farmer with 2 years of hands‑on work in the field.
+                Currently studying Statistics, he brings a data‑driven approach to the business.
+            </p>
+            <p>
+                📧 <a href="mailto:eyobedab@gmail.com" style="color:#d4c07a;">eyobedab@gmail.com</a><br>
+                📞 <a href="tel:+251996997143" style="color:#d4c07a;">+251 996 997 143</a>
+            </p>
+        </div>
+    </div>
+
+    <div id="rodas-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('rodas')">&times;</span>
+            <img src="https://via.placeholder.com/120" alt="Rodas" class="modal-img">
+            <h3>Rodas</h3>
+            <h4>Co-Founder & Operations Lead</h4>
+            <p>
+                Rodas has over 8 years of experience in dairy farming and animal nutrition.
+                He leads our marketplace operations, ensuring top‑quality livestock for our clients.
+                He is also a logistics specialist and holds a TEVT Level 4 certification.
+            </p>
+            <p>
+                📞 <a href="tel:+251903195474" style="color:#d4c07a;">+251 903 195 474</a>
+            </p>
+        </div>
+    </div>
+
+    <div id="miky-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('miky')">&times;</span>
+            <img src="https://via.placeholder.com/120" alt="Miky" class="modal-img">
+            <h3>Miky</h3>
+            <h4>Co-Founder & Customer Relations Lead</h4>
+            <p>
+                Miky manages customer relations, ensures on‑time deliveries, and guarantees client satisfaction.
+                He is graduating in Health Informatics, adding a unique perspective on service and efficiency.
+            </p>
+            <p>
+                📞 <a href="tel:+251919732079" style="color:#d4c07a;">+251 919 732 079</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- About Us Modal (Bilingual) -->
+    <div id="about-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('about')">&times;</span>
+            <h3>About MER</h3>
+            <p style="text-align:left; margin-top:20px;">
+                <strong>English:</strong><br>
+                Ethiopia is a rapidly growing nation, with a strong focus on agro‑industry and a digital future championed by Prime Minister Dr. Abiy Ahmed. MER was founded to be part of that transformation.<br><br>
+                We are dedicated to moving small‑scale farming into the modern agro‑industrial era. By integrating technology, data, and artificial intelligence into livestock and dairy production, we aim to help Ethiopia become a leading country in agro‑industry.<br><br>
+                Our mission is twofold: to provide a transparent, efficient online marketplace for premium livestock and dairy products, and to spread knowledge through free educational tutorials – empowering farmers with the tools they need to succeed.<br><br>
+                We believe that with the right blend of tradition and innovation, Ethiopian agriculture can thrive. MER is more than a business – it's a movement to elevate farming through knowledge, trust, and technology.
+            </p>
+            <p style="text-align:left; margin-top:30px;">
+                <strong>አማርኛ:</strong><br>
+                ኢትዮጵያ በፍጥነት እያደገች ያለች ሀገር ናት፤ በግብርና እና በዲጂታል ቴክኖሎጂ ላይ ትኩረት አድርጋለች። ጠቅላይ ሚኒስትር ዶ/ር አብይ አህመድ እየመሩት ባለው የዲጂታል ኢትዮጵያ ራዕይ ውስጥ የምንሳተፍበት መሪ ራዕይ ነው።<br><br>
+                አነስተኛ ገበሬዎችን ወደ ዘመናዊ አግሮ‑ኢንዱስትሪ ለማሸጋገር ቁርጠኞች ነን። ቴክኖሎጂን፣ ዳታን እና አርቲፊሻል ኢንተሊጀንስን በእንስሳት እርባታ እና የወተት ምርቶች ላይ በማዋሃድ ኢትዮጵያን በአግሮ‑ኢንዱስትሪ ቀዳሚ ሀገር ለማድረግ እንጥራለን።<br><br>
+                ተልእኳችን ሁለት ነው፡ ግልጽ እና ቀልጣፋ የእንስሳት እና የወተት ምርቶች የመስመር ላይ ገበያ ማቅረብ፤ እና ነጻ የትምህርት ትምህርቶችን በማሰራጨት እውቀትን ማስፋፋት።<br><br>
+                በባህልና በፈጠራ ትስስር የኢትዮጵያ ግብርና ሊያብብ እንደሚችል እናምናለን። MER ንግድ ብቻ ሳይሆን በእውቀት፣ በመተማመን እና በቴክኖሎጂ ግብርናን ከፍ ለማድረግ የሚደረግ እንቅስቃሴ ነው።
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function openModal(name) {
+            document.getElementById(name + '-modal').style.display = 'flex';
+        }
+        function closeModal(name) {
+            document.getElementById(name + '-modal').style.display = 'none';
+        }
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+            }
+        }
+    </script>
 </body>
 </html>
+
