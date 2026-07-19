@@ -40,11 +40,6 @@
         .logo { font-size: 6rem; font-weight: 800; letter-spacing: 8px; background: linear-gradient(180deg, #F7E08A 0%, #D6B85A 50%, #B68D3C 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; filter: drop-shadow(0 8px 16px rgba(0,0,0,0.5)); margin-bottom: 10px; }
         .amharic-tagline { font-family: 'Amiri', serif; font-size: 2.2rem; color: #e6e6b7; margin-bottom: 15px; font-weight: 400; letter-spacing: 2px; }
         .english-tagline { font-size: 1.2rem; font-weight: 400; color: rgba(255,255,255,0.7); margin-bottom: 40px; letter-spacing: 1px; text-transform: uppercase; }
-        .founders { display: flex; justify-content: center; gap: 30px; margin-bottom: 30px; flex-wrap: wrap; }
-        .founder-card { background: rgba(255,255,255,0.12); backdrop-filter: blur(15px); border-radius: 25px; padding: 20px 30px; border: 1px solid rgba(255,255,255,0.25); transition: all 0.4s ease; cursor: pointer; min-width: 120px; }
-        .founder-card:hover { transform: translateY(-8px); background: rgba(255,255,255,0.2); box-shadow: 0 20px 30px rgba(0,0,0,0.4); }
-        .founder-name { font-size: 1.6rem; font-weight: 700; color: #fff; letter-spacing: 1px; }
-        .founder-name-am { font-family: 'Amiri', serif; font-size: 1.1rem; color: #d4c07a; display: block; margin-top: 4px; }
         .buttons { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; margin-bottom: 20px; }
         .btn {
             display: inline-block; padding: 20px 35px; border-radius: 60px; font-weight: 700; font-size: 1.2rem;
@@ -59,22 +54,31 @@
         .btn-about:hover { transform: translateY(-10px); box-shadow: 0 25px 40px rgba(86, 204, 242, 0.5); background: linear-gradient(135deg, #2F80ED, #56CCF2); }
         .btn-farm { background: linear-gradient(135deg, #F7E08A, #D6B85A); color: #0b2b1f; border-color: rgba(255,255,255,0.3); }
         .btn-farm:hover { transform: translateY(-10px); box-shadow: 0 25px 40px rgba(214, 184, 90, 0.5); background: linear-gradient(135deg, #D6B85A, #F7E08A); }
+        .btn-cofounders { background: linear-gradient(135deg, #9b59b6, #8e44ad); color: #fff; border-color: rgba(255,255,255,0.3); }
+        .btn-cofounders:hover { transform: translateY(-10px); box-shadow: 0 25px 40px rgba(155, 89, 182, 0.5); background: linear-gradient(135deg, #8e44ad, #9b59b6); }
         .btn-icon { font-size: 1.5rem; margin-right: 8px; }
 
         /* Modal */
         .modal { display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.7); backdrop-filter: blur(8px); align-items: center; justify-content: center; }
-        .modal-content { background: linear-gradient(145deg, #143d26, #1f5233); color: #fff; margin: 5% auto; padding: 40px; border-radius: 30px; max-width: 600px; box-shadow: 0 30px 60px rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.2); animation: fadeInUp 0.5s ease; text-align: center; }
+        .modal-content { background: linear-gradient(145deg, #143d26, #1f5233); color: #fff; margin: 5% auto; padding: 40px; border-radius: 30px; max-width: 700px; box-shadow: 0 30px 60px rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.2); animation: fadeInUp 0.5s ease; text-align: center; }
         .close { color: #fff; float: right; font-size: 2rem; font-weight: bold; cursor: pointer; opacity: 0.7; }
         .close:hover { opacity: 1; }
-        .modal-img { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid #d4c07a; margin-bottom: 20px; }
+        .modal-img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid #d4c07a; margin-bottom: 10px; }
         .modal h3 { font-size: 2rem; margin-bottom: 5px; color: #F7E08A; }
-        .modal h4 { font-size: 1.2rem; font-weight: 400; color: #d4c07a; margin-bottom: 20px; }
-        .modal p { line-height: 1.8; font-size: 1rem; opacity: 0.9; margin-bottom: 15px; }
+        .modal h4 { font-size: 1.1rem; font-weight: 400; color: #d4c07a; margin-bottom: 10px; }
+        .modal p { line-height: 1.8; font-size: 1rem; opacity: 0.9; margin-bottom: 10px; }
         .modal .btn-back-modal { display: inline-block; background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.3); padding: 12px 30px; border-radius: 50px; font-size: 1rem; font-weight: 600; cursor: pointer; margin-top: 10px; transition: 0.3s; }
         .modal .btn-back-modal:hover { background: rgba(255,255,255,0.3); }
+        .cofounder-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin: 20px 0; }
+        .cofounder-card-modal { background: rgba(255,255,255,0.08); border-radius: 20px; padding: 20px; border: 1px solid rgba(255,255,255,0.15); }
+        .cofounder-card-modal .name { font-size: 1.3rem; font-weight: 700; color: #F7E08A; }
+        .cofounder-card-modal .title { font-size: 0.9rem; color: #d4c07a; }
+        .cofounder-card-modal .bio { font-size: 0.85rem; opacity: 0.9; margin-top: 8px; text-align: left; }
+        .cofounder-card-modal .contact { font-size: 0.85rem; color: #d4c07a; margin-top: 6px; }
+        .cofounder-card-modal .contact a { color: #d4c07a; text-decoration: none; }
         .footer-text { margin-top: 20px; font-size: 0.9rem; color: rgba(255,255,255,0.6); letter-spacing: 1px; }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(60px); } to { opacity: 1; transform: translateY(0); } }
-        @media (max-width: 700px) { .card { padding: 50px 25px; } .logo { font-size: 4rem; } .amharic-tagline { font-size: 1.7rem; } .founders { gap: 15px; } .btn { width: 100%; min-width: auto; } }
+        @media (max-width: 700px) { .card { padding: 50px 25px; } .logo { font-size: 4rem; } .amharic-tagline { font-size: 1.7rem; } .btn { width: 100%; min-width: auto; } .cofounder-grid { grid-template-columns: 1fr; } }
 
         /* ===== Farm Scheduler Styles ===== */
         #farm-page { display: none; max-width: 500px; margin: 0 auto; width: 100%; animation: fadeInUp 0.3s ease; padding: 16px 0; }
@@ -143,44 +147,31 @@
             <div class="amharic-tagline">ከፍተኛ የእንስሳት እርባታ እና የወተት ምርቶች</div>
             <div class="english-tagline">Premium Livestock & Dairy Hub</div>
 
-            <!-- ===== NEW ORDER: Farm Scheduler First ===== -->
+            <!-- ===== 5 BUTTONS: NEW ORDER ===== -->
             <div class="buttons">
-                <!-- 1. FARM SCHEDULER (First) -->
+                <!-- 1. FARM SCHEDULER -->
                 <div class="btn btn-farm" onclick="showFarmPage()">
                     <span class="btn-icon">🐄</span> የእርሻ መርሐ ግብር (Farm Scheduler)
                 </div>
 
-                <!-- 2. MARKETPLACE (Second) -->
+                <!-- 2. MARKETPLACE -->
                 <a href="https://eyobed.pythonanywhere.com/" target="_blank" class="btn btn-marketplace">
                     <span class="btn-icon">🛒</span> ገበያ (Marketplace)
                 </a>
 
-                <!-- 3. TUTORIALS (Third) -->
+                <!-- 3. TUTORIALS -->
                 <a href="https://rodas.pythonanywhere.com/" target="_blank" class="btn btn-tutorial">
                     <span class="btn-icon">📚</span> ነጻ ትምህርቶች (Tutorials)
                 </a>
-            </div>
 
-            <!-- 4. FOUNDERS (Fourth) -->
-            <div class="founders">
-                <div class="founder-card" onclick="openModal('miky')">
-                    <span class="founder-name">Miky</span>
-                    <span class="founder-name-am">ሚኪ</span>
-                </div>
-                <div class="founder-card" onclick="openModal('eyobed')">
-                    <span class="founder-name">Eyobed</span>
-                    <span class="founder-name-am">እዮቤድ</span>
-                </div>
-                <div class="founder-card" onclick="openModal('rodas')">
-                    <span class="founder-name">Rodas</span>
-                    <span class="founder-name-am">ሮዳስ</span>
-                </div>
-            </div>
-
-            <!-- 5. ABOUT US (Fifth / Bottom) -->
-            <div class="buttons">
+                <!-- 4. ABOUT US -->
                 <div class="btn btn-about" onclick="openModal('about')">
                     <span class="btn-icon">ℹ️</span> ስለ እኛ (About Us)
+                </div>
+
+                <!-- 5. CO-FOUNDERS (NEW - Merged) -->
+                <div class="btn btn-cofounders" onclick="openModal('cofounders')">
+                    <span class="btn-icon">👥</span> ተባባሪ መስራቾች (Co-founders)
                 </div>
             </div>
 
@@ -190,7 +181,7 @@
         </div>
     </div>
 
-    <!-- ===== FARM SCHEDULER (Full App) ===== -->
+    <!-- ===== FARM SCHEDULER (8 TABS) ===== -->
     <div id="farm-page">
         <div class="farm-header">
             <button class="back-btn" onclick="showPortfolioPage()">← ተመለስ</button>
@@ -342,34 +333,34 @@
             </div>
         </div>
 
-        <!-- TAB 5: EVENTS -->
+        <!-- TAB 5: EVENTS (UPDATED: +Breeding, Bilingual) -->
         <div id="tab-events" class="tab-content" style="display:none;">
             <div class="farm-card">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-                    <h3 style="color:#0b2b1f;">አስፈላጊ ክስተቶች</h3>
+                    <h3 style="color:#0b2b1f;">አስፈላጊ ክስተቶች (Events)</h3>
                     <button class="btn btn-sm-farm btn-outline-farm" onclick="showAddEventForm()">+ ጨምር</button>
                 </div>
                 <div id="event-list"></div>
             </div>
             <div id="event-form-card" class="farm-card" style="display:none;">
-                <h4 style="color:#0b2b1f;">ክስተት ጨምር</h4>
-                <div class="form-group"><label>ቀን</label><input type="date" id="event-date"></div>
-                <div class="form-group"><label>እንስሳ</label><select id="event-animalid"></select></div>
-                <div class="form-group"><label>የክስተት አይነት</label>
+                <h4 style="color:#0b2b1f;">ክስተት ጨምር (Add Event)</h4>
+                <div class="form-group"><label>ቀን (Date)</label><input type="date" id="event-date"></div>
+                <div class="form-group"><label>እንስሳ (Animal)</label><select id="event-animalid"></select></div>
+                <div class="form-group"><label>የክስተት አይነት (Event Type)</label>
                     <select id="event-type">
-                        <option value="መወለድ">መወለድ</option>
-                        <option value="ማዳበሪያ">ማዳበሪያ</option>
-                        <option value="ልጅ መውለድ">ልጅ መውለድ</option>
-                        <option value="ክትባት">ክትባት</option>
-                        <option value="ሕመም">ሕመም</option>
-                        <option value="ሕክምና">ሕክምና</option>
+                        <option value="መወለድ">መወለድ (Birth)</option>
+                        <option value="ማዳበሪያ">መጠቃት (Breeding) </option>
+                        <option value="ልጅ መውለድ">ልጅ መውለድ (Calving)</option>
+                        <option value="ክትባት">ክትባት (Vaccination)</option>
+                        <option value="ሕመም">ሕመም (Sick)</option>
+                        <option value="ሕክምና">ሕክምና (Treatment)</option>
                     </select>
                 </div>
-                <div class="form-group"><label>ቀጣይ የሚያልቅበት ቀን</label><input type="date" id="event-nextdue"></div>
-                <div class="form-group"><label>ማስታወሻ</label><input type="text" id="event-notes" placeholder="ተጨማሪ ዝርዝሮች"></div>
+                <div class="form-group"><label>ቀጣይ የሚያልቅበት ቀን (Next Due Date)</label><input type="date" id="event-nextdue"></div>
+                <div class="form-group"><label>ማስታወሻ (Notes)</label><input type="text" id="event-notes" placeholder="ተጨማሪ ዝርዝሮች / Additional details"></div>
                 <div style="display:flex; gap:10px;">
-                    <button class="btn btn-farm-action" onclick="saveEvent()">አስቀምጥ</button>
-                    <button class="btn btn-farm-action btn-outline-farm" onclick="cancelEventForm()" style="width:auto;">ሰርዝ</button>
+                    <button class="btn btn-farm-action" onclick="saveEvent()">አስቀምጥ (Save)</button>
+                    <button class="btn btn-farm-action btn-outline-farm" onclick="cancelEventForm()" style="width:auto;">ሰርዝ (Cancel)</button>
                 </div>
                 <input type="hidden" id="edit-event-id" value="">
             </div>
@@ -470,39 +461,8 @@
     </div>
 
     <!-- ===== MODALS ===== -->
-    <div id="eyobed-modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('eyobed')">&times;</span>
-            <img src="https://via.placeholder.com/120" alt="Eyobed Abraham" class="modal-img">
-            <h3>Eyobed Abraham</h3>
-            <h4>Co-Founder & Web/IT Lead</h4>
-            <p>Eyobed has over 3 years of experience in cybersecurity and manages all web‑related operations for MER. He is also an experienced livestock farmer with 2 years of hands‑on work in the field. Currently studying Statistics, he brings a data‑driven approach to the business.</p>
-            <p>📧 <a href="mailto:eyobedab@gmail.com" style="color:#d4c07a;">eyobedab@gmail.com</a><br>📞 <a href="tel:+251996997143" style="color:#d4c07a;">+251 996 997 143</a></p>
-            <button class="btn-back-modal" onclick="closeModal('eyobed')">← ተመለስ (Back)</button>
-        </div>
-    </div>
-    <div id="rodas-modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('rodas')">&times;</span>
-            <img src="https://via.placeholder.com/120" alt="Rodas" class="modal-img">
-            <h3>Rodas</h3>
-            <h4>Co-Founder & Operations Lead</h4>
-            <p>Rodas has over 8 years of experience in dairy farming and animal nutrition. He leads our marketplace operations, ensuring top‑quality livestock for our clients. He is also a logistics specialist and holds a TEVT Level 4 certification.</p>
-            <p>📞 <a href="tel:+251903195474" style="color:#d4c07a;">+251 903 195 474</a></p>
-            <button class="btn-back-modal" onclick="closeModal('rodas')">← ተመለስ (Back)</button>
-        </div>
-    </div>
-    <div id="miky-modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('miky')">&times;</span>
-            <img src="https://via.placeholder.com/120" alt="Miky" class="modal-img">
-            <h3>Miky</h3>
-            <h4>Co-Founder & Customer Relations Lead</h4>
-            <p>Miky manages customer relations, ensures on‑time deliveries, and guarantees client satisfaction. He is graduating in Health Informatics, adding a unique perspective on service and efficiency.</p>
-            <p>📞 <a href="tel:+251919732079" style="color:#d4c07a;">+251 919 732 079</a></p>
-            <button class="btn-back-modal" onclick="closeModal('miky')">← ተመለስ (Back)</button>
-        </div>
-    </div>
+
+    <!-- ABOUT US MODAL -->
     <div id="about-modal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal('about')">&times;</span>
@@ -510,6 +470,41 @@
             <p style="text-align:left; margin-top:20px;"><strong>English:</strong><br>Ethiopia is a rapidly growing nation, with a strong focus on agro‑industry and a digital future championed by Prime Minister Dr. Abiy Ahmed. MER was founded to be part of that transformation.<br><br>We are dedicated to moving small‑scale farming into the modern agro‑industrial era. By integrating technology, data, and artificial intelligence into livestock and dairy production, we aim to help Ethiopia become a leading country in agro‑industry.<br><br>Our mission is twofold: to provide a transparent, efficient online marketplace for premium livestock and dairy products, and to spread knowledge through free educational tutorials – empowering farmers with the tools they need to succeed.<br><br>We believe that with the right blend of tradition and innovation, Ethiopian agriculture can thrive. MER is more than a business – it's a movement to elevate farming through knowledge, trust, and technology.</p>
             <p style="text-align:left; margin-top:30px;"><strong>አማርኛ:</strong><br>ኢትዮጵያ በፍጥነት እያደገች ያለች ሀገር ናት፤ በግብርና እና በዲጂታል ቴክኖሎጂ ላይ ትኩረት አድርጋለች። ጠቅላይ ሚኒስትር ዶ/ር አብይ አህመድ እየመሩት ባለው የዲጂታል ኢትዮጵያ ራዕይ ውስጥ የምንሳተፍበት መሪ ራዕይ ነው።<br><br>አነስተኛ ገበሬዎችን ወደ ዘመናዊ አግሮ‑ኢንዱስትሪ ለማሸጋገር ቁርጠኞች ነን። ቴክኖሎጂን፣ ዳታን እና አርቲፊሻል ኢንተሊጀንስን በእንስሳት እርባታ እና የወተት ምርቶች ላይ በማዋሃድ ኢትዮጵያን በአግሮ‑ኢንዱስትሪ ቀዳሚ ሀገር ለማድረግ እንጥራለን።<br><br>ተልእኳችን ሁለት ነው፡ ግልጽ እና ቀልጣፋ የእንስሳት እና የወተት ምርቶች የመስመር ላይ ገበያ ማቅረብ፤ እና ነጻ የትምህርት ትምህርቶችን በማሰራጨት እውቀትን ማስፋፋት።<br><br>በባህልና በፈጠራ ትስስር የኢትዮጵያ ግብርና ሊያብብ እንደሚችል እናምናለን። MER ንግድ ብቻ ሳይሆን በእውቀት፣ በመተማመን እና በቴክኖሎጂ ግብርናን ከፍ ለማድረግ የሚደረግ እንቅስቃሴ ነው።</p>
             <button class="btn-back-modal" onclick="closeModal('about')">← ተመለስ (Back)</button>
+        </div>
+    </div>
+
+    <!-- CO-FOUNDERS MODAL (NEW - Merged) -->
+    <div id="cofounders-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('cofounders')">&times;</span>
+            <h3>👥 ተባባሪ መስራቾች (Co-founders)</h3>
+            <div class="cofounder-grid">
+                <!-- Miky -->
+                <div class="cofounder-card-modal">
+                    <img src="https://via.placeholder.com/100" alt="Miky" class="modal-img">
+                    <div class="name">Miky</div>
+                    <div class="title">ተባባሪ መስራች (Co-founder) &amp; Customer Relations Lead</div>
+                    <div class="bio">Miky manages customer relations, ensures on‑time deliveries, and guarantees client satisfaction. He is graduating in Health Informatics, adding a unique perspective on service and efficiency.</div>
+                    <div class="contact">📞 <a href="tel:+251919732079">+251 919 732 079</a></div>
+                </div>
+                <!-- Eyobed -->
+                <div class="cofounder-card-modal">
+                    <img src="https://via.placeholder.com/100" alt="Eyobed Abraham" class="modal-img">
+                    <div class="name">Eyobed Abraham</div>
+                    <div class="title">ተባባሪ መስራች (Co-founder) &amp; Web/IT Lead</div>
+                    <div class="bio">Eyobed has over 3 years of experience in cybersecurity and manages all web‑related operations for MER. He is also an experienced livestock farmer with 2 years of hands‑on work in the field. Currently studying Statistics, he brings a data‑driven approach to the business.</div>
+                    <div class="contact">📧 <a href="mailto:eyobedab@gmail.com">eyobedab@gmail.com</a><br>📞 <a href="tel:+251996997143">+251 996 997 143</a></div>
+                </div>
+                <!-- Rodas -->
+                <div class="cofounder-card-modal">
+                    <img src="https://via.placeholder.com/100" alt="Rodas" class="modal-img">
+                    <div class="name">Rodas</div>
+                    <div class="title">ተባባሪ መስራች (Co-founder) &amp; Operations Lead</div>
+                    <div class="bio">Rodas has over 8 years of experience in dairy farming and animal nutrition. He leads our marketplace operations, ensuring top‑quality livestock for our clients. He is also a logistics specialist and holds a TEVT Level 4 certification.</div>
+                    <div class="contact">📞 <a href="tel:+251903195474">+251 903 195 474</a></div>
+                </div>
+            </div>
+            <button class="btn-back-modal" onclick="closeModal('cofounders')">← ተመለስ (Back)</button>
         </div>
     </div>
 
@@ -880,14 +875,14 @@
         }
 
         // =============================================
-        // 10. EVENTS
+        // 10. EVENTS (UPDATED: Bilingual + Breeding)
         // =============================================
         function populateEventDropdown() {
             const animals = getFarmData('animals');
             const sel = document.getElementById('event-animalid');
             if (!sel) return;
             const current = sel.value;
-            sel.innerHTML = '<option value="">-- እንስሳ ይምረጡ --</option>';
+            sel.innerHTML = '<option value="">-- እንስሳ ይምረጡ (Select Animal) --</option>';
             animals.forEach(a => {
                 const opt = document.createElement('option');
                 opt.value = a.ID;
@@ -900,15 +895,29 @@
         function renderEvents() {
             const list = document.getElementById('event-list');
             const events = getFarmData('events');
-            if (events.length === 0) { list.innerHTML = '<div class="empty-message">ምንም ክስተቶች አልተመዘገቡም።</div>'; return; }
+            if (events.length === 0) { list.innerHTML = '<div class="empty-message">ምንም ክስተቶች አልተመዘገቡም። (No events recorded.)</div>'; return; }
             events.sort((a,b) => b.Date.localeCompare(a.Date));
-            list.innerHTML = events.map(e => `
+            list.innerHTML = events.map(e => {
+                let typeDisplay = e.EventType;
+                // Add English translation for display
+                const translations = {
+                    'መወለድ': 'Birth',
+                    'ማዳበሪያ': 'Breeding',
+                    'ልጅ መውለድ': 'Calving',
+                    'ክትባት': 'Vaccination',
+                    'ሕመም': 'Sick',
+                    'ሕክምና': 'Treatment'
+                };
+                if (translations[e.EventType]) {
+                    typeDisplay = `${e.EventType} (${translations[e.EventType]})`;
+                }
+                return `
                 <div class="list-item">
-                    <div><div class="main">${e.Date} • ${e.EventType} <span class="badge badge-warning">${e.AnimalID}</span></div>
+                    <div><div class="main">${e.Date} • ${typeDisplay} <span class="badge badge-warning">${e.AnimalID}</span></div>
                     <div class="sub">${e.Notes || ''} ${e.NextDueDate ? '🔜 ' + e.NextDueDate : ''}</div></div>
                     <div><button class="btn btn-sm-farm btn-danger-farm" onclick="deleteEvent('${e._id||e.Date+e.AnimalID}')" style="width:auto; padding:4px 10px;">🗑️</button></div>
                 </div>
-            `).join('');
+            `}).join('');
         }
 
         function showAddEventForm() {
@@ -929,7 +938,7 @@
             const type = document.getElementById('event-type').value;
             const nextdue = document.getElementById('event-nextdue').value;
             const notes = document.getElementById('event-notes').value.trim();
-            if (!date || !animalid) { alert('ቀን እና እንስሳ ያስፈልጋሉ።'); return; }
+            if (!date || !animalid) { alert('ቀን እና እንስሳ ያስፈልጋሉ። (Date and Animal are required.)'); return; }
             let events = getFarmData('events');
             const editId = document.getElementById('edit-event-id').value;
             if (editId) {
@@ -942,7 +951,7 @@
         }
 
         function deleteEvent(id) {
-            if (!confirm('ይህን ክስተት መሰረዝ ይፈልጋሉ?')) return;
+            if (!confirm('ይህን ክስተት መሰረዝ ይፈልጋሉ? (Delete this event?)')) return;
             let events = getFarmData('events'); events = events.filter(e => (e._id || e.Date + e.AnimalID) !== id); setFarmData('events', events); renderAllFarmData();
         }
 
@@ -1330,7 +1339,7 @@
         document.getElementById('portfolio-page').style.display = 'block';
         document.getElementById('farm-page').style.display = 'none';
         renderAllFarmData();
-        console.log('✅ MER Farm Scheduler v6 loaded – Button order fixed.');
+        console.log('✅ MER Farm Scheduler v7 loaded – Co-founders merged, Breeding added, Events bilingual.');
     </script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -1343,3 +1352,4 @@
     </script>
 </body>
 </html>
+
