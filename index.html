@@ -6,7 +6,6 @@
     <title>MER – የእንስሳት እርባታ እና የወተት ምርቶች</title>
     <link rel="manifest" href="/manifest.json">
     <style>
-        /* ===== Original portfolio styles (unchanged) ===== */
         @import url('https://fonts.googleapis.com/css2?family=Amiri&family=Montserrat:wght@400;600;800&display=swap');
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -41,7 +40,7 @@
         .logo { font-size: 6rem; font-weight: 800; letter-spacing: 8px; background: linear-gradient(180deg, #F7E08A 0%, #D6B85A 50%, #B68D3C 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; filter: drop-shadow(0 8px 16px rgba(0,0,0,0.5)); margin-bottom: 10px; }
         .amharic-tagline { font-family: 'Amiri', serif; font-size: 2.2rem; color: #e6e6b7; margin-bottom: 15px; font-weight: 400; letter-spacing: 2px; }
         .english-tagline { font-size: 1.2rem; font-weight: 400; color: rgba(255,255,255,0.7); margin-bottom: 40px; letter-spacing: 1px; text-transform: uppercase; }
-        .founders { display: flex; justify-content: center; gap: 30px; margin-bottom: 50px; flex-wrap: wrap; }
+        .founders { display: flex; justify-content: center; gap: 30px; margin-bottom: 30px; flex-wrap: wrap; }
         .founder-card { background: rgba(255,255,255,0.12); backdrop-filter: blur(15px); border-radius: 25px; padding: 20px 30px; border: 1px solid rgba(255,255,255,0.25); transition: all 0.4s ease; cursor: pointer; min-width: 120px; }
         .founder-card:hover { transform: translateY(-8px); background: rgba(255,255,255,0.2); box-shadow: 0 20px 30px rgba(0,0,0,0.4); }
         .founder-name { font-size: 1.6rem; font-weight: 700; color: #fff; letter-spacing: 1px; }
@@ -73,11 +72,11 @@
         .modal p { line-height: 1.8; font-size: 1rem; opacity: 0.9; margin-bottom: 15px; }
         .modal .btn-back-modal { display: inline-block; background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.3); padding: 12px 30px; border-radius: 50px; font-size: 1rem; font-weight: 600; cursor: pointer; margin-top: 10px; transition: 0.3s; }
         .modal .btn-back-modal:hover { background: rgba(255,255,255,0.3); }
-        .footer-text { margin-top: 50px; font-size: 0.9rem; color: rgba(255,255,255,0.6); letter-spacing: 1px; }
+        .footer-text { margin-top: 20px; font-size: 0.9rem; color: rgba(255,255,255,0.6); letter-spacing: 1px; }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(60px); } to { opacity: 1; transform: translateY(0); } }
         @media (max-width: 700px) { .card { padding: 50px 25px; } .logo { font-size: 4rem; } .amharic-tagline { font-size: 1.7rem; } .founders { gap: 15px; } .btn { width: 100%; min-width: auto; } }
 
-        /* ===== Farm Scheduler Styles (8 Tabs) ===== */
+        /* ===== Farm Scheduler Styles ===== */
         #farm-page { display: none; max-width: 500px; margin: 0 auto; width: 100%; animation: fadeInUp 0.3s ease; padding: 16px 0; }
         #farm-page .farm-card { background: rgba(255,255,255,0.95); backdrop-filter: blur(15px); border-radius: 20px; padding: 20px; margin-bottom: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); color: #1a2a3a; }
         #farm-page .farm-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; color: white; }
@@ -143,49 +142,79 @@
             <div class="logo">MER</div>
             <div class="amharic-tagline">ከፍተኛ የእንስሳት እርባታ እና የወተት ምርቶች</div>
             <div class="english-tagline">Premium Livestock & Dairy Hub</div>
-            <div class="founders">
-                <div class="founder-card" onclick="openModal('miky')"><span class="founder-name">Miky</span><span class="founder-name-am">ሚኪ</span></div>
-                <div class="founder-card" onclick="openModal('eyobed')"><span class="founder-name">Eyobed</span><span class="founder-name-am">እዮቤድ</span></div>
-                <div class="founder-card" onclick="openModal('rodas')"><span class="founder-name">Rodas</span><span class="founder-name-am">ሮዳስ</span></div>
-            </div>
+
+            <!-- ===== NEW ORDER: Farm Scheduler First ===== -->
             <div class="buttons">
-                <a href="https://eyobed.pythonanywhere.com/" target="_blank" class="btn btn-marketplace"><span class="btn-icon">🛒</span> ገበያ (Marketplace)</a>
-                <a href="https://rodas.pythonanywhere.com/" target="_blank" class="btn btn-tutorial"><span class="btn-icon">📚</span> ነጻ ትምህርቶች (Tutorials)</a>
-                <div class="btn btn-farm" onclick="showFarmPage()"><span class="btn-icon">🐄</span> የእርሻ መርሐ ግብር (Farm Scheduler)</div>
-                <div class="btn btn-about" onclick="openModal('about')"><span class="btn-icon">ℹ️</span> ስለ እኛ (About Us)</div>
+                <!-- 1. FARM SCHEDULER (First) -->
+                <div class="btn btn-farm" onclick="showFarmPage()">
+                    <span class="btn-icon">🐄</span> የእርሻ መርሐ ግብር (Farm Scheduler)
+                </div>
+
+                <!-- 2. MARKETPLACE (Second) -->
+                <a href="https://eyobed.pythonanywhere.com/" target="_blank" class="btn btn-marketplace">
+                    <span class="btn-icon">🛒</span> ገበያ (Marketplace)
+                </a>
+
+                <!-- 3. TUTORIALS (Third) -->
+                <a href="https://rodas.pythonanywhere.com/" target="_blank" class="btn btn-tutorial">
+                    <span class="btn-icon">📚</span> ነጻ ትምህርቶች (Tutorials)
+                </a>
             </div>
-            <div class="footer-text">&copy; 2025 MER – ሚኪ፣ እዮቤድ፣ ሮዳስ</div>
+
+            <!-- 4. FOUNDERS (Fourth) -->
+            <div class="founders">
+                <div class="founder-card" onclick="openModal('miky')">
+                    <span class="founder-name">Miky</span>
+                    <span class="founder-name-am">ሚኪ</span>
+                </div>
+                <div class="founder-card" onclick="openModal('eyobed')">
+                    <span class="founder-name">Eyobed</span>
+                    <span class="founder-name-am">እዮቤድ</span>
+                </div>
+                <div class="founder-card" onclick="openModal('rodas')">
+                    <span class="founder-name">Rodas</span>
+                    <span class="founder-name-am">ሮዳስ</span>
+                </div>
+            </div>
+
+            <!-- 5. ABOUT US (Fifth / Bottom) -->
+            <div class="buttons">
+                <div class="btn btn-about" onclick="openModal('about')">
+                    <span class="btn-icon">ℹ️</span> ስለ እኛ (About Us)
+                </div>
+            </div>
+
+            <div class="footer-text">
+                &copy; 2025 MER – ሚኪ፣ እዮቤድ፣ ሮዳስ
+            </div>
         </div>
     </div>
 
-    <!-- ===== FARM SCHEDULER (8 TABS) ===== -->
+    <!-- ===== FARM SCHEDULER (Full App) ===== -->
     <div id="farm-page">
         <div class="farm-header">
-            <button class="back-btn" onclick="showPortfolioPage()"><i class="fas fa-arrow-left"></i> ተመለስ</button>
-            <h2><i class="fas fa-paw"></i> መርሐ ግብር</h2>
+            <button class="back-btn" onclick="showPortfolioPage()">← ተመለስ</button>
+            <h2>🐾 መርሐ ግብር</h2>
             <div style="width:36px;"></div>
         </div>
         <div class="sync-status">
-            <i class="fas fa-database" style="color:#F7E08A;"></i>
-            <span id="sync-text">መረጃ በስልክ ላይ ተቀምጧል (Offline)</span>
-            <button class="btn btn-sm-farm btn-outline-farm" onclick="syncWithSheet()" style="margin-left:8px; padding:4px 12px; font-size:12px;"><i class="fas fa-sync-alt"></i> አመሳስል</button>
+            💾 <span id="sync-text">መረጃ በስልክ ላይ ተቀምጧል (Offline)</span>
+            <button class="btn btn-sm-farm btn-outline-farm" onclick="syncWithSheet()" style="margin-left:8px; padding:4px 12px; font-size:12px;">🔄 አመሳስል</button>
         </div>
 
         <!-- 8 Tabs -->
         <div class="tab-bar">
-            <button class="active" data-tab="tab-animals"><i class="fas fa-cow"></i> እንስሳት</button>
-            <button data-tab="tab-fattening-weekly"><i class="fas fa-weight"></i> ሳምንታዊ ስብ</button>
-            <button data-tab="tab-fattening-daily"><i class="fas fa-clipboard-list"></i> ዕለታዊ ስብ</button>
-            <button data-tab="tab-dailylogs"><i class="fas fa-tint"></i> ወተት/እንቁላል</button>
-            <button data-tab="tab-events"><i class="fas fa-calendar-plus"></i> ክስተቶች</button>
-            <button data-tab="tab-othercosts"><i class="fas fa-hand-holding-usd"></i> ተጨማሪ ወጪ</button>
-            <button data-tab="tab-finance"><i class="fas fa-coins"></i> ፋይናንስ</button>
-            <button data-tab="tab-production"><i class="fas fa-chart-line"></i> ምርት</button>
+            <button class="active" data-tab="tab-animals">🐄 እንስሳት</button>
+            <button data-tab="tab-fattening-weekly">⚖️ ሳምንታዊ ስብ</button>
+            <button data-tab="tab-fattening-daily">📋 ዕለታዊ ስብ</button>
+            <button data-tab="tab-dailylogs">💧 ወተት/እንቁላል</button>
+            <button data-tab="tab-events">📅 ክስተቶች</button>
+            <button data-tab="tab-othercosts">💰 ተጨማሪ ወጪ</button>
+            <button data-tab="tab-finance">🪙 ፋይናንስ</button>
+            <button data-tab="tab-production">📈 ምርት</button>
         </div>
 
-        <!-- ========================================================== -->
-        <!-- TAB 1: ANIMALS (Master Registry)                           -->
-        <!-- ========================================================== -->
+        <!-- TAB 1: ANIMALS -->
         <div id="tab-animals" class="tab-content">
             <div class="farm-card">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
@@ -194,7 +223,6 @@
                 </div>
                 <div id="animal-list"></div>
             </div>
-            <!-- Add/Edit Animal Form -->
             <div id="animal-form-card" class="farm-card" style="display:none;">
                 <h4 id="animal-form-title" style="color:#0b2b1f;">አዲስ እንስሳ ጨምር</h4>
                 <div class="form-row">
@@ -222,7 +250,6 @@
                         <select id="animal-status"><option value="ንቁ">ንቁ</option><option value="ተሽጧል">ተሽጧል</option><option value="ሞቷል">ሞቷል</option></select>
                     </div>
                 </div>
-                <!-- Conditional fields for fattening animals -->
                 <div id="fattening-fields" class="conditional-fields">
                     <div class="form-row">
                         <div class="form-group"><label>የመጀመሪያ ክብደት (Initial Weight) (ኪ.ግ)</label><input type="number" id="animal-initialweight" step="0.5" value="0"></div>
@@ -237,9 +264,7 @@
             </div>
         </div>
 
-        <!-- ========================================================== -->
-        <!-- TAB 2: FATTENING WEEKLY                                    -->
-        <!-- ========================================================== -->
+        <!-- TAB 2: FATTENING WEEKLY -->
         <div id="tab-fattening-weekly" class="tab-content" style="display:none;">
             <div class="farm-card">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
@@ -263,9 +288,7 @@
             </div>
         </div>
 
-        <!-- ========================================================== -->
-        <!-- TAB 3: FATTENING DAILY                                     -->
-        <!-- ========================================================== -->
+        <!-- TAB 3: FATTENING DAILY -->
         <div id="tab-fattening-daily" class="tab-content" style="display:none;">
             <div class="farm-card">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
@@ -289,9 +312,7 @@
             </div>
         </div>
 
-        <!-- ========================================================== -->
-        <!-- TAB 4: DAILY PRODUCTION (Milk/Eggs)                        -->
-        <!-- ========================================================== -->
+        <!-- TAB 4: DAILY PRODUCTION -->
         <div id="tab-dailylogs" class="tab-content" style="display:none;">
             <div class="farm-card">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
@@ -321,9 +342,7 @@
             </div>
         </div>
 
-        <!-- ========================================================== -->
-        <!-- TAB 5: EVENTS                                              -->
-        <!-- ========================================================== -->
+        <!-- TAB 5: EVENTS -->
         <div id="tab-events" class="tab-content" style="display:none;">
             <div class="farm-card">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
@@ -356,9 +375,7 @@
             </div>
         </div>
 
-        <!-- ========================================================== -->
-        <!-- TAB 6: OTHER COSTS                                         -->
-        <!-- ========================================================== -->
+        <!-- TAB 6: OTHER COSTS -->
         <div id="tab-othercosts" class="tab-content" style="display:none;">
             <div class="farm-card">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
@@ -399,11 +416,8 @@
             </div>
         </div>
 
-        <!-- ========================================================== -->
-        <!-- TAB 7: FINANCE (with Category Filter)                      -->
-        <!-- ========================================================== -->
+        <!-- TAB 7: FINANCE -->
         <div id="tab-finance" class="tab-content" style="display:none;">
-            <!-- Settings -->
             <div class="farm-card">
                 <h3 style="color:#0b2b1f; margin-bottom:12px;">⚙️ የዋጋ ቅንብሮች</h3>
                 <div class="form-row">
@@ -417,7 +431,6 @@
                 <button class="btn btn-farm-action" onclick="saveSettings()">ቅንብሮችን አስቀምጥ</button>
             </div>
 
-            <!-- Filter Bar -->
             <div class="farm-card">
                 <h3 style="color:#0b2b1f; margin-bottom:12px;">🔍 ማጣሪያ (Filter)</h3>
                 <div class="filter-bar" id="finance-filter-bar">
@@ -431,28 +444,23 @@
                 </div>
             </div>
 
-            <!-- Daily Summary (Dairy/Egg) -->
             <div class="farm-card">
                 <h3 style="color:#0b2b1f; margin-bottom:12px;">📊 ዕለታዊ ማጠቃለያ</h3>
                 <div id="daily-summary-container"></div>
             </div>
 
-            <!-- Fattening Summary (Filtered) -->
             <div class="farm-card">
                 <h3 style="color:#0b2b1f; margin-bottom:12px;">💪 የስብ እንስሳት ማጠቃለያ</h3>
                 <div id="fattening-summary-container"></div>
             </div>
 
-            <!-- Grand Total -->
             <div class="farm-card" style="border:2px solid #F7E08A; background:rgba(247,224,138,0.1);">
                 <h3 style="color:#0b2b1f; margin-bottom:12px;">🏆 አጠቃላይ ትርፍ</h3>
                 <div id="grand-summary-container"></div>
             </div>
         </div>
 
-        <!-- ========================================================== -->
-        <!-- TAB 8: PRODUCTION SUMMARY (Gains)                          -->
-        <!-- ========================================================== -->
+        <!-- TAB 8: PRODUCTION SUMMARY -->
         <div id="tab-production" class="tab-content" style="display:none;">
             <div class="farm-card">
                 <h3 style="color:#0b2b1f; margin-bottom:12px;">📈 የምርት ማጠቃለያ (Production Summary)</h3>
@@ -461,9 +469,7 @@
         </div>
     </div>
 
-    <!-- ============================================================ -->
-    <!-- MODALS (unchanged)                                           -->
-    <!-- ============================================================ -->
+    <!-- ===== MODALS ===== -->
     <div id="eyobed-modal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal('eyobed')">&times;</span>
@@ -507,9 +513,7 @@
         </div>
     </div>
 
-    <!-- ============================================================ -->
-    <!-- JAVASCRIPT – Complete Logic                                  -->
-    <!-- ============================================================ -->
+    <!-- ===== JAVASCRIPT ===== -->
     <script>
         // =============================================
         // 1. MODAL LOGIC
@@ -563,7 +567,7 @@
         });
 
         // =============================================
-        // 6. ANIMALS (Master Registry)
+        // 6. ANIMALS
         // =============================================
         function toggleFatteningFields() {
             const cat = document.getElementById('animal-category').value;
@@ -592,8 +596,8 @@
                     <div><div class="main">${a.Name} <span class="${badgeClass}">${a.Category}</span></div>
                     <div class="sub">${a.ID} • ${a.Breed || ''} • ${a.Status} ${a.BirthDate ? '• ተወለደ: '+a.BirthDate : ''} ${a.Age ? '• ዕድሜ: '+a.Age : ''} ${a.InitialWeight ? '• ክብደት: '+a.InitialWeight+'ኪ.ግ' : ''}</div></div>
                     <div>
-                        <button class="btn btn-sm-farm btn-outline-farm" onclick="editAnimal('${a.ID}')" style="width:auto; padding:4px 10px; margin-right:4px;"><i class="fas fa-edit"></i></button>
-                        <button class="btn btn-sm-farm btn-danger-farm" onclick="deleteAnimal('${a.ID}')" style="width:auto; padding:4px 10px;"><i class="fas fa-trash"></i></button>
+                        <button class="btn btn-sm-farm btn-outline-farm" onclick="editAnimal('${a.ID}')" style="width:auto; padding:4px 10px; margin-right:4px;">✏️</button>
+                        <button class="btn btn-sm-farm btn-danger-farm" onclick="deleteAnimal('${a.ID}')" style="width:auto; padding:4px 10px;">🗑️</button>
                     </div>
                 </div>
             `}).join('');
@@ -766,7 +770,7 @@
                 <div class="list-item">
                     <div><div class="main">${l.date} • ${l.animalId}</div>
                     <div class="sub">🌾 ${l.feedKg}ኪ.ግ • 💊 ${l.medName || 'N/A'} • ${l.medCost}ብር</div></div>
-                    <div><button class="btn btn-sm-farm btn-danger-farm" onclick="deleteFatDaily('${l._id}')" style="width:auto; padding:4px 10px;"><i class="fas fa-trash"></i></button></div>
+                    <div><button class="btn btn-sm-farm btn-danger-farm" onclick="deleteFatDaily('${l._id}')" style="width:auto; padding:4px 10px;">🗑️</button></div>
                 </div>
             `).join('');
         }
@@ -808,7 +812,7 @@
         }
 
         // =============================================
-        // 9. DAILY PRODUCTION (Milk/Eggs)
+        // 9. DAILY PRODUCTION
         // =============================================
         function populateDairyDropdown() {
             const animals = getFarmData('animals').filter(a => a.Category === 'ወተት ላም' || a.Category === 'ዶሮ (እንቁላል)');
@@ -834,7 +838,7 @@
                 <div class="list-item">
                     <div><div class="main">${l.Date} • ${l.AnimalID}</div>
                     <div class="sub">🥛 ${l.Milk_Liters}ሊ • 🥚 ${l.Eggs_Count} • 🌾 ${l.Feed_Kg}ኪ.ግ • 💊 ${l.Medicine_Cost||0}ብር</div></div>
-                    <div><button class="btn btn-sm-farm btn-danger-farm" onclick="deleteLog('${l._id||l.Date+l.AnimalID}')" style="width:auto; padding:4px 10px;"><i class="fas fa-trash"></i></button></div>
+                    <div><button class="btn btn-sm-farm btn-danger-farm" onclick="deleteLog('${l._id||l.Date+l.AnimalID}')" style="width:auto; padding:4px 10px;">🗑️</button></div>
                 </div>
             `).join('');
         }
@@ -902,7 +906,7 @@
                 <div class="list-item">
                     <div><div class="main">${e.Date} • ${e.EventType} <span class="badge badge-warning">${e.AnimalID}</span></div>
                     <div class="sub">${e.Notes || ''} ${e.NextDueDate ? '🔜 ' + e.NextDueDate : ''}</div></div>
-                    <div><button class="btn btn-sm-farm btn-danger-farm" onclick="deleteEvent('${e._id||e.Date+e.AnimalID}')" style="width:auto; padding:4px 10px;"><i class="fas fa-trash"></i></button></div>
+                    <div><button class="btn btn-sm-farm btn-danger-farm" onclick="deleteEvent('${e._id||e.Date+e.AnimalID}')" style="width:auto; padding:4px 10px;">🗑️</button></div>
                 </div>
             `).join('');
         }
@@ -969,7 +973,7 @@
                 <div class="list-item">
                     <div><div class="main">${c.date} • ${c.category} • ${c.description}</div>
                     <div class="sub">${c.animalId ? '🐾 ' + c.animalId : ''} 💰 ${c.amount} ብር</div></div>
-                    <div><button class="btn btn-sm-farm btn-danger-farm" onclick="deleteCost('${c._id}')" style="width:auto; padding:4px 10px;"><i class="fas fa-trash"></i></button></div>
+                    <div><button class="btn btn-sm-farm btn-danger-farm" onclick="deleteCost('${c._id}')" style="width:auto; padding:4px 10px;">🗑️</button></div>
                 </div>
             `).join('');
         }
@@ -1011,7 +1015,7 @@
         }
 
         // =============================================
-        // 12. FINANCE SUMMARY (with filter)
+        // 12. FINANCE
         // =============================================
         function renderFinanceSummary() {
             const settings = getSettings();
@@ -1027,11 +1031,10 @@
             const fatDaily = getFarmData('fatdaily');
             const otherCosts = getFarmData('othercosts');
 
-            // --- Daily Summary (Dairy + Egg) ---
+            // Daily Summary
             const today = new Date().toISOString().slice(0,10);
             const todayLogs = logs.filter(l => l.Date === today);
 
-            // Filter by category if not "all"
             let dairyLogs = todayLogs;
             let eggLogs = todayLogs;
             if (activeFilter !== 'all') {
@@ -1044,7 +1047,6 @@
                     eggLogs = todayLogs.filter(l => eggIds.includes(l.AnimalID));
                     dairyLogs = [];
                 } else {
-                    // fattening filter selected – show no dairy/egg daily
                     dairyLogs = [];
                     eggLogs = [];
                 }
@@ -1064,7 +1066,6 @@
             const eggFeedCost = eggFeed * (settings.feedPrice||0);
             const eggProfit = eggIncome - eggFeedCost - eggMed;
 
-            // Daily Summary HTML
             let dailyHtml = '';
             if (activeFilter === 'all' || activeFilter === 'dairy') {
                 dailyHtml += `
@@ -1089,7 +1090,7 @@
             }
             document.getElementById('daily-summary-container').innerHTML = dailyHtml;
 
-            // --- Fattening Summary (filtered) ---
+            // Fattening Summary
             let fatAnimals = animals.filter(a => a.Category && a.Category.startsWith('ስብ'));
             if (activeFilter !== 'all' && activeFilter !== 'dairy' && activeFilter !== 'egg') {
                 fatAnimals = fatAnimals.filter(a => a.Category === activeFilter);
@@ -1099,7 +1100,6 @@
             if (fatAnimals.length === 0) {
                 fatHtml = '<div class="empty-message">ለዚህ ምድብ ምንም ስብ እንስሳ የለም።</div>';
             } else {
-                // Group by category if "all"
                 const groups = {};
                 fatAnimals.forEach(a => {
                     if (!groups[a.Category]) groups[a.Category] = [];
@@ -1149,9 +1149,8 @@
             }
             document.getElementById('fattening-summary-container').innerHTML = fatHtml;
 
-            // --- Grand Total ---
+            // Grand Total
             const totalDailyProfit = dairyProfit + eggProfit;
-            // Calculate total fattening profit from all fattening animals (unfiltered for grand total)
             const allFat = animals.filter(a => a.Category && a.Category.startsWith('ስብ'));
             let totalFatProfit = 0;
             allFat.forEach(a => {
@@ -1222,7 +1221,7 @@
         }
 
         // =============================================
-        // 14. SETTINGS SAVE
+        // 14. SETTINGS
         // =============================================
         function saveSettings() {
             const settings = {
@@ -1237,7 +1236,7 @@
         }
 
         // =============================================
-        // 15. FILTER HANDLING
+        // 15. FILTER
         // =============================================
         document.addEventListener('click', function(e) {
             if (e.target.closest && e.target.closest('#finance-filter-bar button')) {
@@ -1249,7 +1248,7 @@
         });
 
         // =============================================
-        // 16. SYNC (keep existing)
+        // 16. SYNC
         // =============================================
         async function syncWithSheet() {
             if (!navigator.onLine) { alert('ከመስመር ውጪ ነዎት።'); return; }
@@ -1331,7 +1330,7 @@
         document.getElementById('portfolio-page').style.display = 'block';
         document.getElementById('farm-page').style.display = 'none';
         renderAllFarmData();
-        console.log('✅ MER Farm Scheduler v5 loaded – with finance filter and conditional fields.');
+        console.log('✅ MER Farm Scheduler v6 loaded – Button order fixed.');
     </script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
