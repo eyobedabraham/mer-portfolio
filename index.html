@@ -59,7 +59,7 @@
         #farm-page .back-btn { background: rgba(255,255,255,0.15); border: none; font-size: 24px; color: white; cursor: pointer; padding: 8px 16px; border-radius: 50px; backdrop-filter: blur(5px); }
         #farm-page .back-btn:hover { background: rgba(255,255,255,0.3); }
         #farm-page .tab-bar { display: flex; gap: 4px; background: rgba(255,255,255,0.15); backdrop-filter: blur(5px); border-radius: 16px; padding: 6px; margin-bottom: 16px; flex-wrap: wrap; }
-        #farm-page .tab-bar button { flex: 1; border: none; background: transparent; padding: 14px 8px; border-radius: 14px; font-weight: 700; color: rgba(255,255,255,0.8); cursor: pointer; transition: 0.2s; font-size: 14px; min-width: 55px; }
+        #farm-page .tab-bar button { flex: 1; border: none; background: transparent; padding: 12px 6px; border-radius: 14px; font-weight: 700; color: rgba(255,255,255,0.8); cursor: pointer; transition: 0.2s; font-size: 12px; min-width: 55px; }
         #farm-page .tab-bar button.active { background: white; color: #0b2b1f; box-shadow: 0 2px 8px rgba(0,0,0,0.15); font-weight: 800; }
         #farm-page .list-item { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #edf2f7; cursor: pointer; transition: 0.2s; }
         #farm-page .list-item:hover { background: #f0f8f0; }
@@ -76,10 +76,11 @@
         #farm-page .badge-egg { background: #f1c40f; color: #1a2a3a; }
         #farm-page .form-group { margin-bottom: 14px; }
         #farm-page .form-group label { display: block; font-weight: 600; font-size: 14px; margin-bottom: 4px; color: #1a2a3a; }
+        /* ===== BEAUTIFIED DROPDOWNS (Dark Green + Gold) ===== */
         #farm-page .form-group select,
         #farm-page select,
         #farm-page .form-group input,
-        #farm-page .form-group textarea { width: 100%; padding: 12px 16px; border: 2px solid #0b2b1f; border-radius: 18px; font-size: 16px; background: #0b2b1f; color: #F7E08A; appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23F7E08A' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; background-size: 12px; cursor: pointer; transition: 0.3s; }
+        #farm-page .form-group textarea { width: 100%; padding: 12px 16px; border: 2px solid #0b2b1f; border-radius: 12px; font-size: 16px; background: #0b2b1f; color: #F7E08A; appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23F7E08A' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; background-size: 12px; cursor: pointer; transition: 0.3s; }
         #farm-page .form-group select:focus,
         #farm-page select:focus { outline: none; border-color: #F7E08A; box-shadow: 0 0 15px rgba(247,224,138,0.3); }
         #farm-page .form-group select option,
@@ -115,7 +116,7 @@
         #farm-page .filter-bar button:hover { background: #e9edf2; }
         #farm-page .search-bar { width: 100%; padding: 12px 16px; border: 2px solid #dce3eb; border-radius: 30px; font-size: 16px; margin-bottom: 12px; outline: none; transition: 0.2s; background: white; }
         #farm-page .search-bar:focus { border-color: #2a7f6e; }
-        @media (max-width: 400px) { #farm-page .form-row { grid-template-columns: 1fr; } #farm-page .tab-bar button { font-size: 12px; padding: 10px 4px; } }
+        @media (max-width: 400px) { #farm-page .form-row { grid-template-columns: 1fr; } #farm-page .tab-bar button { font-size: 10px; padding: 10px 4px; } }
         .conditional-fields { display: none; margin-top: 10px; padding-top: 10px; border-top: 1px dashed #dce3eb; }
         .conditional-fields.show { display: block; }
         #toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: #0b2b1f; color: #F7E08A; padding: 14px 28px; border-radius: 50px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); font-weight: 600; z-index: 99999; opacity: 0; transition: opacity 0.4s ease; pointer-events: none; font-size: 16px; max-width: 90%; text-align: center; border: 1px solid rgba(247,224,138,0.3); }
@@ -152,7 +153,7 @@
         .profile-summary-item .label { font-size: 12px; opacity: 0.8; }
         .profile-summary-item .value { font-size: 18px; font-weight: 700; color: #F7E08A; }
 
-        /* Notification bell */
+        /* ===== NOTIFICATION BELL ===== */
         .notification-bell { position: relative; cursor: pointer; font-size: 24px; color: #F7E08A; transition: 0.3s; padding: 4px 8px; }
         .notification-bell:hover { transform: scale(1.1); }
         .notification-bell .badge { position: absolute; top: -6px; right: -6px; background: #c0392b; color: white; font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 50%; border: 2px solid #0b2b1f; display: none; min-width: 20px; text-align: center; }
@@ -170,8 +171,8 @@
 
         @media (max-width: 400px) { .profile-summary-grid { grid-template-columns: 1fr 1fr; } .notification-dropdown { right: -20px; min-width: 260px; } }
 
-        /* Profile date filter also gets curvy */
-        #profile-date-filter { background: #0b2b1f; color: #F7E08A; border: 2px solid #0b2b1f; padding: 8px 16px; border-radius: 18px; font-weight: 600; appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23F7E08A' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; background-size: 12px; cursor: pointer; transition: 0.3s; }
+        /* ===== BEAUTIFIED DROPDOWN FOR PROFILE FILTER ===== */
+        #profile-date-filter { background: #0b2b1f; color: #F7E08A; border: 2px solid #0b2b1f; padding: 8px 16px; border-radius: 30px; font-weight: 600; appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23F7E08A' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; background-size: 12px; cursor: pointer; transition: 0.3s; }
         #profile-date-filter:focus { outline: none; border-color: #F7E08A; box-shadow: 0 0 15px rgba(247,224,138,0.3); }
         #profile-date-filter option { background: #0b2b1f; color: #F7E08A; padding: 8px; }
     </style>
@@ -181,7 +182,7 @@
     <div class="leaf leaf2">🍃</div>
     <div class="leaf leaf3">🌱</div>
 
-    <!-- PORTFOLIO PAGE -->
+    <!-- ===== PORTFOLIO PAGE ===== -->
     <div id="portfolio-page" class="container">
         <div class="card">
             <div class="logo">MER</div>
@@ -198,11 +199,12 @@
         </div>
     </div>
 
-    <!-- FARM SCHEDULER -->
+    <!-- ===== FARM SCHEDULER ===== -->
     <div id="farm-page">
         <div class="farm-header">
             <button class="back-btn" onclick="showPortfolioPage()">← ተመለስ</button>
             <h2>🐾 መርሐ ግብር</h2>
+            <!-- NOTIFICATION BELL -->
             <div class="notification-bell" onclick="toggleNotificationDropdown(event)">
                 🔔
                 <span class="badge" id="notification-badge">0</span>
@@ -502,7 +504,7 @@
         </div>
     </div>
 
-    <!-- MODALS -->
+    <!-- ===== MODALS ===== -->
     <div id="about-modal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal('about')">&times;</span>
@@ -684,6 +686,7 @@
             } else {
                 badge.classList.remove('show');
             }
+            // Update dropdown list
             const list = document.getElementById('notification-list');
             if (upcoming.length === 0) {
                 list.innerHTML = '<div class="empty">✅ ምንም አስታወሻዎች የሉም (No reminders)</div>';
@@ -1337,7 +1340,7 @@
                     <div class="sub">${e.Notes || ''} ${e.NextDueDate ? '🔜 ' + e.NextDueDate : ''}</div></div>
                     <div><button class="btn btn-sm-farm btn-danger-farm" onclick="deleteEvent('${e._id||e.Date+e.AnimalID}')" style="width:auto; padding:4px 10px;">🗑️</button></div>
                 </div>
-            `).join('');
+            `}).join('');
         }
 
         function showAddEventForm() {
@@ -1840,7 +1843,7 @@
         const now = new Date();
         const monthStr = now.getFullYear() + '-' + String(now.getMonth()+1).padStart(2, '0');
         document.getElementById('month-filter').value = monthStr;
-        console.log('✅ MER Farm Scheduler v10 – Bigger tabs + more curvy dropdowns');
+        console.log('✅ MER Farm Scheduler v9 loaded – Beautified dropdowns + Notification bell');
     </script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
