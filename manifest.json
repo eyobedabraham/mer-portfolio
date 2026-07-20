@@ -1,21 +1,12 @@
 {
-    "name": "MER Farm Scheduler",
-    "short_name": "MER Farm",
-    "description": "Offline livestock & dairy management",
-    "start_url": "/",
-    "display": "standalone",
-    "background_color": "#0b2b1f",
-    "theme_color": "#0b2b1f",
-    "icons": [
-        {
-            "src": "https://via.placeholder.com/192x192/0b2b1f/F7E08A?text=🐄",
-            "sizes": "192x192",
-            "type": "image/png"
-        },
-        {
-            "src": "https://via.placeholder.com/512x512/0b2b1f/F7E08A?text=🐄",
-            "sizes": "512x512",
-            "type": "image/png"
-        }
-    ]
+  "name": "MER Farm Scheduler",
+  "short_name": "MER Farm",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0b2b1f",
+  "theme_color": "#0b2b1f",
+  "icons": [
+    {"src": "https://via.placeholder.com/192x192/0b2b1f/F7E08A?text=🐄","sizes": "192x192","type": "image/png"},
+    {"src": "https://via.placeholder.com/512x512/0b2b1f/F7E08A?text=🐄","sizes": "512x512","type": "image/png"}
+  ]
 }
