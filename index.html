@@ -59,7 +59,7 @@
         #farm-page .back-btn { background: rgba(255,255,255,0.15); border: none; font-size: 24px; color: white; cursor: pointer; padding: 8px 16px; border-radius: 50px; backdrop-filter: blur(5px); }
         #farm-page .back-btn:hover { background: rgba(255,255,255,0.3); }
         #farm-page .tab-bar { display: flex; gap: 4px; background: rgba(255,255,255,0.15); backdrop-filter: blur(5px); border-radius: 16px; padding: 6px; margin-bottom: 16px; flex-wrap: wrap; }
-        #farm-page .tab-bar button { flex: 1; border: none; background: transparent; padding: 12px 6px; border-radius: 14px; font-weight: 700; color: rgba(255,255,255,0.8); cursor: pointer; transition: 0.2s; font-size: 12px; min-width: 55px; }
+        #farm-page .tab-bar button { flex: 1; border: none; background: transparent; padding: 14px 8px; border-radius: 14px; font-weight: 700; color: rgba(255,255,255,0.8); cursor: pointer; transition: 0.2s; font-size: 14px; min-width: 55px; }
         #farm-page .tab-bar button.active { background: white; color: #0b2b1f; box-shadow: 0 2px 8px rgba(0,0,0,0.15); font-weight: 800; }
         #farm-page .list-item { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #edf2f7; cursor: pointer; transition: 0.2s; }
         #farm-page .list-item:hover { background: #f0f8f0; }
@@ -76,7 +76,18 @@
         #farm-page .badge-egg { background: #f1c40f; color: #1a2a3a; }
         #farm-page .form-group { margin-bottom: 14px; }
         #farm-page .form-group label { display: block; font-weight: 600; font-size: 14px; margin-bottom: 4px; color: #1a2a3a; }
-        #farm-page .form-group input, #farm-page .form-group select, #farm-page .form-group textarea { width: 100%; padding: 12px 16px; border: 1px solid #dce3eb; border-radius: 12px; font-size: 16px; background: white; }
+        #farm-page .form-group select,
+        #farm-page select,
+        #farm-page .form-group input,
+        #farm-page .form-group textarea { width: 100%; padding: 12px 16px; border: 2px solid #0b2b1f; border-radius: 18px; font-size: 16px; background: #0b2b1f; color: #F7E08A; appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23F7E08A' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; background-size: 12px; cursor: pointer; transition: 0.3s; }
+        #farm-page .form-group select:focus,
+        #farm-page select:focus { outline: none; border-color: #F7E08A; box-shadow: 0 0 15px rgba(247,224,138,0.3); }
+        #farm-page .form-group select option,
+        #farm-page select option { background: #0b2b1f; color: #F7E08A; padding: 10px; }
+        #farm-page .form-group input,
+        #farm-page .form-group textarea { background: white; color: #1a2a3a; border-color: #dce3eb; }
+        #farm-page .form-group input:focus,
+        #farm-page .form-group textarea:focus { outline: none; border-color: #0b2b1f; box-shadow: 0 0 15px rgba(11,43,31,0.15); }
         #farm-page .form-group textarea { resize: vertical; min-height: 60px; }
         #farm-page .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
         #farm-page .btn-farm-action { display: inline-block; background: #0b2b1f; color: #F7E08A; border: none; padding: 14px 20px; border-radius: 50px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%; text-align: center; transition: background 0.2s; }
@@ -104,7 +115,7 @@
         #farm-page .filter-bar button:hover { background: #e9edf2; }
         #farm-page .search-bar { width: 100%; padding: 12px 16px; border: 2px solid #dce3eb; border-radius: 30px; font-size: 16px; margin-bottom: 12px; outline: none; transition: 0.2s; background: white; }
         #farm-page .search-bar:focus { border-color: #2a7f6e; }
-        @media (max-width: 400px) { #farm-page .form-row { grid-template-columns: 1fr; } #farm-page .tab-bar button { font-size: 10px; padding: 10px 4px; } }
+        @media (max-width: 400px) { #farm-page .form-row { grid-template-columns: 1fr; } #farm-page .tab-bar button { font-size: 12px; padding: 10px 4px; } }
         .conditional-fields { display: none; margin-top: 10px; padding-top: 10px; border-top: 1px dashed #dce3eb; }
         .conditional-fields.show { display: block; }
         #toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: #0b2b1f; color: #F7E08A; padding: 14px 28px; border-radius: 50px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); font-weight: 600; z-index: 99999; opacity: 0; transition: opacity 0.4s ease; pointer-events: none; font-size: 16px; max-width: 90%; text-align: center; border: 1px solid rgba(247,224,138,0.3); }
@@ -122,8 +133,6 @@
         #reminder-banner { background: #f39c12; color: #1a2a3a; padding: 12px 16px; border-radius: 16px; margin-bottom: 16px; font-weight: 600; font-size: 14px; display: none; align-items: center; gap: 10px; flex-wrap: wrap; }
         #reminder-banner .close-reminder { cursor: pointer; font-size: 1.2rem; margin-left: auto; background: rgba(0,0,0,0.1); padding: 0 10px; border-radius: 50%; }
         #reminder-banner .close-reminder:hover { background: rgba(0,0,0,0.2); }
-
-        /* Profile tabs */
         .profile-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin: 12px 0; }
         .profile-tabs button { padding: 8px 16px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.1); color: #fff; cursor: pointer; font-weight: 600; transition: 0.2s; font-size: 14px; }
         .profile-tabs button.active-tab { background: #F7E08A; color: #0b2b1f; border-color: #F7E08A; }
@@ -140,7 +149,24 @@
         .profile-summary-item { background: rgba(255,255,255,0.08); padding: 10px; border-radius: 12px; text-align: center; }
         .profile-summary-item .label { font-size: 12px; opacity: 0.8; }
         .profile-summary-item .value { font-size: 18px; font-weight: 700; color: #F7E08A; }
-        @media (max-width: 400px) { .profile-summary-grid { grid-template-columns: 1fr 1fr; } }
+        .notification-bell { position: relative; cursor: pointer; font-size: 24px; color: #F7E08A; transition: 0.3s; padding: 4px 8px; }
+        .notification-bell:hover { transform: scale(1.1); }
+        .notification-bell .badge { position: absolute; top: -6px; right: -6px; background: #c0392b; color: white; font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 50%; border: 2px solid #0b2b1f; display: none; min-width: 20px; text-align: center; }
+        .notification-bell .badge.show { display: block; }
+        .notification-dropdown { display: none; position: absolute; top: 45px; right: 0; background: #0b2b1f; border: 1px solid rgba(247,224,138,0.3); border-radius: 16px; padding: 12px 0; min-width: 280px; max-width: 340px; max-height: 300px; overflow-y: auto; box-shadow: 0 20px 40px rgba(0,0,0,0.6); z-index: 9999; }
+        .notification-dropdown.open { display: block; }
+        .notification-dropdown .item { padding: 10px 16px; color: #F7E08A; font-size: 13px; border-bottom: 1px solid rgba(247,224,138,0.1); display: flex; gap: 8px; align-items: center; }
+        .notification-dropdown .item:last-child { border-bottom: none; }
+        .notification-dropdown .item .icon { font-size: 16px; }
+        .notification-dropdown .item .date { font-size: 11px; opacity: 0.7; margin-left: auto; white-space: nowrap; }
+        .notification-dropdown .empty { padding: 20px; text-align: center; color: rgba(255,255,255,0.5); font-size: 14px; }
+        .notification-dropdown::-webkit-scrollbar { width: 4px; }
+        .notification-dropdown::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); border-radius: 10px; }
+        .notification-dropdown::-webkit-scrollbar-thumb { background: #F7E08A; border-radius: 10px; }
+        @media (max-width: 400px) { .profile-summary-grid { grid-template-columns: 1fr 1fr; } .notification-dropdown { right: -20px; min-width: 260px; } }
+        #profile-date-filter { background: #0b2b1f; color: #F7E08A; border: 2px solid #0b2b1f; padding: 8px 16px; border-radius: 18px; font-weight: 600; appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23F7E08A' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; background-size: 12px; cursor: pointer; transition: 0.3s; }
+        #profile-date-filter:focus { outline: none; border-color: #F7E08A; box-shadow: 0 0 15px rgba(247,224,138,0.3); }
+        #profile-date-filter option { background: #0b2b1f; color: #F7E08A; padding: 8px; }
     </style>
 </head>
 <body>
@@ -148,7 +174,7 @@
     <div class="leaf leaf2">🍃</div>
     <div class="leaf leaf3">🌱</div>
 
-    <!-- ===== PORTFOLIO PAGE ===== -->
+    <!-- PORTFOLIO PAGE -->
     <div id="portfolio-page" class="container">
         <div class="card">
             <div class="logo">MER</div>
@@ -165,12 +191,18 @@
         </div>
     </div>
 
-    <!-- ===== FARM SCHEDULER ===== -->
+    <!-- FARM SCHEDULER -->
     <div id="farm-page">
         <div class="farm-header">
             <button class="back-btn" onclick="showPortfolioPage()">← ተመለስ</button>
             <h2>🐾 መርሐ ግብር</h2>
-            <div style="width:36px;"></div>
+            <div class="notification-bell" onclick="toggleNotificationDropdown(event)">
+                🔔
+                <span class="badge" id="notification-badge">0</span>
+                <div class="notification-dropdown" id="notification-dropdown">
+                    <div id="notification-list"></div>
+                </div>
+            </div>
         </div>
         <div class="sync-status">
             💾 <span id="sync-text">መረጃ በስልክ ላይ ተቀምጧል (Offline)</span>
@@ -463,13 +495,13 @@
         </div>
     </div>
 
-    <!-- ===== MODALS ===== -->
+    <!-- MODALS -->
     <div id="about-modal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal('about')">&times;</span>
             <h3>About MER</h3>
-            <p style="text-align:left; margin-top:20px;"><strong>English:</strong><br>Ethiopia is a rapidly growing nation... (full text as before)</p>
-            <p style="text-align:left; margin-top:30px;"><strong>አማርኛ:</strong><br>ኢትዮጵያ በፍጥነት እያደገች ያለች ሀገር ናት... (full text as before)</p>
+            <p style="text-align:left; margin-top:20px;"><strong>English:</strong><br>Ethiopia is a rapidly growing nation, with a strong focus on agro‑industry and a digital future championed by Prime Minister Dr. Abiy Ahmed. MER was founded to be part of that transformation.<br><br>We are dedicated to moving small‑scale farming into the modern agro‑industrial era. By integrating technology, data, and artificial intelligence into livestock and dairy production, we aim to help Ethiopia become a leading country in agro‑industry.<br><br>Our mission is twofold: to provide a transparent, efficient online marketplace for premium livestock and dairy products, and to spread knowledge through free educational tutorials – empowering farmers with the tools they need to succeed.<br><br>We believe that with the right blend of tradition and innovation, Ethiopian agriculture can thrive. MER is more than a business – it's a movement to elevate farming through knowledge, trust, and technology.</p>
+            <p style="text-align:left; margin-top:30px;"><strong>አማርኛ:</strong><br>ኢትዮጵያ በፍጥነት እያደገች ያለች ሀገር ናት፤ በግብርና እና በዲጂታል ቴክኖሎጂ ላይ ትኩረት አድርጋለች። ጠቅላይ ሚኒስትር ዶ/ር አብይ አህመድ እየመሩት ባለው የዲጂታል ኢትዮጵያ ራዕይ ውስጥ የምንሳተፍበት መሪ ራዕይ ነው።<br><br>አነስተኛ ገበሬዎችን ወደ ዘመናዊ አግሮ‑ኢንዱስትሪ ለማሸጋገር ቁርጠኞች ነን። ቴክኖሎጂን፣ ዳታን እና አርቲፊሻል ኢንተሊጀንስን በእንስሳት እርባታ እና የወተት ምርቶች ላይ በማዋሃድ ኢትዮጵያን በአግሮ‑ኢንዱስትሪ ቀዳሚ ሀገር ለማድረግ እንጥራለን።<br><br>ተልእኳችን ሁለት ነው፡ ግልጽ እና ቀልጣፋ የእንስሳት እና የወተት ምርቶች የመስመር ላይ ገበያ ማቅረብ፤ እና ነጻ የትምህርት ትምህርቶችን በማሰራጨት እውቀትን ማስፋፋት።<br><br>በባህልና በፈጠራ ትስስር የኢትዮጵያ ግብርና ሊያብብ እንደሚችል እናምናለን። MER ንግድ ብቻ ሳይሆን በእውቀት፣ በመተማመን እና በቴክኖሎጂ ግብርናን ከፍ ለማድረግ የሚደረግ እንቅስቃሴ ነው።</p>
             <button class="btn-back-modal" onclick="closeModal('about')">← ተመለስ (Back)</button>
         </div>
     </div>
@@ -505,25 +537,21 @@
         </div>
     </div>
 
-    <!-- ANIMAL PROFILE MODAL (Enhanced with tabs, filters, clear history) -->
+    <!-- ANIMAL PROFILE MODAL -->
     <div id="animal-profile-modal" class="modal">
         <div class="modal-content" style="max-width: 600px; text-align:left;">
             <span class="close" onclick="closeModal('animal-profile')">&times;</span>
             <h3 id="profile-animal-name" style="text-align:center; color:#F7E08A;">Animal Profile</h3>
             <div id="profile-basic-info"></div>
-
-            <!-- Summary Totals -->
             <div class="profile-summary-grid" id="profile-summary-grid">
                 <div class="profile-summary-item"><div class="label">🥛 ጠቅላላ ወተት (Milk)</div><div class="value" id="profile-total-milk">0</div></div>
                 <div class="profile-summary-item"><div class="label">🥚 ጠቅላላ እንቁላል (Eggs)</div><div class="value" id="profile-total-eggs">0</div></div>
                 <div class="profile-summary-item"><div class="label">🌾 ጠቅላላ መኖ (Feed)</div><div class="value" id="profile-total-feed">0</div></div>
                 <div class="profile-summary-item"><div class="label">⚖️ ጠቅላላ ክብደት ትርፍ (Gain)</div><div class="value" id="profile-total-gain">0</div></div>
             </div>
-
-            <!-- Date Filter -->
             <div style="display:flex; gap:10px; margin:10px 0; flex-wrap:wrap; align-items:center;">
                 <label style="font-weight:600; color:#F7E08A;">📅 ማጣሪያ (Filter):</label>
-                <select id="profile-date-filter" onchange="renderProfileHistory()" style="padding:8px 12px; border-radius:30px; border:none; background:rgba(255,255,255,0.15); color:#fff; font-weight:600;">
+                <select id="profile-date-filter" onchange="renderProfileHistory()">
                     <option value="all">ሁሉም (All)</option>
                     <option value="today">ዛሬ (Today)</option>
                     <option value="7">ያለፉት 7 ቀናት (Last 7 days)</option>
@@ -531,8 +559,6 @@
                     <option value="90">ያለፉት 3 ወራት (Last 3 months)</option>
                 </select>
             </div>
-
-            <!-- Tabs -->
             <div class="profile-tabs" id="profile-tabs">
                 <button class="active-tab" data-tab="profile-milk">🥛 ወተት (Milk)</button>
                 <button data-tab="profile-eggs">🥚 እንቁላል (Eggs)</button>
@@ -540,15 +566,11 @@
                 <button data-tab="profile-weight">⚖️ ክብደት (Weight)</button>
                 <button data-tab="profile-events">📅 ክስተቶች (Events)</button>
             </div>
-
-            <!-- Tab Contents -->
             <div id="profile-milk" class="profile-tab-content active-tab-content"></div>
             <div id="profile-eggs" class="profile-tab-content"></div>
             <div id="profile-feed" class="profile-tab-content"></div>
             <div id="profile-weight" class="profile-tab-content"></div>
             <div id="profile-events" class="profile-tab-content"></div>
-
-            <!-- Clear History Button -->
             <button class="clear-history-btn" onclick="showClearHistoryOptions()">🗑️ ታሪክ አጽዳ (Clear History)</button>
             <div id="clear-history-options" style="display:none; margin-top:10px; padding:15px; background:rgba(255,255,255,0.05); border-radius:12px;">
                 <div style="display:flex; flex-direction:column; gap:10px;">
@@ -560,7 +582,6 @@
                     </div>
                 </div>
             </div>
-
             <button class="btn-back-modal" onclick="closeModal('animal-profile')" style="width:100%; margin-top:15px;">← ተመለስ (Back)</button>
         </div>
     </div>
@@ -580,6 +601,7 @@
     <!-- TOAST -->
     <div id="toast"></div>
 
+    <!-- ================================ JAVASCRIPT ================================ -->
     <script>
         // =============================================
         // 0. TOAST + CUSTOM CONFIRM
@@ -627,6 +649,7 @@
             renderFinanceSummary();
             renderProductionSummary();
             checkReminders();
+            updateNotificationBell();
         }
         function showPortfolioPage() {
             document.getElementById('farm-page').style.display = 'none';
@@ -634,7 +657,51 @@
         }
 
         // =============================================
-        // 3. REMINDERS
+        // 3. NOTIFICATION BELL
+        // =============================================
+        function updateNotificationBell() {
+            const events = getFarmData('events');
+            const today = new Date();
+            today.setHours(0,0,0,0);
+            const upcoming = events.filter(e => {
+                if (!e.NextDueDate) return false;
+                const due = new Date(e.NextDueDate);
+                due.setHours(0,0,0,0);
+                const diff = (due - today) / (1000*60*60*24);
+                return diff >= 0 && diff <= 7;
+            });
+            const badge = document.getElementById('notification-badge');
+            const count = upcoming.length;
+            if (count > 0) {
+                badge.textContent = count;
+                badge.classList.add('show');
+            } else {
+                badge.classList.remove('show');
+            }
+            const list = document.getElementById('notification-list');
+            if (upcoming.length === 0) {
+                list.innerHTML = '<div class="empty">✅ ምንም አስታወሻዎች የሉም (No reminders)</div>';
+            } else {
+                const translations = {'መወለድ':'Birth','መጠቃት':'Breeding','ልጅ መውለድ':'Calving','ክትባት':'Vaccination','ሕመም':'Sick','ሕክምና':'Treatment'};
+                list.innerHTML = upcoming.map(e => {
+                    let typeDisplay = translations[e.EventType] ? e.EventType + ' (' + translations[e.EventType] + ')' : e.EventType;
+                    return `<div class="item"><span class="icon">🔔</span><span>${typeDisplay} ለ ${e.AnimalID}</span><span class="date">${e.NextDueDate}</span></div>`;
+                }).join('');
+            }
+        }
+
+        function toggleNotificationDropdown(event) {
+            event.stopPropagation();
+            const dropdown = document.getElementById('notification-dropdown');
+            dropdown.classList.toggle('open');
+        }
+
+        document.addEventListener('click', function() {
+            document.getElementById('notification-dropdown').classList.remove('open');
+        });
+
+        // =============================================
+        // 4. REMINDERS
         // =============================================
         function checkReminders() {
             const events = getFarmData('events');
@@ -656,15 +723,16 @@
             } else {
                 banner.style.display = 'none';
             }
+            updateNotificationBell();
         }
 
         // =============================================
-        // 4. SPREADSHEET ID
+        // 5. SPREADSHEET ID
         // =============================================
         const SPREADSHEET_ID = '2PACX-1vTg5nBJIKHpvotz2jlBmmdvoAte-yWWoZ_nI44i576dOSKPc3_1YfI4T0KuLN6dQcPBkfSuDD53ieea';
 
         // =============================================
-        // 5. DATA HELPERS
+        // 6. DATA HELPERS
         // =============================================
         function getFarmData(key) { try { return JSON.parse(localStorage.getItem('farm_' + key)) || []; } catch(e) { return []; } }
         function setFarmData(key, data) { localStorage.setItem('farm_' + key, JSON.stringify(data)); }
@@ -672,7 +740,7 @@
         function setSettings(data) { localStorage.setItem('farm_settings', JSON.stringify(data)); }
 
         // =============================================
-        // 6. TABS
+        // 7. TABS
         // =============================================
         document.querySelectorAll('.tab-bar button').forEach(btn => {
             btn.addEventListener('click', function() {
@@ -688,7 +756,7 @@
         });
 
         // =============================================
-        // 7. ANIMALS (With Search + Tap to View Profile)
+        // 8. ANIMALS
         // =============================================
         function toggleFatteningFields() {
             const cat = document.getElementById('animal-category').value;
@@ -731,7 +799,6 @@
             `}).join('');
         }
 
-        // ---- Animal Profile (Enhanced) ----
         let currentProfileAnimalId = null;
 
         function showAnimalProfile(id) {
@@ -740,7 +807,6 @@
             const a = animals.find(x => x.ID === id);
             if (!a) return;
 
-            // Basic info
             document.getElementById('profile-animal-name').textContent = `🐾 ${a.Name} (${a.ID})`;
             document.getElementById('profile-basic-info').innerHTML = `
                 <div style="margin:10px 0; padding:10px; background:rgba(255,255,255,0.05); border-radius:12px; display:grid; grid-template-columns:1fr 1fr; gap:4px 12px; font-size:14px;">
@@ -757,16 +823,9 @@
                 </div>
             `;
 
-            // Reset filter to "All"
             document.getElementById('profile-date-filter').value = 'all';
-
-            // Update summary totals
             updateProfileTotals(a);
-
-            // Render history with current filter
             renderProfileHistory();
-
-            // Show modal
             document.getElementById('animal-profile-modal').style.display = 'flex';
         }
 
@@ -777,9 +836,7 @@
             let totalMilk = logs.reduce((s, l) => s + (l.Milk_Liters || 0), 0);
             let totalEggs = logs.reduce((s, l) => s + (l.Eggs_Count || 0), 0);
             let totalFeed = logs.reduce((s, l) => s + (l.Feed_Kg || 0), 0);
-            // Also add weekly feed from fattening
             totalFeed += fatWeekly.reduce((s, w) => s + (w.feed || 0), 0);
-            // Add daily fattening feed
             const fatDaily = getFarmData('fatdaily').filter(f => f.animalId === animal.ID);
             totalFeed += fatDaily.reduce((s, d) => s + (d.feedKg || 0), 0);
 
@@ -819,7 +876,7 @@
                 cutoffDate = new Date(now);
                 cutoffDate.setDate(cutoffDate.getDate() - 90);
             } else {
-                cutoffDate = null; // all
+                cutoffDate = null;
             }
 
             function filterByDate(records, dateField) {
@@ -831,7 +888,6 @@
                 });
             }
 
-            // Milk records
             let milkLogs = getFarmData('dailylogs').filter(l => l.AnimalID === animal.ID && (l.Milk_Liters || 0) > 0);
             milkLogs = filterByDate(milkLogs, 'Date');
             milkLogs.sort((a,b) => new Date(b.Date) - new Date(a.Date));
@@ -839,7 +895,6 @@
                 milkLogs.map(l => `<div class="weekly-entry">📅 ${l.Date} | 🥛 ${l.Milk_Liters} ሊትር | 🌾 ${l.Feed_Kg||0} ኪ.ግ | 💊 ${l.Medicine_Cost||0} ብር</div>`).join('');
             document.getElementById('profile-milk').innerHTML = milkHtml;
 
-            // Eggs records
             let eggLogs = getFarmData('dailylogs').filter(l => l.AnimalID === animal.ID && (l.Eggs_Count || 0) > 0);
             eggLogs = filterByDate(eggLogs, 'Date');
             eggLogs.sort((a,b) => new Date(b.Date) - new Date(a.Date));
@@ -847,7 +902,6 @@
                 eggLogs.map(l => `<div class="weekly-entry">📅 ${l.Date} | 🥚 ${l.Eggs_Count} ቁራጭ | 🌾 ${l.Feed_Kg||0} ኪ.ግ | 💊 ${l.Medicine_Cost||0} ብር</div>`).join('');
             document.getElementById('profile-eggs').innerHTML = eggHtml;
 
-            // Feed records (from daily logs + weekly + daily fattening)
             let feedLogs = getFarmData('dailylogs').filter(l => l.AnimalID === animal.ID && (l.Feed_Kg || 0) > 0);
             feedLogs = filterByDate(feedLogs, 'Date');
             let weeklyFeed = getFarmData('fatweekly').filter(w => w.animalId === animal.ID && (w.feed || 0) > 0);
@@ -856,28 +910,26 @@
             dailyFatFeed = filterByDate(dailyFatFeed, 'date');
 
             let allFeed = [
-                ...feedLogs.map(l => ({ date: l.Date, type: 'ዕለታዊ (Daily)', feed: l.Feed_Kg, note: '' })),
-                ...weeklyFeed.map(w => ({ date: w.date, type: 'ሳምንታዊ (Weekly)', feed: w.feed, note: '' })),
-                ...dailyFatFeed.map(d => ({ date: d.date, type: 'ስብ ዕለታዊ (Fat Daily)', feed: d.feedKg, note: '' }))
+                ...feedLogs.map(l => ({ date: l.Date, type: 'ዕለታዊ (Daily)', feed: l.Feed_Kg })),
+                ...weeklyFeed.map(w => ({ date: w.date, type: 'ሳምንታዊ (Weekly)', feed: w.feed })),
+                ...dailyFatFeed.map(d => ({ date: d.date, type: 'ስብ ዕለታዊ (Fat Daily)', feed: d.feedKg }))
             ];
             allFeed.sort((a,b) => new Date(b.date) - new Date(a.date));
             const feedHtml = allFeed.length === 0 ? '<p class="empty-message">ምንም መኖ መዝገቦች የሉም (No feed records).</p>' :
                 allFeed.map(f => `<div class="weekly-entry">📅 ${f.date} | 🌾 ${f.feed} ኪ.ግ | 📋 ${f.type}</div>`).join('');
             document.getElementById('profile-feed').innerHTML = feedHtml;
 
-            // Weight records (fattening weekly)
             let weightLogs = getFarmData('fatweekly').filter(w => w.animalId === animal.ID);
             weightLogs = filterByDate(weightLogs, 'date');
             weightLogs.sort((a,b) => new Date(b.date) - new Date(a.date));
-            let lastWeight = animal.InitialWeight || 0;
             const weightHtml = weightLogs.length === 0 ? '<p class="empty-message">ምንም የክብደት መዝገቦች የሉም (No weight records).</p>' :
                 weightLogs.map((w, idx) => {
-                    let gain = w.weight - (idx === weightLogs.length-1 ? (animal.InitialWeight || 0) : weightLogs[idx+1]?.weight || 0);
+                    let prev = idx === weightLogs.length-1 ? (animal.InitialWeight || 0) : weightLogs[idx+1]?.weight || 0;
+                    let gain = w.weight - prev;
                     return `<div class="weekly-entry">📅 ${w.date} | ⚖️ ${w.weight} ኪ.ግ | 📈 ትርፍ: ${gain >= 0 ? '+' : ''}${gain.toFixed(1)} ኪ.ግ | 🌾 ${w.feed||0} ኪ.ግ | 💊 ${w.medicine||0} ብር</div>`;
                 }).join('');
             document.getElementById('profile-weight').innerHTML = weightHtml;
 
-            // Events
             let events = getFarmData('events').filter(e => e.AnimalID === animal.ID);
             events = filterByDate(events, 'Date');
             events.sort((a,b) => new Date(b.Date) - new Date(a.Date));
@@ -890,7 +942,6 @@
             document.getElementById('profile-events').innerHTML = eventHtml;
         }
 
-        // ---- Profile Tabs ----
         document.getElementById('profile-tabs').addEventListener('click', function(e) {
             const btn = e.target.closest('button');
             if (!btn) return;
@@ -901,7 +952,6 @@
             document.getElementById(tabName).classList.add('active-tab-content');
         });
 
-        // ---- Clear History Functions ----
         function showClearHistoryOptions() {
             const div = document.getElementById('clear-history-options');
             div.style.display = div.style.display === 'none' ? 'block' : 'none';
@@ -911,21 +961,16 @@
             if (!currentProfileAnimalId) return;
             customConfirm('ሁሉንም መዝገቦች ለ ' + currentProfileAnimalId + ' መሰረዝ ይፈልጋሉ? (Delete all records for this animal?)', 'እርግጠኛ ነዎት?', function(result) {
                 if (result) {
-                    // Delete daily logs for this animal
                     let logs = getFarmData('dailylogs').filter(l => l.AnimalID !== currentProfileAnimalId);
                     setFarmData('dailylogs', logs);
-                    // Delete fattening weekly
                     let fatw = getFarmData('fatweekly').filter(f => f.animalId !== currentProfileAnimalId);
                     setFarmData('fatweekly', fatw);
-                    // Delete fattening daily
                     let fatd = getFarmData('fatdaily').filter(f => f.animalId !== currentProfileAnimalId);
                     setFarmData('fatdaily', fatd);
-                    // Delete events
                     let events = getFarmData('events').filter(e => e.AnimalID !== currentProfileAnimalId);
                     setFarmData('events', events);
                     showToast('✅ ሁሉም መዝገቦች ተሰርዘዋል (All records deleted)');
                     renderAllFarmData();
-                    // Refresh profile
                     showAnimalProfile(currentProfileAnimalId);
                 }
             });
@@ -942,27 +987,21 @@
             if (!currentProfileAnimalId) return;
             customConfirm('ከ ' + dateInput.value + ' በፊት ያሉትን መዝገቦች መሰረዝ ይፈልጋሉ? (Delete records older than this date?)', 'እርግጠኛ ነዎት?', function(result) {
                 if (result) {
-                    // Delete daily logs older than cutoff
                     let logs = getFarmData('dailylogs').filter(l => !(l.AnimalID === currentProfileAnimalId && new Date(l.Date) < cutoff));
                     setFarmData('dailylogs', logs);
-                    // Delete fattening weekly older than cutoff
                     let fatw = getFarmData('fatweekly').filter(f => !(f.animalId === currentProfileAnimalId && new Date(f.date) < cutoff));
                     setFarmData('fatweekly', fatw);
-                    // Delete fattening daily older than cutoff
                     let fatd = getFarmData('fatdaily').filter(f => !(f.animalId === currentProfileAnimalId && new Date(f.date) < cutoff));
                     setFarmData('fatdaily', fatd);
-                    // Delete events older than cutoff
                     let events = getFarmData('events').filter(e => !(e.AnimalID === currentProfileAnimalId && new Date(e.Date) < cutoff));
                     setFarmData('events', events);
                     showToast('✅ ከተመረጠው ቀን በፊት ያሉት መዝገቦች ተሰርዘዋል (Records older than date deleted)');
                     renderAllFarmData();
-                    // Refresh profile
                     showAnimalProfile(currentProfileAnimalId);
                 }
             });
         }
 
-        // ---- CRUD ----
         function showAddAnimalForm() {
             document.getElementById('animal-form-card').style.display = 'block';
             document.getElementById('animal-form-title').innerText = 'አዲስ እንስሳ ጨምር';
@@ -1033,7 +1072,7 @@
         }
 
         // =============================================
-        // 8. FATTENING WEEKLY
+        // 9. FATTENING WEEKLY
         // =============================================
         function populateFatWeeklyDropdown() {
             const animals = getFarmData('animals').filter(a => a.Category && a.Category.startsWith('ስብ'));
@@ -1115,7 +1154,7 @@
         }
 
         // =============================================
-        // 9. FATTENING DAILY
+        // 10. FATTENING DAILY
         // =============================================
         function populateFatDailyDropdown() {
             const animals = getFarmData('animals').filter(a => a.Category && a.Category.startsWith('ስብ'));
@@ -1188,7 +1227,7 @@
         }
 
         // =============================================
-        // 10. DAILY PRODUCTION
+        // 11. DAILY PRODUCTION
         // =============================================
         function populateDairyDropdown() {
             const animals = getFarmData('animals').filter(a => a.Category === 'ወተት ላም' || a.Category === 'ዶሮ (እንቁላል)');
@@ -1261,7 +1300,7 @@
         }
 
         // =============================================
-        // 11. EVENTS
+        // 12. EVENTS
         // =============================================
         function populateEventDropdown() {
             const animals = getFarmData('animals');
@@ -1292,7 +1331,7 @@
                     <div class="sub">${e.Notes || ''} ${e.NextDueDate ? '🔜 ' + e.NextDueDate : ''}</div></div>
                     <div><button class="btn btn-sm-farm btn-danger-farm" onclick="deleteEvent('${e._id||e.Date+e.AnimalID}')" style="width:auto; padding:4px 10px;">🗑️</button></div>
                 </div>
-            `}).join('');
+            `).join('');
         }
 
         function showAddEventForm() {
@@ -1336,7 +1375,7 @@
         }
 
         // =============================================
-        // 12. OTHER COSTS
+        // 13. OTHER COSTS
         // =============================================
         function populateCostDropdown() {
             const animals = getFarmData('animals');
@@ -1409,7 +1448,7 @@
         }
 
         // =============================================
-        // 13. FINANCE
+        // 14. FINANCE
         // =============================================
         function renderFinanceSummary() {
             const settings = getSettings();
@@ -1483,7 +1522,6 @@
             }
             document.getElementById('daily-summary-container').innerHTML = dailyHtml;
 
-            // Fattening Summary
             let fatAnimals = animals.filter(a => a.Category && a.Category.startsWith('ስብ'));
             if (activeFilter !== 'all' && activeFilter !== 'dairy' && activeFilter !== 'egg') {
                 fatAnimals = fatAnimals.filter(a => a.Category === activeFilter);
@@ -1542,7 +1580,6 @@
             }
             document.getElementById('fattening-summary-container').innerHTML = fatHtml;
 
-            // Grand Total
             const totalDailyProfit = dairyProfit + eggProfit;
             const allFat = animals.filter(a => a.Category && a.Category.startsWith('ስብ'));
             let totalFatProfit = 0;
@@ -1596,7 +1633,7 @@
         });
 
         // =============================================
-        // 14. PRODUCTION SUMMARY (Monthly, Category)
+        // 15. PRODUCTION SUMMARY
         // =============================================
         let categoryFilter = 'all';
 
@@ -1613,9 +1650,7 @@
             const animals = getFarmData('animals');
             const logs = getFarmData('dailylogs');
             const fatWeekly = getFarmData('fatweekly');
-            const fatDaily = getFarmData('fatdaily');
 
-            // Monthly Summary
             let monthlyHtml = '';
             if (month) {
                 const [year, monthNum] = month.split('-');
@@ -1626,7 +1661,6 @@
                 const monthLogs = logs.filter(l => l.Date >= startStr && l.Date <= endStr);
                 const monthMilk = monthLogs.reduce((s,l) => s + (l.Milk_Liters||0), 0);
                 const monthEggs = monthLogs.reduce((s,l) => s + (l.Eggs_Count||0), 0);
-                // Weight gain for fattening animals in that month
                 let monthGain = 0;
                 const fatAnimals = animals.filter(a => a.Category && a.Category.startsWith('ስብ'));
                 fatAnimals.forEach(a => {
@@ -1647,7 +1681,6 @@
             }
             document.getElementById('monthly-summary-container').innerHTML = monthlyHtml;
 
-            // Category Summary
             const now = new Date();
             let cutoff = new Date(0);
             if (categoryFilter === 'weekly') {
@@ -1656,7 +1689,7 @@
             } else if (categoryFilter === 'monthly') {
                 cutoff = new Date(now);
                 cutoff.setDate(cutoff.getDate() - 30);
-            } // else 'all' -> cutoff = 0
+            }
 
             function filterByDate(records, dateField) {
                 if (categoryFilter === 'all') return records;
@@ -1693,7 +1726,6 @@
             });
             document.getElementById('category-summary-container').innerHTML = catHtml || '<div class="empty-message">ምንም ውሂብ የለም (No data)</div>';
 
-            // Overall total production
             const allLogs = filterByDate(logs, 'Date');
             const totalMilk = allLogs.reduce((s,l) => s + (l.Milk_Liters||0), 0);
             const totalEggs = allLogs.reduce((s,l) => s + (l.Eggs_Count||0), 0);
@@ -1715,7 +1747,7 @@
         }
 
         // =============================================
-        // 15. SYNC
+        // 16. SYNC
         // =============================================
         async function syncWithSheet() {
             if (!navigator.onLine) { showToast('ከመስመር ውጪ ነዎት። (You are offline)'); return; }
@@ -1774,7 +1806,7 @@
         }
 
         // =============================================
-        // 16. RENDER ALL
+        // 17. RENDER ALL
         // =============================================
         function renderAllFarmData() {
             renderAnimals();
@@ -1789,19 +1821,20 @@
             populateEventDropdown();
             populateCostDropdown();
             renderProductionSummary();
+            checkReminders();
+            updateNotificationBell();
         }
 
         // =============================================
-        // 17. INIT
+        // 18. INIT
         // =============================================
         document.getElementById('portfolio-page').style.display = 'block';
         document.getElementById('farm-page').style.display = 'none';
         renderAllFarmData();
-        // Set default month filter to current month
         const now = new Date();
         const monthStr = now.getFullYear() + '-' + String(now.getMonth()+1).padStart(2, '0');
         document.getElementById('month-filter').value = monthStr;
-        console.log('✅ MER Farm Scheduler v8 loaded – Enhanced animal profiles with history, filters, and clear options.');
+        console.log('✅ MER Farm Scheduler loaded successfully.');
     </script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
