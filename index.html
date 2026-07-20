@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* ===== ALL EXISTING STYLES (same as before – kept unchanged) ===== */
+        /* ===== RESET & BASE ===== */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html, body {
             font-family: 'Montserrat', sans-serif;
@@ -29,7 +29,31 @@
         .lang-am .am-text { display: inline; }
         .lang-en .en-text { display: inline; }
 
-        /* Toast, Confirm, Portfolio, Scheduler, Cards, Tabs, Modals – same as before */
+        /* ===== EMPTY MESSAGE ===== */
+        .empty-message {
+            color: #F7E08A;
+            text-align: center;
+            padding: 10px;
+            background: #19291A;
+            border-radius: 12px;
+            border: 1px solid #F7E08A22;
+            font-weight: 500;
+        }
+
+        /* ===== HISTORY ENTRIES (dark green + gold) ===== */
+        .weekly-entry {
+            background: #19291A;
+            border-radius: 10px;
+            padding: 8px 12px;
+            margin-bottom: 6px;
+            border: 1px solid #F7E08A22;
+            color: #F7E08A;
+            font-size: 13px;
+        }
+        .weekly-entry .date { font-weight: 600; color: #F7E08A; }
+        .weekly-entry .detail { font-size: 13px; color: #d4d0c0; }
+
+        /* ===== TOAST ===== */
         #toast-container {
             position: fixed;
             bottom: 30px;
@@ -66,6 +90,7 @@
         .toast-out { animation: toastOut 0.3s ease forwards; }
         @keyframes toastOut { to { opacity:0; transform:translateY(20px) scale(0.95); } }
 
+        /* ===== CONFIRM ===== */
         #confirm-overlay {
             position: fixed; inset:0; background:rgba(0,0,0,0.7); backdrop-filter:blur(4px);
             z-index:99998; display:none; align-items:center; justify-content:center; padding:20px;
@@ -87,6 +112,7 @@
         #confirm-box .btn-row .btn-no { background:#3d2a1a; color:#f0f0e8; border:1px solid #F7E08A66; }
         #confirm-box .btn-row .btn-no:hover { background:#5a3f2a; }
 
+        /* ===== PAGES ===== */
         #scheduler { display: none; padding: 12px 12px 100px; max-width: 560px; margin: 0 auto; }
 
         #portfolio {
@@ -123,6 +149,7 @@
         .btn-grid button.primary:hover { background: #ffe49e; }
         .footer-credit { margin-top: 40px; font-size: 12px; color: #5a5a4a; letter-spacing: 0.5px; }
 
+        /* ===== SCHEDULER HEADER & TABS ===== */
         .sched-header {
             display: flex; align-items: center; justify-content: space-between;
             padding: 10px 4px 14px; border-bottom: 1px solid #F7E08A33; margin-bottom: 16px; flex-wrap: wrap; gap: 8px;
@@ -142,6 +169,16 @@
         }
         .sched-header .right .bell-wrap .badge.hidden { display: none; }
         .sched-header .right .profile-btn { background: none; border: none; color: #F7E08A; font-size: 22px; cursor: pointer; padding: 0 4px; }
+        .sched-header .right .refresh-btn {
+            background: none;
+            border: none;
+            color: #F7E08A;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 0 6px;
+            transition: 0.3s;
+        }
+        .sched-header .right .refresh-btn:hover { transform: rotate(90deg); }
 
         .tabs-wrap { display: flex; overflow-x: auto; gap: 4px; padding: 4px 0 12px; border-bottom: 1px solid #F7E08A22; margin-bottom: 16px; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
         .tabs-wrap::-webkit-scrollbar { display: none; }
@@ -158,11 +195,17 @@
         .tab-content.active { display: block; }
         @keyframes fadeUp { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
 
+        /* ===== CARDS & FORMS ===== */
         .card {
-            background: rgba(26,61,46,0.5); backdrop-filter: blur(6px); border-radius: 18px;
-            padding: 18px 16px; border: 1px solid #F7E08A22; margin-bottom: 14px; transition: 0.2s;
+            background: #19291A;
+            backdrop-filter: blur(6px);
+            border-radius: 18px;
+            padding: 18px 16px;
+            border: 1px solid #F7E08A22;
+            margin-bottom: 14px;
+            transition: 0.2s;
         }
-        .card.glass { background: rgba(26,61,46,0.35); backdrop-filter: blur(10px); border: 1px solid #F7E08A33; }
+        .card.glass { background: #19291A; backdrop-filter: blur(10px); border: 1px solid #F7E08A33; }
         .card-title { font-size: 16px; font-weight: 700; color: #F7E08A; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
         .card-title i { font-size: 18px; }
         .form-group { margin-bottom: 14px; }
@@ -193,9 +236,18 @@
         .btn-block { width: 100%; }
 
         .list-item {
-            background: rgba(11,43,31,0.6); border-radius: 14px; padding: 14px 16px; margin-bottom: 10px;
-            border: 1px solid #F7E08A22; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;
-            cursor: pointer; transition: 0.2s;
+            background: #19291A;
+            border-radius: 14px;
+            padding: 14px 16px;
+            margin-bottom: 10px;
+            border: 1px solid #F7E08A22;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            cursor: pointer;
+            transition: 0.2s;
         }
         .list-item:hover { border-color: #F7E08A66; }
         .list-item .info { flex: 1; min-width: 120px; }
@@ -211,6 +263,7 @@
         .search-wrap input:focus { border-color: #F7E08A; }
         .search-wrap i { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: #8a8670; font-size: 16px; }
 
+        /* ===== MODALS ===== */
         .modal-overlay {
             position: fixed; inset: 0; background: rgba(0,0,0,0.7); backdrop-filter: blur(6px);
             z-index: 9997; display: none; align-items: center; justify-content: center; padding: 20px; overflow-y: auto;
@@ -229,11 +282,20 @@
         .modal-box .modal-footer { margin-top: 18px; display: flex; gap: 12px; flex-wrap: wrap; }
         .modal-box .modal-footer .btn { flex: 1; min-width: 80px; }
 
+        /* ===== DASHBOARD ===== */
         .dashboard-stats { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 12px; }
-        .dashboard-stat { flex: 1 0 calc(50% - 10px); background: rgba(11,43,31,0.5); padding: 12px; border-radius: 14px; text-align: center; border: 1px solid #F7E08A22; }
+        .dashboard-stat {
+            flex: 1 0 calc(50% - 10px);
+            background: #19291A;
+            padding: 12px;
+            border-radius: 14px;
+            text-align: center;
+            border: 1px solid #F7E08A22;
+        }
         .dashboard-stat .num { font-size: 24px; font-weight: 700; color: #F7E08A; }
         .dashboard-stat .lbl { font-size: 12px; color: #b0ac98; }
 
+        /* ===== PROFILE ===== */
         .profile-pic-wrap { display: flex; flex-direction: column; align-items: center; margin-bottom: 20px; }
         .profile-pic-wrap .pic { width: 100px; height: 100px; border-radius: 50%; background: #1a3d2e; border: 3px solid #F7E08A; display: flex; align-items: center; justify-content: center; font-size: 48px; color: #F7E08A; overflow: hidden; margin-bottom: 8px; cursor: pointer; position: relative; }
         .profile-pic-wrap .pic img { width: 100%; height: 100%; object-fit: cover; }
@@ -245,8 +307,15 @@
         .profile-info .label { font-size: 13px; color: #8a8670; }
         .profile-info .value { font-size: 16px; font-weight: 600; color: #f0f0e8; }
         .inventory-row { display: flex; flex-wrap: wrap; gap: 6px 12px; justify-content: center; margin-top: 8px; }
-        .inventory-row .item { font-size: 14px; background: rgba(11,43,31,0.4); padding: 4px 12px; border-radius: 30px; border: 1px solid #F7E08A22; }
+        .inventory-row .item {
+            font-size: 14px;
+            background: #19291A;
+            padding: 4px 12px;
+            border-radius: 30px;
+            border: 1px solid #F7E08A22;
+        }
 
+        /* ===== WALKTHROUGH ===== */
         #walkthrough-overlay {
             position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px);
             z-index: 999999; display: none; flex-direction: column; align-items: center; justify-content: center;
@@ -280,7 +349,7 @@
         .sales-summary .breakdown { font-size: 14px; color: #b0ac98; }
 
         .founders-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
-        .founder-card { background: rgba(11,43,31,0.6); border-radius: 16px; padding: 14px; border: 1px solid #F7E08A33; text-align: center; }
+        .founder-card { background: #19291A; border-radius: 16px; padding: 14px; border: 1px solid #F7E08A33; text-align: center; }
 
         .profile-summary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0; }
         .profile-summary-item { background: rgba(255,255,255,0.08); padding: 10px; border-radius: 12px; text-align: center; }
@@ -323,7 +392,7 @@
             box-shadow: 0 0 10px rgba(247,224,138,0.2);
         }
         .week-month-section .summary-card {
-            background: rgba(11,43,31,0.5);
+            background: #19291A;
             border-radius: 12px;
             padding: 10px 14px;
             margin: 6px 0;
@@ -356,6 +425,45 @@
             justify-content: space-between;
         }
 
+        /* ===== FIXED FILTER DROPDOWNS (dark green/gold) ===== */
+        #profile-date-filter,
+        #week-selector,
+        #week-date-picker,
+        #month-selector {
+            background: #0b2b1f;
+            color: #F7E08A;
+            border: 1px solid #F7E08A44;
+            border-radius: 30px;
+            padding: 6px 14px;
+            font-size: 14px;
+            font-family: 'Montserrat', sans-serif;
+            outline: none;
+            appearance: none;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23F7E08A' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 12px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        #profile-date-filter:focus,
+        #week-selector:focus,
+        #week-date-picker:focus,
+        #month-selector:focus {
+            border-color: #F7E08A;
+            box-shadow: 0 0 10px rgba(247,224,138,0.2);
+        }
+        #profile-date-filter option,
+        #week-selector option,
+        #month-selector option {
+            background: #0b2b1f;
+            color: #F7E08A;
+        }
+        #week-date-picker {
+            color-scheme: dark;
+        }
+
         @media (max-width:480px) {
             .form-row { grid-template-columns:1fr; }
             .dashboard-stat { flex:1 0 100%; }
@@ -369,19 +477,6 @@
         }
         .no-scrollbar::-webkit-scrollbar { display:none; }
         .no-scrollbar { -ms-overflow-style:none; scrollbar-width:none; }
-
-        /* Auto-save indicator */
-        .auto-save-indicator {
-            font-size: 12px;
-            color: #6fcf97;
-            text-align: right;
-            margin-top: 4px;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        .auto-save-indicator.show {
-            opacity: 1;
-        }
     </style>
 </head>
 <body class="lang-am">
@@ -421,7 +516,7 @@
                     <i class="fas fa-users"></i> <span class="am-text">ተባባሪ መስራቾች</span><span class="en-text">Co-founders</span>
                 </button>
             </div>
-            <div class="footer-credit">MER Farm &bull; Offline v5.2</div>
+            <div class="footer-credit">MER Farm &bull; Offline v5.6</div>
         </div>
     </div>
 
@@ -442,6 +537,7 @@
                     </div>
                 </div>
                 <button class="profile-btn" onclick="openProfileModal()"><i class="fas fa-user-circle"></i></button>
+                <button class="refresh-btn" onclick="softRefresh()" title="Refresh"><i class="fas fa-sync-alt"></i></button>
             </div>
         </div>
 
@@ -470,15 +566,23 @@
             <button class="tab-btn" data-tab="tab-sold"><i class="fas fa-hand-holding-usd"></i> <span class="am-text">ሽያጭ</span><span class="en-text">Sold Items</span></button>
         </div>
 
-        <!-- TAB: DASHBOARD -->
+        <!-- DASHBOARD TAB -->
         <div id="tab-dashboard" class="tab-content active">
+            <div class="card glass">
+                <div class="card-title"><i class="fas fa-search"></i> <span class="am-text">እንስሳ ፈልግ</span><span class="en-text">Search Animal</span></div>
+                <div class="search-wrap">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="dashboard-search" placeholder="🔍 በመታወቂያ ወይም ስም ፈልግ (Search by ID or Name)" oninput="renderDashboardSearch()">
+                </div>
+                <div id="dashboard-search-results"></div>
+            </div>
             <div class="card glass">
                 <div class="card-title"><i class="fas fa-home"></i> <span class="am-text">ዕለታዊ እይታ</span><span class="en-text">Daily Overview</span></div>
                 <div id="dashboard-content"></div>
             </div>
         </div>
 
-        <!-- TAB: ANIMALS -->
+        <!-- ANIMALS TAB -->
         <div id="tab-animals" class="tab-content">
             <div class="card glass">
                 <div class="card-title"><i class="fas fa-plus-circle"></i> <span class="am-text">አዲስ እንስሳ ጨምር</span><span class="en-text">Add Animal</span></div>
@@ -519,7 +623,6 @@
                         </div>
                     </div>
                     <button class="btn btn-gold btn-block" onclick="saveAnimal()"><i class="fas fa-save"></i> <span class="am-text">እንስሳ አስቀምጥ</span><span class="en-text">Save Animal</span></button>
-                    <div id="animal-auto-save" class="auto-save-indicator">💾 <span class="am-text">ተቀምጧል</span><span class="en-text">Saved</span></div>
                     <input type="hidden" id="edit-animal-id" value="">
                 </div>
             </div>
@@ -530,7 +633,7 @@
             </div>
         </div>
 
-        <!-- TAB: FATTENING WEEKLY -->
+        <!-- FATTENING WEEKLY -->
         <div id="tab-fatweekly" class="tab-content">
             <div class="card glass">
                 <div class="card-title"><i class="fas fa-plus-circle"></i> <span class="am-text">ሳምንታዊ መዝገብ ጨምር</span><span class="en-text">Add Weekly Record</span></div>
@@ -540,13 +643,12 @@
                 <div class="form-group"><label><span class="am-text">መኖ ተበላ (ኪ.ግ)</span><span class="en-text">Feed Consumed (kg)</span></label><input type="number" id="fat-weekly-feed" step="0.5" value="0"></div>
                 <div class="form-group"><label><span class="am-text">የመድሀኒት ዋጋ (ብር)</span><span class="en-text">Medicine Cost (Birr)</span></label><input type="number" id="fat-weekly-medicine" step="1" value="0"></div>
                 <button class="btn btn-gold btn-block" onclick="saveFatWeekly()"><i class="fas fa-save"></i> <span class="am-text">አስቀምጥ</span><span class="en-text">Save</span></button>
-                <div id="fat-weekly-auto-save" class="auto-save-indicator">💾 <span class="am-text">ተቀምጧል</span><span class="en-text">Saved</span></div>
                 <input type="hidden" id="edit-fat-weekly-id" value="">
             </div>
             <div id="fattening-weekly-list"></div>
         </div>
 
-        <!-- TAB: FATTENING DAILY -->
+        <!-- FATTENING DAILY -->
         <div id="tab-fatdaily" class="tab-content">
             <div class="card glass">
                 <div class="card-title"><i class="fas fa-plus-circle"></i> <span class="am-text">ዕለታዊ መዝገብ ጨምር</span><span class="en-text">Add Daily Record</span></div>
@@ -556,13 +658,12 @@
                 <div class="form-group"><label><span class="am-text">የመድሀኒት ስም</span><span class="en-text">Medicine Name</span></label><input type="text" id="fat-daily-medname" placeholder="e.g. Antibiotic"></div>
                 <div class="form-group"><label><span class="am-text">የመድሀኒት ዋጋ (ብር)</span><span class="en-text">Medicine Cost (Birr)</span></label><input type="number" id="fat-daily-medcost" step="1" value="0"></div>
                 <button class="btn btn-gold btn-block" onclick="saveFatDaily()"><i class="fas fa-save"></i> <span class="am-text">አስቀምጥ</span><span class="en-text">Save</span></button>
-                <div id="fat-daily-auto-save" class="auto-save-indicator">💾 <span class="am-text">ተቀምጧል</span><span class="en-text">Saved</span></div>
                 <input type="hidden" id="edit-fat-daily-id" value="">
             </div>
             <div id="fat-daily-list"></div>
         </div>
 
-        <!-- TAB: DAIRY / EGG DAILY -->
+        <!-- DAIRY / EGG DAILY -->
         <div id="tab-dairy" class="tab-content">
             <div class="card glass">
                 <div class="card-title"><i class="fas fa-plus-circle"></i> <span class="am-text">ዕለታዊ ምርት ጨምር</span><span class="en-text">Add Daily Production</span></div>
@@ -578,13 +679,12 @@
                 </div>
                 <div class="form-group"><label><span class="am-text">ማስታወሻ</span><span class="en-text">Notes</span></label><input type="text" id="log-notes" placeholder="Optional"></div>
                 <button class="btn btn-gold btn-block" onclick="saveLog()"><i class="fas fa-save"></i> <span class="am-text">አስቀምጥ</span><span class="en-text">Save</span></button>
-                <div id="log-auto-save" class="auto-save-indicator">💾 <span class="am-text">ተቀምጧል</span><span class="en-text">Saved</span></div>
                 <input type="hidden" id="edit-log-id" value="">
             </div>
             <div id="log-list"></div>
         </div>
 
-        <!-- TAB: EVENTS -->
+        <!-- EVENTS -->
         <div id="tab-events" class="tab-content">
             <div class="card glass">
                 <div class="card-title"><i class="fas fa-plus-circle"></i> <span class="am-text">ክስተት ጨምር</span><span class="en-text">Add Event</span></div>
@@ -603,13 +703,12 @@
                 <div class="form-group"><label><span class="am-text">ቀጣይ የሚያልቅበት ቀን</span><span class="en-text">Next Due Date</span></label><input type="date" id="event-nextdue"></div>
                 <div class="form-group"><label><span class="am-text">ማስታወሻ</span><span class="en-text">Notes</span></label><input type="text" id="event-notes" placeholder="Optional"></div>
                 <button class="btn btn-gold btn-block" onclick="saveEvent()"><i class="fas fa-save"></i> <span class="am-text">አስቀምጥ</span><span class="en-text">Save</span></button>
-                <div id="event-auto-save" class="auto-save-indicator">💾 <span class="am-text">ተቀምጧል</span><span class="en-text">Saved</span></div>
                 <input type="hidden" id="edit-event-id" value="">
             </div>
             <div id="event-list"></div>
         </div>
 
-        <!-- TAB: OTHER COSTS -->
+        <!-- OTHER COSTS -->
         <div id="tab-costs" class="tab-content">
             <div class="card glass">
                 <div class="card-title"><i class="fas fa-plus-circle"></i> <span class="am-text">ወጪ ጨምር</span><span class="en-text">Add Cost</span></div>
@@ -636,13 +735,12 @@
                 </div>
                 <div class="form-group"><label><span class="am-text">ዋጋ (ብር)</span><span class="en-text">Amount (Birr)</span></label><input type="number" id="cost-amount" step="1" value="0"></div>
                 <button class="btn btn-gold btn-block" onclick="saveCost()"><i class="fas fa-save"></i> <span class="am-text">አስቀምጥ</span><span class="en-text">Save</span></button>
-                <div id="cost-auto-save" class="auto-save-indicator">💾 <span class="am-text">ተቀምጧል</span><span class="en-text">Saved</span></div>
                 <input type="hidden" id="edit-cost-id" value="">
             </div>
             <div id="othercost-list"></div>
         </div>
 
-        <!-- TAB: FINANCE -->
+        <!-- FINANCE -->
         <div id="tab-finance" class="tab-content">
             <div class="card glass">
                 <div class="card-title"><i class="fas fa-cog"></i> <span class="am-text">ቅንብሮች</span><span class="en-text">Settings</span></div>
@@ -659,7 +757,7 @@
             <div id="finance-summary-container"></div>
         </div>
 
-        <!-- TAB: PRODUCTION -->
+        <!-- PRODUCTION -->
         <div id="tab-production" class="tab-content">
             <div class="card glass">
                 <div class="card-title"><i class="fas fa-calendar-alt"></i> <span class="am-text">ወርሃዊ ማጠቃለያ</span><span class="en-text">Monthly Summary</span></div>
@@ -681,7 +779,7 @@
             </div>
         </div>
 
-        <!-- TAB: SOLD ITEMS -->
+        <!-- SOLD ITEMS -->
         <div id="tab-sold" class="tab-content">
             <div class="card glass">
                 <div class="card-title"><i class="fas fa-hand-holding-usd"></i> <span class="am-text">አዲስ ሽያጭ</span><span class="en-text">New Sale</span></div>
@@ -704,7 +802,6 @@
                 <div class="form-group"><label><span class="am-text">ገዢ (አማራጭ)</span><span class="en-text">Buyer (optional)</span></label><input type="text" id="sale-buyer" placeholder="e.g. Market"></div>
                 <div class="form-group"><label><span class="am-text">ማስታወሻ</span><span class="en-text">Notes</span></label><input type="text" id="sale-notes" placeholder="Optional"></div>
                 <button class="btn btn-gold btn-block" onclick="saveSale()"><i class="fas fa-save"></i> <span class="am-text">ሽያጭ አስቀምጥ</span><span class="en-text">Save Sale</span></button>
-                <div id="sale-auto-save" class="auto-save-indicator">💾 <span class="am-text">ተቀምጧል</span><span class="en-text">Saved</span></div>
             </div>
             <div class="card glass">
                 <div class="card-title"><i class="fas fa-chart-line"></i> <span class="am-text">የሽያጭ ማጠቃለያ</span><span class="en-text">Sales Summary</span></div>
@@ -807,17 +904,15 @@
         </div>
     </div>
 
-    <!-- ANIMAL PROFILE MODAL (UPDATED with Week/Month) -->
+    <!-- ANIMAL PROFILE MODAL -->
     <div class="modal-overlay" id="animal-profile-modal">
         <div class="modal-box" style="max-width:560px;">
             <div class="modal-header">
                 <h3 id="ap-title"><i class="fas fa-paw"></i> <span class="am-text">የእንስሳ መገለጫ</span><span class="en-text">Animal Profile</span></h3>
                 <button class="close-modal" onclick="closeModal('animal-profile-modal')"><i class="fas fa-times"></i></button>
             </div>
-            <!-- Basic Info (kept as is) -->
             <div id="ap-basic-info" style="margin:10px 0; padding:10px; background:rgba(255,255,255,0.05); border-radius:12px; display:grid; grid-template-columns:1fr 1fr; gap:4px 12px; font-size:14px;"></div>
 
-            <!-- Lifetime Summary Grid (kept as is) -->
             <div class="profile-summary-grid" id="profile-summary-grid">
                 <div class="profile-summary-item"><div class="label">🥛 <span class="am-text">ጠቅላላ ወተት</span><span class="en-text">Total Milk</span></div><div class="value" id="profile-total-milk">0</div></div>
                 <div class="profile-summary-item"><div class="label">🥚 <span class="am-text">ጠቅላላ እንቁላል</span><span class="en-text">Total Eggs</span></div><div class="value" id="profile-total-eggs">0</div></div>
@@ -825,7 +920,6 @@
                 <div class="profile-summary-item"><div class="label">⚖️ <span class="am-text">ጠቅላላ ክብደት ትርፍ</span><span class="en-text">Total Gain</span></div><div class="value" id="profile-total-gain">0</div></div>
             </div>
 
-            <!-- NEW: Week/Month Production & Cost Section -->
             <div class="week-month-section">
                 <div class="row">
                     <label><span class="am-text">📅 ሳምንት</span><span class="en-text">Week</span></label>
@@ -844,7 +938,6 @@
                     <select id="month-selector" onchange="updateWeekMonthSummary()"></select>
                 </div>
 
-                <!-- Weekly Summary Card -->
                 <div id="week-summary-card" class="summary-card">
                     <div class="label">📅 <span class="am-text">የሳምንቱ ምርት እና ወጪ</span><span class="en-text">Weekly Production & Cost</span></div>
                     <div class="line"><span><span class="am-text">ምርት</span><span class="en-text">Production</span></span><span class="val" id="week-production">0</span></div>
@@ -853,7 +946,6 @@
                     <div class="total"><span><span class="am-text">ጠቅላላ ወጪ</span><span class="en-text">Total Cost</span></span><span id="week-total-cost">0 Birr</span></div>
                 </div>
 
-                <!-- Monthly Summary Card -->
                 <div id="month-summary-card" class="summary-card" style="border-left-color:#F7E08A;">
                     <div class="label">📆 <span class="am-text">የወሩ ምርት እና ወጪ</span><span class="en-text">Monthly Production & Cost</span></div>
                     <div class="line"><span><span class="am-text">ምርት</span><span class="en-text">Production</span></span><span class="val" id="month-production">0</span></div>
@@ -863,7 +955,6 @@
                 </div>
             </div>
 
-            <!-- History Tabs (kept as is) -->
             <div style="display:flex; gap:10px; margin:10px 0; flex-wrap:wrap; align-items:center;">
                 <label style="font-weight:600; color:#F7E08A;">📅 <span class="am-text">ማጣሪያ</span><span class="en-text">Filter</span>:</label>
                 <select id="profile-date-filter" onchange="renderProfileHistory()">
@@ -1020,6 +1111,7 @@
             updateNotificationBell();
             updateInventoryCounts();
             updateDashboard();
+            renderDashboardSearch();
             if (!localStorage.getItem('mer_walkthrough_done')) {
                 document.getElementById('walkthrough-overlay').classList.add('active');
             }
@@ -1037,7 +1129,20 @@
         }
 
         // ================================================================
-        // 3. LANGUAGE TOGGLE
+        // 3. REFRESH – STAY INSIDE SCHEDULER
+        // ================================================================
+        function softRefresh() {
+            const isSchedulerVisible = document.getElementById('scheduler').style.display === 'block';
+            if (isSchedulerVisible) {
+                sessionStorage.setItem('mer_page', 'scheduler');
+            } else {
+                sessionStorage.setItem('mer_page', 'portfolio');
+            }
+            location.reload();
+        }
+
+        // ================================================================
+        // 4. LANGUAGE TOGGLE
         // ================================================================
         let currentLang = localStorage.getItem('mer_lang') || 'am';
 
@@ -1050,6 +1155,7 @@
             updateInventoryCounts();
             renderAll();
             renderSoldItems();
+            renderDashboardSearch();
             if (document.getElementById('walkthrough-overlay').classList.contains('active')) { showWalkStep(); }
         }
 
@@ -1060,7 +1166,7 @@
         }
 
         // ================================================================
-        // 4. WALKTHROUGH (fixed crash)
+        // 5. WALKTHROUGH
         // ================================================================
         let walkStep = 0;
         const walkSteps = [
@@ -1106,7 +1212,7 @@
         }
 
         // ================================================================
-        // 5. DATA HELPERS
+        // 6. DATA HELPERS
         // ================================================================
         function getData(key) { try { return JSON.parse(localStorage.getItem(key)) || []; } catch { return []; } }
 
@@ -1129,7 +1235,7 @@
         function getAnimalName(id) { const a = getData('farm_animals').find(x => x._id === id); return a ? a.name : id; }
 
         // ================================================================
-        // 6. DATE HELPERS (for week/month)
+        // 7. DATE HELPERS
         // ================================================================
         function getStartOfWeek(dateStr) {
             const d = new Date(dateStr + 'T00:00:00');
@@ -1164,7 +1270,7 @@
         }
 
         // ================================================================
-        // 7. INVENTORY COUNTS
+        // 8. INVENTORY COUNTS
         // ================================================================
         function updateInventoryCounts() {
             const animals = getData('farm_animals').filter(a => a.status === 'Active');
@@ -1189,7 +1295,7 @@
         }
 
         // ================================================================
-        // 8. DASHBOARD
+        // 9. DASHBOARD
         // ================================================================
         function updateDashboard() {
             const container = document.getElementById('dashboard-content');
@@ -1233,7 +1339,36 @@
         }
 
         // ================================================================
-        // 9. ANIMALS CRUD
+        // 10. DASHBOARD SEARCH
+        // ================================================================
+        function renderDashboardSearch() {
+            const search = document.getElementById('dashboard-search').value.toLowerCase().trim();
+            const container = document.getElementById('dashboard-search-results');
+            let animals = getData('farm_animals');
+            if (search) {
+                animals = animals.filter(a => a.id.toLowerCase().includes(search) || a.name.toLowerCase().includes(search));
+            }
+            if (animals.length === 0) {
+                container.innerHTML =
+                    `<div class="empty-message">${document.body.classList.contains('lang-am') ? 'ምንም እንስሳ አልተገኘም' : 'No animals found'}</div>`;
+                return;
+            }
+            const isAm = document.body.classList.contains('lang-am');
+            container.innerHTML = animals.map(a => {
+                const statusLabel = isAm ? (a.status === 'Active' ? 'ንቁ' : a.status === 'Sold' ? 'ተሽጧል' : 'ሞቷል') : a.status;
+                return `
+                    <div class="list-item" onclick="openAnimalProfile('${a._id}')">
+                        <div class="info">
+                            <div class="name">${a.id} — ${a.name}</div>
+                            <div class="sub">${a.category} · ${statusLabel}</div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // ================================================================
+        // 11. ANIMALS CRUD
         // ================================================================
         function toggleFatteningFields() {
             const cat = document.getElementById('animal-category').value;
@@ -1248,7 +1383,7 @@
                     .includes(search)); }
             if (animals.length === 0) {
                 list.innerHTML =
-                    `<div class="empty-message" style="color:#b0ac98;text-align:center;padding:20px;">${document.body.classList.contains('lang-am') ? 'ምንም እንስሳ የለም' : 'No animals'}</div>`;
+                    `<div class="empty-message">${document.body.classList.contains('lang-am') ? 'ምንም እንስሳ የለም' : 'No animals'}</div>`;
                 return;
             }
             const isAm = document.body.classList.contains('lang-am');
@@ -1307,7 +1442,7 @@
             renderAnimals();
             updateInventoryCounts();
             updateDashboard();
-            showAutoSaveIndicator('animal-auto-save');
+            renderDashboardSearch();
             showToast(document.body.classList.contains('lang-am') ? '✅ እንስሳ ተቀመጠ' : '✅ Animal saved', 'success');
         }
 
@@ -1353,11 +1488,12 @@
             renderAnimals();
             updateInventoryCounts();
             updateDashboard();
+            renderDashboardSearch();
             showToast(document.body.classList.contains('lang-am') ? '🗑 ተሰርዟል' : '🗑 Deleted', 'info');
         }
 
         // ================================================================
-        // 10. ANIMAL PROFILE (with week/month summary)
+        // 12. ANIMAL PROFILE
         // ================================================================
         let currentProfileAnimalId = null;
 
@@ -1366,7 +1502,6 @@
             const animal = getData('farm_animals').find(a => a._id === _id);
             if (!animal) return;
             document.getElementById('ap-title').textContent = `🐾 ${animal.id} — ${animal.name}`;
-            // Basic info
             const isAm = document.body.classList.contains('lang-am');
             document.getElementById('ap-basic-info').innerHTML = `
                 <span><strong>${isAm ? '📌 መታወቂያ' : '📌 ID'}:</strong> ${animal.id}</span>
@@ -1380,39 +1515,29 @@
                 <span><strong>${isAm ? '💰 የግዢ ዋጋ' : '💰 Purchase Price'}:</strong> ${animal.purchasePrice || 0} Birr</span>
                 <span><strong>${isAm ? '📊 ሁኔታ' : '📊 Status'}:</strong> ${animal.status}</span>
             `;
-            // Update totals including week/month
             updateProfileTotals(animal);
-            // Populate week/month selectors
             populateWeekMonthSelectors();
-            // Reset filter and render history
             document.getElementById('profile-date-filter').value = 'all';
             renderProfileHistory();
-            // Open modal
             openModal('animal-profile-modal');
         }
 
         function populateWeekMonthSelectors() {
-            // Month dropdown – last 12 months
             const monthSel = document.getElementById('month-selector');
             const now = new Date();
             monthSel.innerHTML = '';
             for (let i = 0; i < 12; i++) {
                 const d = new Date(now.getFullYear(), now.getMonth() - i, 1);
-                const val = d.toISOString().split('T')[0].substring(0, 7); // YYYY-MM
+                const val = d.toISOString().split('T')[0].substring(0, 7);
                 const label = d.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
                 const opt = document.createElement('option');
                 opt.value = val;
                 opt.textContent = label;
                 monthSel.appendChild(opt);
             }
-            // Set default to current month
             monthSel.value = now.toISOString().split('T')[0].substring(0, 7);
-
-            // Week selector – default to "This Week"
             document.getElementById('week-selector').value = '0';
             document.getElementById('week-date-picker').style.display = 'none';
-
-            // Update summaries
             updateWeekMonthSummary();
         }
 
@@ -1421,18 +1546,12 @@
             const animal = getData('farm_animals').find(a => a._id === currentProfileAnimalId);
             if (!animal) return;
 
-            // Get selected week
             const weekSelect = document.getElementById('week-selector');
             let weekStart = null;
             const todayStr = today();
             if (weekSelect.value === 'custom') {
                 const picker = document.getElementById('week-date-picker');
-                if (picker.value) {
-                    weekStart = picker.value;
-                } else {
-                    // Default to this week's Monday
-                    weekStart = getStartOfWeek(todayStr);
-                }
+                if (picker.value) { weekStart = picker.value; } else { weekStart = getStartOfWeek(todayStr); }
             } else {
                 const offset = parseInt(weekSelect.value) || 0;
                 const d = new Date(todayStr + 'T00:00:00');
@@ -1441,17 +1560,14 @@
             }
             const weekEnd = getEndOfWeek(weekStart);
 
-            // Selected month
             const monthVal = document.getElementById('month-selector').value;
             const monthStart = monthVal ? getStartOfMonth(monthVal + '-01') : getStartOfMonth(todayStr);
             const monthEnd = monthVal ? getEndOfMonth(monthVal + '-01') : getEndOfMonth(todayStr);
 
-            // Gather data for this animal
             const logs = getData('farm_dailylogs').filter(l => l.animalId === animal._id);
             const fatWeekly = getData('farm_fatweekly').filter(f => f.animalId === animal._id);
             const fatDaily = getData('farm_fatdaily').filter(d => d.animalId === animal._id);
 
-            // Filter by week and month
             const weekLogs = logs.filter(l => l.date >= weekStart && l.date <= weekEnd);
             const weekFatW = fatWeekly.filter(f => f.date >= weekStart && f.date <= weekEnd);
             const weekFatD = fatDaily.filter(d => d.date >= weekStart && d.date <= weekEnd);
@@ -1460,30 +1576,24 @@
             const monthFatW = fatWeekly.filter(f => f.date >= monthStart && f.date <= monthEnd);
             const monthFatD = fatDaily.filter(d => d.date >= monthStart && d.date <= monthEnd);
 
-            // Calculate production (milk/eggs/gain)
             const settings = getSettings();
             const feedPrice = settings.feedPrice || 0;
 
-            // Week production
-            let weekProduction = 0;
-            let weekFeed = 0,
+            let weekProduction = 0,
+                weekFeed = 0,
                 weekMed = 0;
             if (animal.category === 'ወተት ላም') {
                 weekProduction = weekLogs.reduce((s, l) => s + (l.milk || 0), 0);
             } else if (animal.category === 'ዶሮ (እንቁላል)') {
                 weekProduction = weekLogs.reduce((s, l) => s + (l.eggs || 0), 0);
             } else if (isFattening(animal.category)) {
-                // Weight gain: last - first weight in the period
                 const allWeights = weekFatW.sort((a, b) => a.date.localeCompare(b.date));
                 if (allWeights.length > 0) {
                     const first = allWeights[0].weight;
                     const last = allWeights[allWeights.length - 1].weight;
                     weekProduction = last - first;
-                } else {
-                    weekProduction = 0;
-                }
+                } else { weekProduction = 0; }
             }
-            // Feed & medicine for week
             weekFeed = weekLogs.reduce((s, l) => s + (l.feed || 0), 0) +
                 weekFatW.reduce((s, f) => s + (f.feed || 0), 0) +
                 weekFatD.reduce((s, d) => s + (d.feed || 0), 0);
@@ -1491,9 +1601,8 @@
                 weekFatW.reduce((s, f) => s + (f.medicine || 0), 0) +
                 weekFatD.reduce((s, d) => s + (d.medCost || 0), 0);
 
-            // Month production
-            let monthProduction = 0;
-            let monthFeed = 0,
+            let monthProduction = 0,
+                monthFeed = 0,
                 monthMed = 0;
             if (animal.category === 'ወተት ላም') {
                 monthProduction = monthLogs.reduce((s, l) => s + (l.milk || 0), 0);
@@ -1505,9 +1614,7 @@
                     const first = allWeights[0].weight;
                     const last = allWeights[allWeights.length - 1].weight;
                     monthProduction = last - first;
-                } else {
-                    monthProduction = 0;
-                }
+                } else { monthProduction = 0; }
             }
             monthFeed = monthLogs.reduce((s, l) => s + (l.feed || 0), 0) +
                 monthFatW.reduce((s, f) => s + (f.feed || 0), 0) +
@@ -1516,26 +1623,22 @@
                 monthFatW.reduce((s, f) => s + (f.medicine || 0), 0) +
                 monthFatD.reduce((s, d) => s + (d.medCost || 0), 0);
 
-            // Update UI
             const isAm = document.body.classList.contains('lang-am');
             const unit = (animal.category === 'ወተት ላም') ? (isAm ? 'ሊትር' : 'L') :
                 (animal.category === 'ዶሮ (እንቁላል)') ? (isAm ? 'ቁራጭ' : 'pcs') :
                 (isAm ? 'ኪ.ግ' : 'kg');
 
-            // Week
             document.getElementById('week-production').textContent = weekProduction.toFixed(1) + ' ' + unit;
             document.getElementById('week-feed-cost').textContent = (weekFeed * feedPrice).toFixed(2) + ' Birr';
             document.getElementById('week-med-cost').textContent = weekMed.toFixed(2) + ' Birr';
             document.getElementById('week-total-cost').textContent = (weekFeed * feedPrice + weekMed).toFixed(2) + ' Birr';
 
-            // Month
             document.getElementById('month-production').textContent = monthProduction.toFixed(1) + ' ' + unit;
             document.getElementById('month-feed-cost').textContent = (monthFeed * feedPrice).toFixed(2) + ' Birr';
             document.getElementById('month-med-cost').textContent = monthMed.toFixed(2) + ' Birr';
             document.getElementById('month-total-cost').textContent = (monthFeed * feedPrice + monthMed).toFixed(2) + ' Birr';
         }
 
-        // Show/hide custom week date picker
         document.getElementById('week-selector').addEventListener('change', function() {
             const picker = document.getElementById('week-date-picker');
             if (this.value === 'custom') {
@@ -1546,22 +1649,17 @@
                 updateWeekMonthSummary();
             }
         });
-
-        // Trigger update on date picker change
         document.getElementById('week-date-picker').addEventListener('change', updateWeekMonthSummary);
 
         function updateProfileTotals(animal) {
             const logs = getData('farm_dailylogs').filter(l => l.animalId === animal._id);
             const fatWeekly = getData('farm_fatweekly').filter(f => f.animalId === animal._id);
-
-            // Lifetime totals
             const totalMilk = logs.reduce((s, l) => s + (l.milk || 0), 0);
             const totalEggs = logs.reduce((s, l) => s + (l.eggs || 0), 0);
             let totalFeed = logs.reduce((s, l) => s + (l.feed || 0), 0);
             totalFeed += fatWeekly.reduce((s, w) => s + (w.feed || 0), 0);
             const fatDaily = getData('farm_fatdaily').filter(d => d.animalId === animal._id);
             totalFeed += fatDaily.reduce((s, d) => s + (d.feed || 0), 0);
-
             let totalGain = 0;
             if (fatWeekly.length > 0) {
                 const sorted = fatWeekly.sort((a, b) => new Date(a.date) - new Date(b.date));
@@ -1570,7 +1668,6 @@
                 const initial = animal.initialWeight || 0;
                 totalGain = last.weight - initial;
             }
-
             document.getElementById('profile-total-milk').textContent = totalMilk.toFixed(1);
             document.getElementById('profile-total-eggs').textContent = totalEggs;
             document.getElementById('profile-total-feed').textContent = totalFeed.toFixed(1);
@@ -1606,10 +1703,9 @@
             milkLogs = filterByDate(milkLogs, 'date');
             milkLogs.sort((a, b) => b.date.localeCompare(a.date));
             document.getElementById('profile-milk').innerHTML = milkLogs.length === 0 ?
-                '<p class="empty-message" style="color:#b0ac98;text-align:center;padding:10px;">' + (document.body
-                    .classList.contains('lang-am') ? 'ምንም ወተት መዝገቦች የሉም' : 'No milk records') + '</p>' :
+                `<p class="empty-message">${document.body.classList.contains('lang-am') ? 'ምንም ወተት መዝገቦች የሉም' : 'No milk records'}</p>` :
                 milkLogs.map(l =>
-                    `<div class="weekly-entry" style="background:#f8f9fa;border-radius:10px;padding:8px 12px;margin-bottom:6px;border:1px solid #e9ecef;">📅 ${l.date} | 🥛 ${l.milk} L | 🌾 ${l.feed||0} kg | 💊 ${l.medicineCost||0} Birr</div>`
+                    `<div class="weekly-entry">📅 ${l.date} | 🥛 ${l.milk} L | 🌾 ${l.feed||0} kg | 💊 ${l.medicineCost||0} Birr</div>`
                     ).join('');
 
             // Eggs
@@ -1617,10 +1713,9 @@
             eggLogs = filterByDate(eggLogs, 'date');
             eggLogs.sort((a, b) => b.date.localeCompare(a.date));
             document.getElementById('profile-eggs').innerHTML = eggLogs.length === 0 ?
-                '<p class="empty-message" style="color:#b0ac98;text-align:center;padding:10px;">' + (document.body
-                    .classList.contains('lang-am') ? 'ምንም እንቁላል መዝገቦች የሉም' : 'No egg records') + '</p>' :
+                `<p class="empty-message">${document.body.classList.contains('lang-am') ? 'ምንም እንቁላል መዝገቦች የሉም' : 'No egg records'}</p>` :
                 eggLogs.map(l =>
-                    `<div class="weekly-entry" style="background:#f8f9fa;border-radius:10px;padding:8px 12px;margin-bottom:6px;border:1px solid #e9ecef;">📅 ${l.date} | 🥚 ${l.eggs} | 🌾 ${l.feed||0} kg | 💊 ${l.medicineCost||0} Birr</div>`
+                    `<div class="weekly-entry">📅 ${l.date} | 🥚 ${l.eggs} | 🌾 ${l.feed||0} kg | 💊 ${l.medicineCost||0} Birr</div>`
                     ).join('');
 
             // Feed
@@ -1637,10 +1732,9 @@
             ];
             allFeed.sort((a, b) => b.date.localeCompare(a.date));
             document.getElementById('profile-feed').innerHTML = allFeed.length === 0 ?
-                '<p class="empty-message" style="color:#b0ac98;text-align:center;padding:10px;">' + (document.body
-                    .classList.contains('lang-am') ? 'ምንም መኖ መዝገቦች የሉም' : 'No feed records') + '</p>' :
+                `<p class="empty-message">${document.body.classList.contains('lang-am') ? 'ምንም መኖ መዝገቦች የሉም' : 'No feed records'}</p>` :
                 allFeed.map(f =>
-                    `<div class="weekly-entry" style="background:#f8f9fa;border-radius:10px;padding:8px 12px;margin-bottom:6px;border:1px solid #e9ecef;">📅 ${f.date} | 🌾 ${f.feed} kg | 📋 ${f.type}</div>`
+                    `<div class="weekly-entry">📅 ${f.date} | 🌾 ${f.feed} kg | 📋 ${f.type}</div>`
                     ).join('');
 
             // Weight
@@ -1648,13 +1742,12 @@
             weightLogs = filterByDate(weightLogs, 'date');
             weightLogs.sort((a, b) => b.date.localeCompare(a.date));
             const weightHtml = weightLogs.length === 0 ?
-                '<p class="empty-message" style="color:#b0ac98;text-align:center;padding:10px;">' + (document.body
-                    .classList.contains('lang-am') ? 'ምንም የክብደት መዝገቦች የሉም' : 'No weight records') + '</p>' :
+                `<p class="empty-message">${document.body.classList.contains('lang-am') ? 'ምንም የክብደት መዝገቦች የሉም' : 'No weight records'}</p>` :
                 weightLogs.map((w, idx) => {
                     let prev = idx === weightLogs.length - 1 ? (animal.initialWeight || 0) : weightLogs[idx + 1]
                         ?.weight || 0;
                     let gain = w.weight - prev;
-                    return `<div class="weekly-entry" style="background:#f8f9fa;border-radius:10px;padding:8px 12px;margin-bottom:6px;border:1px solid #e9ecef;">📅 ${w.date} | ⚖️ ${w.weight} kg | 📈 ${gain >= 0 ? '+' : ''}${gain.toFixed(1)} kg | 🌾 ${w.feed||0} kg | 💊 ${w.medicine||0} Birr</div>`;
+                    return `<div class="weekly-entry">📅 ${w.date} | ⚖️ ${w.weight} kg | 📈 ${gain >= 0 ? '+' : ''}${gain.toFixed(1)} kg | 🌾 ${w.feed||0} kg | 💊 ${w.medicine||0} Birr</div>`;
                 }).join('');
             document.getElementById('profile-weight').innerHTML = weightHtml;
 
@@ -1665,16 +1758,14 @@
             const translations = { 'መወለድ': 'Birth', 'መጠቃት': 'Breeding', 'ልጅ መውለድ': 'Calving', 'ክትባት': 'Vaccination',
                 'ሕመም': 'Sick', 'ሕክምና': 'Treatment' };
             document.getElementById('profile-events').innerHTML = events.length === 0 ?
-                '<p class="empty-message" style="color:#b0ac98;text-align:center;padding:10px;">' + (document.body
-                    .classList.contains('lang-am') ? 'ምንም ክስተቶች የሉም' : 'No events') + '</p>' :
+                `<p class="empty-message">${document.body.classList.contains('lang-am') ? 'ምንም ክስተቶች የሉም' : 'No events'}</p>` :
                 events.map(e => {
                     let typeDisplay = translations[e.eventType] ? e.eventType + ' (' + translations[e
                         .eventType] + ')' : e.eventType;
-                    return `<div class="weekly-entry" style="background:#f8f9fa;border-radius:10px;padding:8px 12px;margin-bottom:6px;border:1px solid #e9ecef;">📅 ${e.date} | ${typeDisplay} | ${e.notes||''} ${e.nextDueDate ? '🔜 '+e.nextDueDate : ''}</div>`;
+                    return `<div class="weekly-entry">📅 ${e.date} | ${typeDisplay} | ${e.notes||''} ${e.nextDueDate ? '🔜 '+e.nextDueDate : ''}</div>`;
                 }).join('');
         }
 
-        // Profile tabs
         document.getElementById('profile-tabs').addEventListener('click', function(e) {
             const btn = e.target.closest('button');
             if (!btn) return;
@@ -1686,7 +1777,6 @@
             document.getElementById(tabName).classList.add('active-tab-content');
         });
 
-        // Clear history functions (simplified)
         function showClearHistoryOptions() {
             const div = document.getElementById('clear-history-options');
             div.style.display = div.style.display === 'none' ? 'block' : 'none';
@@ -1704,19 +1794,7 @@
         }
 
         // ================================================================
-        // 11. AUTO-SAVE INDICATOR
-        // ================================================================
-        function showAutoSaveIndicator(elementId) {
-            const el = document.getElementById(elementId);
-            if (el) {
-                el.classList.add('show');
-                clearTimeout(el._timer);
-                el._timer = setTimeout(() => el.classList.remove('show'), 2000);
-            }
-        }
-
-        // ================================================================
-        // 12. FATTENING WEEKLY
+        // 13. FATTENING WEEKLY
         // ================================================================
         function populateFatWeeklyDropdown() {
             const animals = getData('farm_animals').filter(a => isFattening(a.category) && a.status === 'Active');
@@ -1739,7 +1817,7 @@
             const list = document.getElementById('fattening-weekly-list');
             if (data.length === 0) {
                 list.innerHTML =
-                    `<div class="empty-message" style="color:#b0ac98;text-align:center;padding:20px;">${document.body.classList.contains('lang-am') ? 'ምንም ሳምንታዊ መዝገብ የለም' : 'No weekly records'}</div>`;
+                    `<div class="empty-message">${document.body.classList.contains('lang-am') ? 'ምንም ሳምንታዊ መዝገብ የለም' : 'No weekly records'}</div>`;
                 return;
             }
             const grouped = {};
@@ -1797,9 +1875,7 @@
             const editId = document.getElementById('edit-fat-weekly-id').value;
             if (editId) {
                 const idx = logs.findIndex(l => l._id === editId);
-                if (idx !== -1) {
-                    logs[idx] = { ...logs[idx], animalId, date, weight, feed, medicine };
-                }
+                if (idx !== -1) { logs[idx] = { ...logs[idx], animalId, date, weight, feed, medicine }; }
                 showToast(document.body.classList.contains('lang-am') ? '✅ ሳምንታዊ መዝገብ ተሻሽሏል' : '✅ Weekly record updated',
                     'success');
             } else {
@@ -1813,11 +1889,10 @@
             document.getElementById('fat-weekly-medicine').value = '';
             document.getElementById('edit-fat-weekly-id').value = '';
             renderFatWeekly();
-            showAutoSaveIndicator('fat-weekly-auto-save');
         }
 
         // ================================================================
-        // 13. FATTENING DAILY
+        // 14. FATTENING DAILY
         // ================================================================
         function populateFatDailyDropdown() {
             const animals = getData('farm_animals').filter(a => isFattening(a.category) && a.status === 'Active');
@@ -1840,7 +1915,7 @@
             const list = document.getElementById('fat-daily-list');
             if (data.length === 0) {
                 list.innerHTML =
-                    `<div class="empty-message" style="color:#b0ac98;text-align:center;padding:20px;">${document.body.classList.contains('lang-am') ? 'ምንም ዕለታዊ መዝገብ የለም' : 'No daily records'}</div>`;
+                    `<div class="empty-message">${document.body.classList.contains('lang-am') ? 'ምንም ዕለታዊ መዝገብ የለም' : 'No daily records'}</div>`;
                 return;
             }
             const sorted = data.sort((a, b) => (b.date || '').localeCompare(a.date || ''));
@@ -1875,9 +1950,7 @@
             const editId = document.getElementById('edit-fat-daily-id').value;
             if (editId) {
                 const idx = data.findIndex(l => l._id === editId);
-                if (idx !== -1) {
-                    data[idx] = { ...data[idx], date, animalId, feed, medicineName, medicineCost };
-                }
+                if (idx !== -1) { data[idx] = { ...data[idx], date, animalId, feed, medicineName, medicineCost }; }
                 showToast(document.body.classList.contains('lang-am') ? '✅ ዕለታዊ መዝገብ ተሻሽሏል' : '✅ Daily record updated',
                     'success');
             } else {
@@ -1891,7 +1964,6 @@
             document.getElementById('fat-daily-medcost').value = '';
             document.getElementById('edit-fat-daily-id').value = '';
             renderFatDaily();
-            showAutoSaveIndicator('fat-daily-auto-save');
         }
 
         async function deleteFatDaily(_id) {
@@ -1904,7 +1976,7 @@
         }
 
         // ================================================================
-        // 14. DAIRY / EGG DAILY
+        // 15. DAIRY / EGG DAILY
         // ================================================================
         function populateDairyDropdown() {
             const animals = getData('farm_animals').filter(a => a.category === 'ወተት ላም' || a.category === 'ዶሮ (እንቁላል)');
@@ -1927,7 +1999,7 @@
             const list = document.getElementById('log-list');
             if (data.length === 0) {
                 list.innerHTML =
-                    `<div class="empty-message" style="color:#b0ac98;text-align:center;padding:20px;">${document.body.classList.contains('lang-am') ? 'ምንም ዕለታዊ መዝገብ የለም' : 'No daily records'}</div>`;
+                    `<div class="empty-message">${document.body.classList.contains('lang-am') ? 'ምንም ዕለታዊ መዝገብ የለም' : 'No daily records'}</div>`;
                 return;
             }
             const sorted = data.sort((a, b) => (b.date || '').localeCompare(a.date || ''));
@@ -1974,9 +2046,7 @@
             const editId = document.getElementById('edit-log-id').value;
             if (editId) {
                 const idx = data.findIndex(l => l._id === editId);
-                if (idx !== -1) {
-                    data[idx] = { ...data[idx], date, animalId, milk, eggs, feed, medicineCost, notes };
-                }
+                if (idx !== -1) { data[idx] = { ...data[idx], date, animalId, milk, eggs, feed, medicineCost, notes }; }
                 showToast(document.body.classList.contains('lang-am') ? '✅ መዝገብ ተሻሽሏል' : '✅ Record updated', 'success');
             } else {
                 data.push({ _id: genId(), animalId, date, milk, eggs, feed, medicineCost, notes });
@@ -1991,7 +2061,7 @@
             document.getElementById('edit-log-id').value = '';
             renderLogs();
             updateDashboard();
-            showAutoSaveIndicator('log-auto-save');
+            renderDashboardSearch();
         }
 
         async function deleteLog(_id) {
@@ -2001,11 +2071,12 @@
             setData('farm_dailylogs', data);
             renderLogs();
             updateDashboard();
+            renderDashboardSearch();
             showToast(document.body.classList.contains('lang-am') ? '🗑 ተሰርዟል' : '🗑 Deleted', 'info');
         }
 
         // ================================================================
-        // 15. EVENTS
+        // 16. EVENTS
         // ================================================================
         function populateEventDropdown() {
             const animals = getData('farm_animals');
@@ -2028,7 +2099,7 @@
             const list = document.getElementById('event-list');
             if (data.length === 0) {
                 list.innerHTML =
-                    `<div class="empty-message" style="color:#b0ac98;text-align:center;padding:20px;">${document.body.classList.contains('lang-am') ? 'ምንም ክስተት የለም' : 'No events'}</div>`;
+                    `<div class="empty-message">${document.body.classList.contains('lang-am') ? 'ምንም ክስተት የለም' : 'No events'}</div>`;
                 return;
             }
             const sorted = data.sort((a, b) => (b.date || '').localeCompare(a.date || ''));
@@ -2063,9 +2134,7 @@
             const editId = document.getElementById('edit-event-id').value;
             if (editId) {
                 const idx = data.findIndex(e => e._id === editId);
-                if (idx !== -1) {
-                    data[idx] = { ...data[idx], date, animalId, eventType, nextDueDate, notes };
-                }
+                if (idx !== -1) { data[idx] = { ...data[idx], date, animalId, eventType, nextDueDate, notes }; }
                 showToast(document.body.classList.contains('lang-am') ? '✅ ክስተት ተሻሽሏል' : '✅ Event updated', 'success');
             } else {
                 data.push({ _id: genId(), animalId, date, eventType, nextDueDate, notes });
@@ -2077,7 +2146,6 @@
             document.getElementById('edit-event-id').value = '';
             renderEvents();
             checkReminders();
-            showAutoSaveIndicator('event-auto-save');
         }
 
         async function deleteEvent(_id) {
@@ -2091,7 +2159,7 @@
         }
 
         // ================================================================
-        // 16. OTHER COSTS
+        // 17. OTHER COSTS
         // ================================================================
         function populateCostDropdown() {
             const animals = getData('farm_animals');
@@ -2114,7 +2182,7 @@
             const list = document.getElementById('othercost-list');
             if (data.length === 0) {
                 list.innerHTML =
-                    `<div class="empty-message" style="color:#b0ac98;text-align:center;padding:20px;">${document.body.classList.contains('lang-am') ? 'ምንም ወጪ የለም' : 'No costs'}</div>`;
+                    `<div class="empty-message">${document.body.classList.contains('lang-am') ? 'ምንም ወጪ የለም' : 'No costs'}</div>`;
                 return;
             }
             const sorted = data.sort((a, b) => (b.date || '').localeCompare(a.date || ''));
@@ -2149,9 +2217,7 @@
             const editId = document.getElementById('edit-cost-id').value;
             if (editId) {
                 const idx = data.findIndex(c => c._id === editId);
-                if (idx !== -1) {
-                    data[idx] = { ...data[idx], date, category, animalId, description, amount };
-                }
+                if (idx !== -1) { data[idx] = { ...data[idx], date, category, animalId, description, amount }; }
                 showToast(document.body.classList.contains('lang-am') ? '✅ ወጪ ተሻሽሏል' : '✅ Cost updated', 'success');
             } else {
                 data.push({ _id: genId(), date, category, animalId: animalId || '', description, amount });
@@ -2161,7 +2227,6 @@
             document.getElementById('cost-amount').value = '';
             document.getElementById('edit-cost-id').value = '';
             renderOtherCosts();
-            showAutoSaveIndicator('cost-auto-save');
         }
 
         async function deleteCost(_id) {
@@ -2174,7 +2239,7 @@
         }
 
         // ================================================================
-        // 17. FINANCE
+        // 18. FINANCE
         // ================================================================
         function renderFinanceSummary() {
             const settings = getSettings();
@@ -2272,7 +2337,7 @@
         }
 
         // ================================================================
-        // 18. PRODUCTION SUMMARY
+        // 19. PRODUCTION SUMMARY
         // ================================================================
         function renderProductionSummary() {
             const month = document.getElementById('month-filter').value;
@@ -2309,7 +2374,7 @@
                 </div>`;
             } else {
                 monthlyHtml =
-                    `<div class="empty-message" style="color:#b0ac98;text-align:center;padding:20px;">${isAm ? 'እባክዎ ወር ይምረጡ' : 'Please select a month'}</div>`;
+                    `<div class="empty-message">${isAm ? 'እባክዎ ወር ይምረጡ' : 'Please select a month'}</div>`;
             }
             document.getElementById('monthly-summary-container').innerHTML = monthlyHtml;
 
@@ -2341,7 +2406,7 @@
                 </div>`;
             });
             document.getElementById('category-summary-container').innerHTML = catHtml ||
-                `<div class="empty-message" style="color:#b0ac98;text-align:center;padding:20px;">${isAm ? 'ምንም ውሂብ የለም' : 'No data'}</div>`;
+                `<div class="empty-message">${isAm ? 'ምንም ውሂብ የለም' : 'No data'}</div>`;
 
             const totalMilkAll = logs.reduce((s, l) => s + (l.milk || 0), 0);
             const totalEggsAll = logs.reduce((s, l) => s + (l.eggs || 0), 0);
@@ -2374,7 +2439,7 @@
         }
 
         // ================================================================
-        // 19. SOLD ITEMS
+        // 20. SOLD ITEMS
         // ================================================================
         function toggleSaleFields() {
             const type = document.getElementById('sale-type').value;
@@ -2405,7 +2470,7 @@
             const container = document.getElementById('sales-summary-container');
             if (data.length === 0) {
                 list.innerHTML =
-                    `<div class="empty-message" style="color:#b0ac98;text-align:center;padding:20px;">${document.body.classList.contains('lang-am') ? 'ምንም ሽያጭ አልተመዘገበም' : 'No sales recorded'}</div>`;
+                    `<div class="empty-message">${document.body.classList.contains('lang-am') ? 'ምንም ሽያጭ አልተመዘገበም' : 'No sales recorded'}</div>`;
                 container.innerHTML = '';
                 return;
             }
@@ -2473,6 +2538,7 @@
                     renderAnimals();
                     updateInventoryCounts();
                     updateDashboard();
+                    renderDashboardSearch();
                 }
             }
 
@@ -2480,9 +2546,8 @@
             const editId = document.getElementById('edit-sale-id') ? document.getElementById('edit-sale-id').value : '';
             if (editId) {
                 const idx = sales.findIndex(s => s._id === editId);
-                if (idx !== -1) {
-                    sales[idx] = { ...sales[idx], date, type, quantity, price, animalId: animalId || '', buyer, notes };
-                }
+                if (idx !== -1) { sales[idx] = { ...sales[idx], date, type, quantity, price, animalId: animalId || '',
+                        buyer, notes }; }
                 showToast(document.body.classList.contains('lang-am') ? '✅ ሽያጭ ተሻሽሏል' : '✅ Sale updated', 'success');
             } else {
                 sales.push({ _id: genId(), date, type, quantity, price, animalId: animalId || '', buyer, notes });
@@ -2510,6 +2575,7 @@
                     setData('farm_dailylogs', logs);
                     renderLogs();
                     updateDashboard();
+                    renderDashboardSearch();
                 } else {
                     showToast(document.body.classList.contains('lang-am') ? 'ለዚህ ቀን ምንም የምርት መዝገብ የለም፣ ነገር ግን ሽያጭ ተመዝግቧል' :
                         'No production log for today, sale recorded but not subtracted', 'warning');
@@ -2524,7 +2590,6 @@
             document.getElementById('sale-type').value = 'milk';
             document.getElementById('sale-animal-group').style.display = 'none';
             renderSoldItems();
-            showAutoSaveIndicator('sale-auto-save');
         }
 
         async function deleteSale(_id) {
@@ -2537,7 +2602,7 @@
         }
 
         // ================================================================
-        // 20. SYNC WITH GOOGLE SHEETS
+        // 21. SYNC WITH GOOGLE SHEETS
         // ================================================================
         const SPREADSHEET_ID = '2PACX-1vTg5nBJIKHpvotz2jlBmmdvoAte-yWWoZ_nI44i576dOSKPc3_1YfI4T0KuLN6dQcPBkfSuDD53ieea';
 
@@ -2547,7 +2612,6 @@
             btn.disabled = true;
             btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
             try {
-                // Animals
                 const animalUrl =
                     `https://docs.google.com/spreadsheets/d/e/${SPREADSHEET_ID}/gviz/tq?tqx=out:json&sheet=Animals`;
                 const animalResp = await fetch(animalUrl);
@@ -2579,7 +2643,6 @@
                         setData('farm_animals', mapped);
                     }
                 }
-                // DailyLogs
                 const logUrl =
                     `https://docs.google.com/spreadsheets/d/e/${SPREADSHEET_ID}/gviz/tq?tqx=out:json&sheet=DailyLogs`;
                 const logResp = await fetch(logUrl);
@@ -2608,7 +2671,6 @@
                         setData('farm_dailylogs', mapped);
                     }
                 }
-                // Events
                 const eventUrl =
                     `https://docs.google.com/spreadsheets/d/e/${SPREADSHEET_ID}/gviz/tq?tqx=out:json&sheet=Events`;
                 const eventResp = await fetch(eventUrl);
@@ -2639,6 +2701,7 @@
                 renderAll();
                 updateDashboard();
                 updateInventoryCounts();
+                renderDashboardSearch();
             } catch (e) {
                 showToast(document.body.classList.contains('lang-am') ? '❌ ማመሳሰል አልተሳካም' : '❌ Sync failed', 'error');
             }
@@ -2647,7 +2710,7 @@
         }
 
         // ================================================================
-        // 21. NOTIFICATIONS & REMINDERS
+        // 22. NOTIFICATIONS & REMINDERS
         // ================================================================
         function checkReminders() {
             const events = getData('farm_events');
@@ -2722,7 +2785,7 @@
         document.addEventListener('click', function() { document.getElementById('bell-dropdown').style.display = 'none'; });
 
         // ================================================================
-        // 22. PROFILE PICTURE
+        // 23. PROFILE PICTURE
         // ================================================================
         function loadProfilePic() {
             const stored = localStorage.getItem('mer_profile_pic');
@@ -2752,7 +2815,7 @@
         }
 
         // ================================================================
-        // 23. GOOGLE ACCOUNT (simulated)
+        // 24. GOOGLE ACCOUNT (simulated)
         // ================================================================
         let googleConnected = false;
 
@@ -2786,7 +2849,7 @@
         }
 
         // ================================================================
-        // 24. RENDER ALL
+        // 25. RENDER ALL
         // ================================================================
         function renderAll() {
             renderAnimals();
@@ -2808,98 +2871,30 @@
         }
 
         // ================================================================
-        // 25. AUTO-SAVE ON INPUT (debounced)
-        // ================================================================
-        // We add event listeners after page load
-        function setupAutoSave() {
-            // Animal form
-            const animalFields = ['animal-id', 'animal-name', 'animal-category', 'animal-breed', 'animal-birth', 'animal-age', 'animal-purchasedate', 'animal-status', 'animal-initialweight', 'animal-purchaseprice'];
-            animalFields.forEach(id => {
-                const el = document.getElementById(id);
-                if (el) {
-                    el.addEventListener('input', () => { debounceSave('saveAnimal'); });
-                    el.addEventListener('change', () => { debounceSave('saveAnimal'); });
-                }
-            });
-
-            // Fattening Weekly
-            const fwFields = ['fat-weekly-animal', 'fat-weekly-date', 'fat-weekly-weight', 'fat-weekly-feed', 'fat-weekly-medicine'];
-            fwFields.forEach(id => {
-                const el = document.getElementById(id);
-                if (el) {
-                    el.addEventListener('input', () => { debounceSave('saveFatWeekly'); });
-                    el.addEventListener('change', () => { debounceSave('saveFatWeekly'); });
-                }
-            });
-
-            // Fattening Daily
-            const fdFields = ['fat-daily-date', 'fat-daily-animal', 'fat-daily-feed', 'fat-daily-medname', 'fat-daily-medcost'];
-            fdFields.forEach(id => {
-                const el = document.getElementById(id);
-                if (el) {
-                    el.addEventListener('input', () => { debounceSave('saveFatDaily'); });
-                    el.addEventListener('change', () => { debounceSave('saveFatDaily'); });
-                }
-            });
-
-            // Dairy/Egg Logs
-            const logFields = ['log-date', 'log-animalid', 'log-milk', 'log-eggs', 'log-feed', 'log-medicine', 'log-notes'];
-            logFields.forEach(id => {
-                const el = document.getElementById(id);
-                if (el) {
-                    el.addEventListener('input', () => { debounceSave('saveLog'); });
-                    el.addEventListener('change', () => { debounceSave('saveLog'); });
-                }
-            });
-
-            // Events
-            const eventFields = ['event-date', 'event-animalid', 'event-type', 'event-nextdue', 'event-notes'];
-            eventFields.forEach(id => {
-                const el = document.getElementById(id);
-                if (el) {
-                    el.addEventListener('input', () => { debounceSave('saveEvent'); });
-                    el.addEventListener('change', () => { debounceSave('saveEvent'); });
-                }
-            });
-
-            // Other Costs
-            const costFields = ['cost-date', 'cost-category', 'cost-animalid', 'cost-description', 'cost-amount'];
-            costFields.forEach(id => {
-                const el = document.getElementById(id);
-                if (el) {
-                    el.addEventListener('input', () => { debounceSave('saveCost'); });
-                    el.addEventListener('change', () => { debounceSave('saveCost'); });
-                }
-            });
-
-            // Sold Items
-            const saleFields = ['sale-date', 'sale-type', 'sale-animalid', 'sale-quantity', 'sale-price', 'sale-buyer', 'sale-notes'];
-            saleFields.forEach(id => {
-                const el = document.getElementById(id);
-                if (el) {
-                    el.addEventListener('input', () => { debounceSave('saveSale'); });
-                    el.addEventListener('change', () => { debounceSave('saveSale'); });
-                }
-            });
-        }
-
-        let saveTimeout = null;
-
-        function debounceSave(funcName) {
-            clearTimeout(saveTimeout);
-            saveTimeout = setTimeout(() => {
-                // Call the function safely
-                if (typeof window[funcName] === 'function') {
-                    window[funcName]();
-                }
-            }, 800); // wait 800ms after last change before saving
-        }
-
-        // ================================================================
         // 26. INIT
         // ================================================================
         applyLanguage(localStorage.getItem('mer_lang') || 'am');
-        document.getElementById('scheduler').style.display = 'none';
+
+        // Check sessionStorage for refresh state
+        const savedPage = sessionStorage.getItem('mer_page');
+        if (savedPage === 'scheduler') {
+            // Auto-enter scheduler
+            const portfolio = document.getElementById('portfolio');
+            if (portfolio) {
+                portfolioBackup = portfolio.cloneNode(true);
+                portfolio.remove();
+            }
+            document.getElementById('scheduler').style.display = 'block';
+            renderAll();
+            checkReminders();
+            updateNotificationBell();
+            updateInventoryCounts();
+            updateDashboard();
+            renderDashboardSearch();
+            sessionStorage.removeItem('mer_page');
+        } else {
+            document.getElementById('scheduler').style.display = 'none';
+        }
 
         // Set default dates
         document.getElementById('fat-weekly-date').value = today();
@@ -2928,7 +2923,8 @@
                 else if (tab === 'tab-production') renderProductionSummary();
                 else if (tab === 'tab-sold') renderSoldItems();
                 else if (tab === 'tab-dashboard') { updateDashboard();
-                    updateInventoryCounts(); }
+                    updateInventoryCounts();
+                    renderDashboardSearch(); }
             });
         });
 
@@ -2938,10 +2934,7 @@
                 .catch(() => console.log('❌ SW registration failed'));
         }
 
-        // Setup auto-save
-        setupAutoSave();
-
-        console.log('✅ MER Farm Scheduler v5.2 – Auto-save, Week/Month summaries, Walkthrough fixed');
+        console.log('✅ MER Farm Scheduler v5.6 – Color #19291A applied, refresh stays in scheduler');
     </script>
 </body>
 </html>
