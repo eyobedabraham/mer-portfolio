@@ -44,7 +44,7 @@
             max-width: 400px;
         }
         .toast {
-            background: rgba(11, 43, 31, 0.92);
+            background: rgba(11,43,31,0.92);
             color: #F7E08A;
             padding: 14px 22px;
             border-radius: 14px;
@@ -61,46 +61,46 @@
         .toast.success { border-color: #6fcf97; color: #6fcf97; }
         .toast.error { border-color: #f28b82; color: #f28b82; }
         .toast.warning { border-color: #f9ca24; color: #f9ca24; }
-        @keyframes toastIn { from { opacity: 0; transform: translateY(30px) scale(0.95); } to { opacity: 1; transform: translateY(0) scale(1); } }
+        @keyframes toastIn { from { opacity:0; transform:translateY(30px) scale(0.95); } to { opacity:1; transform:translateY(0) scale(1); } }
         .toast-out { animation: toastOut 0.3s ease forwards; }
-        @keyframes toastOut { to { opacity: 0; transform: translateY(20px) scale(0.95); } }
+        @keyframes toastOut { to { opacity:0; transform:translateY(20px) scale(0.95); } }
 
         /* Confirm */
         #confirm-overlay {
-            position: fixed; inset: 0; background: rgba(0,0,0,0.7); backdrop-filter: blur(4px);
-            z-index: 99998; display: none; align-items: center; justify-content: center; padding: 20px;
+            position: fixed; inset:0; background:rgba(0,0,0,0.7); backdrop-filter:blur(4px);
+            z-index:99998; display:none; align-items:center; justify-content:center; padding:20px;
         }
-        #confirm-overlay.active { display: flex; }
+        #confirm-overlay.active { display:flex; }
         #confirm-box {
-            background: #0b2b1f; border: 2px solid #F7E08A; border-radius: 24px;
-            padding: 32px 28px 28px; max-width: 380px; width: 100%; text-align: center;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+            background:#0b2b1f; border:2px solid #F7E08A; border-radius:24px;
+            padding:32px 28px 28px; max-width:380px; width:100%; text-align:center;
+            box-shadow:0 20px 60px rgba(0,0,0,0.8);
         }
-        #confirm-box p { font-size: 17px; margin-bottom: 24px; line-height: 1.5; color: #f0f0e8; }
-        #confirm-box .btn-row { display: flex; gap: 14px; justify-content: center; }
+        #confirm-box p { font-size:17px; margin-bottom:24px; line-height:1.5; color:#f0f0e8; }
+        #confirm-box .btn-row { display:flex; gap:14px; justify-content:center; }
         #confirm-box .btn-row button {
-            padding: 10px 34px; border-radius: 40px; border: none; font-weight: 700; font-size: 16px;
-            cursor: pointer; transition: 0.2s; font-family: 'Montserrat', sans-serif;
+            padding:10px 34px; border-radius:40px; border:none; font-weight:700; font-size:16px;
+            cursor:pointer; transition:0.2s; font-family:'Montserrat',sans-serif;
         }
-        #confirm-box .btn-row .btn-yes { background: #F7E08A; color: #0b2b1f; }
-        #confirm-box .btn-row .btn-yes:hover { background: #ffe49e; transform: scale(1.03); }
-        #confirm-box .btn-row .btn-no { background: #3d2a1a; color: #f0f0e8; border: 1px solid #F7E08A66; }
-        #confirm-box .btn-row .btn-no:hover { background: #5a3f2a; }
+        #confirm-box .btn-row .btn-yes { background:#F7E08A; color:#0b2b1f; }
+        #confirm-box .btn-row .btn-yes:hover { background:#ffe49e; transform:scale(1.03); }
+        #confirm-box .btn-row .btn-no { background:#3d2a1a; color:#f0f0e8; border:1px solid #F7E08A66; }
+        #confirm-box .btn-row .btn-no:hover { background:#5a3f2a; }
 
-        /* Pages */
-        .page { display: none; min-height: 100vh; padding: 20px 16px 100px; max-width: 560px; margin: 0 auto; }
-        .page.active { display: block; }
+        /* Pages – both are always in DOM, but portfolio is destroyed/restored via JS */
+        #scheduler { display: none; padding: 12px 12px 100px; max-width: 560px; margin: 0 auto; }
 
         /* Portfolio */
         #portfolio {
             display: flex; flex-direction: column; align-items: center; padding-top: 40px;
+            max-width: 560px; margin: 0 auto;
             background-image: radial-gradient(circle at 20% 50%, rgba(74,140,74,0.25) 0%, transparent 50%),
                               radial-gradient(circle at 80% 50%, rgba(180,200,100,0.2) 0%, transparent 50%);
         }
         #portfolio .card {
             background: rgba(255,255,255,0.06); backdrop-filter: blur(25px);
             border-radius: 40px; padding: 70px 50px; box-shadow: 0 40px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.15); text-align: center; width: 100%; max-width: 900px; position: relative;
+            border: 1px solid rgba(255,255,255,0.15); text-align: center; width: 100%;
         }
         #portfolio .logo {
             font-size: 6rem; font-weight: 800; letter-spacing: 8px;
@@ -125,8 +125,7 @@
         .btn-grid button.primary:hover { background: #ffe49e; }
         .footer-credit { margin-top: 40px; font-size: 12px; color: #5a5a4a; letter-spacing: 0.5px; }
 
-        /* Scheduler */
-        #scheduler { padding: 12px 12px 100px; }
+        /* Scheduler Header & Tabs */
         .sched-header {
             display: flex; align-items: center; justify-content: space-between;
             padding: 10px 4px 14px; border-bottom: 1px solid #F7E08A33; margin-bottom: 16px; flex-wrap: wrap; gap: 8px;
@@ -147,7 +146,6 @@
         .sched-header .right .bell-wrap .badge.hidden { display: none; }
         .sched-header .right .profile-btn { background: none; border: none; color: #F7E08A; font-size: 22px; cursor: pointer; padding: 0 4px; }
 
-        /* Tabs */
         .tabs-wrap { display: flex; overflow-x: auto; gap: 4px; padding: 4px 0 12px; border-bottom: 1px solid #F7E08A22; margin-bottom: 16px; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
         .tabs-wrap::-webkit-scrollbar { display: none; }
         .tabs-wrap .tab-btn {
@@ -158,9 +156,10 @@
         .tabs-wrap .tab-btn i { margin-right: 4px; font-size: 14px; }
         .tabs-wrap .tab-btn.active { color: #F7E08A; border-bottom-color: #F7E08A; background: rgba(247,224,138,0.06); }
         .tabs-wrap .tab-btn:hover { color: #F7E08A; }
+
         .tab-content { display: none; animation: fadeUp 0.25s ease; }
         .tab-content.active { display: block; }
-        @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeUp { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
 
         /* Cards & Forms */
         .card {
@@ -227,7 +226,7 @@
             max-width: 500px; width: 100%; max-height: 90vh; overflow-y: auto;
             box-shadow: 0 30px 80px rgba(0,0,0,0.8); animation: modalIn 0.25s ease;
         }
-        @keyframes modalIn { from { opacity: 0; transform: scale(0.95) translateY(20px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+        @keyframes modalIn { from { opacity:0; transform:scale(0.95) translateY(20px); } to { opacity:1; transform:scale(1) translateY(0); } }
         .modal-box .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid #F7E08A33; }
         .modal-box .modal-header h3 { font-size: 20px; color: #F7E08A; }
         .modal-box .modal-header .close-modal { background: none; border: none; color: #a09b88; font-size: 24px; cursor: pointer; padding: 0 4px; }
@@ -291,17 +290,17 @@
         .founders-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
         .founder-card { background: rgba(11,43,31,0.6); border-radius: 16px; padding: 14px; border: 1px solid #F7E08A33; text-align: center; }
 
-        @media (max-width: 480px) {
-            .form-row { grid-template-columns: 1fr; }
-            .dashboard-stat { flex: 1 0 100%; }
-            .tabs-wrap .tab-btn { font-size: 11px; padding: 8px 6px; }
-            .modal-box { padding: 18px 14px 22px; }
-            #portfolio .card { padding: 40px 20px; }
-            #portfolio .logo { font-size: 4rem; }
-            #portfolio .tagline-am { font-size: 1.7rem; }
+        @media (max-width:480px) {
+            .form-row { grid-template-columns:1fr; }
+            .dashboard-stat { flex:1 0 100%; }
+            .tabs-wrap .tab-btn { font-size:11px; padding:8px 6px; }
+            .modal-box { padding:18px 14px 22px; }
+            #portfolio .card { padding:40px 20px; }
+            #portfolio .logo { font-size:4rem; }
+            #portfolio .tagline-am { font-size:1.7rem; }
         }
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .no-scrollbar::-webkit-scrollbar { display:none; }
+        .no-scrollbar { -ms-overflow-style:none; scrollbar-width:none; }
     </style>
 </head>
 <body class="lang-am">
@@ -321,9 +320,9 @@
     </div>
 
     <!-- ============================================================ -->
-    <!-- PORTFOLIO PAGE -->
+    <!-- PORTFOLIO PAGE (will be destroyed/restored)                   -->
     <!-- ============================================================ -->
-    <div id="portfolio" class="page active">
+    <div id="portfolio">
         <div class="card">
             <div class="logo">MER</div>
             <div class="tagline-am amharic">ከፍተኛ የእንስሳት እርባታ እና የወተት ምርቶች</div>
@@ -345,14 +344,14 @@
                     <i class="fas fa-users"></i> <span class="am-text">ተባባሪ መስራቾች</span><span class="en-text">Co-founders</span>
                 </button>
             </div>
-            <div class="footer-credit">MER Farm &bull; Offline v4.2</div>
+            <div class="footer-credit">MER Farm &bull; Offline v5.0</div>
         </div>
     </div>
 
     <!-- ============================================================ -->
-    <!-- FARM SCHEDULER -->
+    <!-- FARM SCHEDULER (always present in DOM, hidden by default)    -->
     <!-- ============================================================ -->
-    <div id="scheduler" class="page">
+    <div id="scheduler">
         <div class="sched-header">
             <div class="left">
                 <button class="back-btn" onclick="goToPortfolio()"><i class="fas fa-arrow-left"></i></button>
@@ -397,7 +396,7 @@
             <button class="tab-btn" data-tab="tab-sold"><i class="fas fa-hand-holding-usd"></i> <span class="am-text">ሽያጭ</span><span class="en-text">Sold Items</span></button>
         </div>
 
-        <!-- DASHBOARD TAB -->
+        <!-- TAB: DASHBOARD -->
         <div id="tab-dashboard" class="tab-content active">
             <div class="card glass">
                 <div class="card-title"><i class="fas fa-home"></i> <span class="am-text">ዕለታዊ እይታ</span><span class="en-text">Daily Overview</span></div>
@@ -405,7 +404,7 @@
             </div>
         </div>
 
-        <!-- ANIMALS TAB -->
+        <!-- TAB: ANIMALS -->
         <div id="tab-animals" class="tab-content">
             <div class="card glass">
                 <div class="card-title"><i class="fas fa-plus-circle"></i> <span class="am-text">አዲስ እንስሳ ጨምር</span><span class="en-text">Add Animal</span></div>
@@ -456,7 +455,7 @@
             </div>
         </div>
 
-        <!-- FATTENING WEEKLY -->
+        <!-- TAB: FATTENING WEEKLY -->
         <div id="tab-fatweekly" class="tab-content">
             <div class="card glass">
                 <div class="card-title"><i class="fas fa-plus-circle"></i> <span class="am-text">ሳምንታዊ መዝገብ ጨምር</span><span class="en-text">Add Weekly Record</span></div>
@@ -471,7 +470,7 @@
             <div id="fattening-weekly-list"></div>
         </div>
 
-        <!-- FATTENING DAILY -->
+        <!-- TAB: FATTENING DAILY -->
         <div id="tab-fatdaily" class="tab-content">
             <div class="card glass">
                 <div class="card-title"><i class="fas fa-plus-circle"></i> <span class="am-text">ዕለታዊ መዝገብ ጨምር</span><span class="en-text">Add Daily Record</span></div>
@@ -486,7 +485,7 @@
             <div id="fat-daily-list"></div>
         </div>
 
-        <!-- DAIRY / EGG DAILY -->
+        <!-- TAB: DAIRY / EGG DAILY -->
         <div id="tab-dairy" class="tab-content">
             <div class="card glass">
                 <div class="card-title"><i class="fas fa-plus-circle"></i> <span class="am-text">ዕለታዊ ምርት ጨምር</span><span class="en-text">Add Daily Production</span></div>
@@ -507,7 +506,7 @@
             <div id="log-list"></div>
         </div>
 
-        <!-- EVENTS -->
+        <!-- TAB: EVENTS -->
         <div id="tab-events" class="tab-content">
             <div class="card glass">
                 <div class="card-title"><i class="fas fa-plus-circle"></i> <span class="am-text">ክስተት ጨምር</span><span class="en-text">Add Event</span></div>
@@ -531,7 +530,7 @@
             <div id="event-list"></div>
         </div>
 
-        <!-- OTHER COSTS -->
+        <!-- TAB: OTHER COSTS -->
         <div id="tab-costs" class="tab-content">
             <div class="card glass">
                 <div class="card-title"><i class="fas fa-plus-circle"></i> <span class="am-text">ወጪ ጨምር</span><span class="en-text">Add Cost</span></div>
@@ -563,7 +562,7 @@
             <div id="othercost-list"></div>
         </div>
 
-        <!-- FINANCE -->
+        <!-- TAB: FINANCE -->
         <div id="tab-finance" class="tab-content">
             <div class="card glass">
                 <div class="card-title"><i class="fas fa-cog"></i> <span class="am-text">ቅንብሮች</span><span class="en-text">Settings</span></div>
@@ -580,7 +579,7 @@
             <div id="finance-summary-container"></div>
         </div>
 
-        <!-- PRODUCTION -->
+        <!-- TAB: PRODUCTION -->
         <div id="tab-production" class="tab-content">
             <div class="card glass">
                 <div class="card-title"><i class="fas fa-calendar-alt"></i> <span class="am-text">ወርሃዊ ማጠቃለያ</span><span class="en-text">Monthly Summary</span></div>
@@ -602,7 +601,7 @@
             </div>
         </div>
 
-        <!-- SOLD ITEMS -->
+        <!-- TAB: SOLD ITEMS -->
         <div id="tab-sold" class="tab-content">
             <div class="card glass">
                 <div class="card-title"><i class="fas fa-hand-holding-usd"></i> <span class="am-text">አዲስ ሽያጭ</span><span class="en-text">New Sale</span></div>
@@ -635,10 +634,10 @@
     </div>
 
     <!-- ============================================================ -->
-    <!-- MODALS -->
+    <!-- MODALS (always present)                                       -->
     <!-- ============================================================ -->
 
-    <!-- ABOUT MODAL (popup) -->
+    <!-- About Modal -->
     <div class="modal-overlay" id="about-modal">
         <div class="modal-box">
             <div class="modal-header">
@@ -656,7 +655,7 @@
         </div>
     </div>
 
-    <!-- CO-FOUNDERS MODAL (popup) -->
+    <!-- Founders Modal -->
     <div class="modal-overlay" id="founders-modal">
         <div class="modal-box">
             <div class="modal-header">
@@ -664,7 +663,6 @@
                 <button class="close-modal" onclick="closeModal('founders-modal')"><i class="fas fa-times"></i></button>
             </div>
             <div class="founders-grid">
-                <!-- Miky -->
                 <div class="founder-card">
                     <div style="font-size:48px;">👨‍🌾</div>
                     <div style="font-weight:700; color:#F7E08A; font-size:18px;">Miky</div>
@@ -672,7 +670,6 @@
                     <div style="font-size:13px; color:#d4d0c0; margin:6px 0 4px;"><span class="am-text">ሚኪ የደንበኞች ግንኙነትን ያስተዳድራል፣ ጥራት ያረጋግጣል። በጤና ኢንፎርማቲክስ ትምህርት እየተመረቀ ነው።</span><span class="en-text">Miky manages customer relations, ensures on‑time deliveries, and guarantees client satisfaction. He is graduating in Health Informatics.</span></div>
                     <div style="font-size:12px; color:#8a8670;">📞 <a href="tel:+251919732079" style="color:#8a8670;">+251 919 732 079</a></div>
                 </div>
-                <!-- Eyobed -->
                 <div class="founder-card">
                     <div style="font-size:48px;">👨‍💻</div>
                     <div style="font-weight:700; color:#F7E08A; font-size:18px;">Eyobed Abraham</div>
@@ -680,7 +677,6 @@
                     <div style="font-size:13px; color:#d4d0c0; margin:6px 0 4px;"><span class="am-text">እዮቤድ ከ3 ዓመታት በላይ በሳይበር ደህንነት ልምድ ያለው ሲሆን የድር ስራዎችን ያስተዳድራል። ልምድ ያለው የእንስሳት እርባታ ባለሙያ ነው። ስታቲስቲክስ በማጥናት ላይ ነው።</span><span class="en-text">Eyobed has over 3 years in cybersecurity and manages all web operations. He is also an experienced livestock farmer. Studying Statistics.</span></div>
                     <div style="font-size:12px; color:#8a8670;">📧 <a href="mailto:eyobedab@gmail.com" style="color:#8a8670;">eyobedab@gmail.com</a> · 📞 <a href="tel:+251996997143" style="color:#8a8670;">+251 996 997 143</a></div>
                 </div>
-                <!-- Rodas -->
                 <div class="founder-card">
                     <div style="font-size:48px;">👩‍🌾</div>
                     <div style="font-weight:700; color:#F7E08A; font-size:18px;">Rodas</div>
@@ -695,7 +691,7 @@
         </div>
     </div>
 
-    <!-- PROFILE MODAL -->
+    <!-- Profile Modal -->
     <div class="modal-overlay" id="profile-modal">
         <div class="modal-box">
             <div class="modal-header">
@@ -730,7 +726,7 @@
         </div>
     </div>
 
-    <!-- ANIMAL PROFILE MODAL -->
+    <!-- Animal Profile Modal -->
     <div class="modal-overlay" id="animal-profile-modal">
         <div class="modal-box" style="max-width:560px;">
             <div class="modal-header">
@@ -748,7 +744,7 @@
         </div>
     </div>
 
-    <!-- CLEAR OLDER THAN MODAL -->
+    <!-- Clear Older Than Modal -->
     <div class="modal-overlay" id="clear-older-modal">
         <div class="modal-box" style="max-width:380px;">
             <div class="modal-header">
@@ -766,7 +762,7 @@
         </div>
     </div>
 
-    <!-- WALKTHROUGH OVERLAY -->
+    <!-- Walkthrough Overlay -->
     <div id="walkthrough-overlay">
         <div class="walk-content">
             <h2>👋 <span class="am-text">እንኳን ደህና መጡ!</span><span class="en-text">Welcome!</span></h2>
@@ -780,7 +776,7 @@
     </div>
 
     <!-- ============================================================ -->
-    <!-- JAVASCRIPT -->
+    <!-- JAVASCRIPT – FULL APPLICATION LOGIC                          -->
     <!-- ============================================================ -->
     <script>
         // ================================================================
@@ -798,6 +794,7 @@
             }, duration);
         }
         let confirmResolve = null;
+
         function showConfirm(message) {
             return new Promise((resolve) => {
                 document.getElementById('confirm-message').textContent = message;
@@ -817,23 +814,41 @@
         // ================================================================
         // 1. MODAL HELPERS
         // ================================================================
-        function openModal(id) { document.getElementById(id).classList.add('active'); document.body.style.overflow = 'hidden'; }
-        function closeModal(id) { document.getElementById(id).classList.remove('active'); document.body.style.overflow = ''; }
+        function openModal(id) { document.getElementById(id).classList.add('active');
+            document.body.style.overflow = 'hidden'; }
+
+        function closeModal(id) { document.getElementById(id).classList.remove('active');
+            document.body.style.overflow = ''; }
         document.querySelectorAll('.modal-overlay').forEach(el => {
             el.addEventListener('click', function(e) {
-                if (e.target === this) { this.classList.remove('active'); document.body.style.overflow = ''; }
+                if (e.target === this) { this.classList.remove('active');
+                    document.body.style.overflow = ''; }
             });
         });
+
         function openAbout() { openModal('about-modal'); }
+
         function openFounders() { openModal('founders-modal'); }
 
+        function openProfileModal() {
+            loadProfilePic();
+            updateInventoryCounts();
+            updateGoogleConnectStatus();
+            openModal('profile-modal');
+        }
+
         // ================================================================
-        // 2. NAVIGATION (toggle – no new window)
+        // 2. NAVIGATION – DESTROY & RESTORE (the core feature)
         // ================================================================
+        let portfolioBackup = null;
+
         function openScheduler() {
-            document.getElementById('portfolio').classList.remove('active');
-            document.getElementById('scheduler').classList.add('active');
-            document.body.style.overflow = '';
+            const portfolio = document.getElementById('portfolio');
+            if (portfolio) {
+                portfolioBackup = portfolio.cloneNode(true);
+                portfolio.remove();
+            }
+            document.getElementById('scheduler').style.display = 'block';
             renderAll();
             checkReminders();
             updateNotificationBell();
@@ -848,16 +863,11 @@
         }
 
         function goToPortfolio() {
-            document.getElementById('scheduler').classList.remove('active');
-            document.getElementById('portfolio').classList.add('active');
-            document.body.style.overflow = '';
-        }
-
-        function openProfileModal() {
-            loadProfilePic();
-            updateInventoryCounts();
-            updateGoogleConnectStatus();
-            openModal('profile-modal');
+            document.getElementById('scheduler').style.display = 'none';
+            if (portfolioBackup) {
+                document.body.insertBefore(portfolioBackup, document.body.firstChild);
+                portfolioBackup = null;
+            }
         }
 
         // ================================================================
@@ -888,14 +898,21 @@
         // ================================================================
         let walkStep = 0;
         const walkSteps = [
-            { titleAm: '👋 እንኳን ደህና መጡ!', titleEn: '👋 Welcome!', descAm: 'ይህ የMER እርሻ መርሐ ግብር ነው። እንስሳትዎን ይመዝግቡ፣ ምርት ይከታተሉ እና ፋይናንስዎን ያስተዳድሩ።', descEn: 'This is the MER Farm Scheduler. Register your animals, track production, and manage your finances.' },
-            { titleAm: '🐄 እንስሳት', titleEn: '🐄 Animals', descAm: 'በዚህ ትር ላይ ሁሉንም እንስሳት ይመዝግቡ። መታወቂያ፣ ስም እና ምድብ ያስፈልጋሉ።', descEn: 'Register all animals here. ID, Name, and Category are required.' },
-            { titleAm: '📊 ዳሽቦርድ', titleEn: '📊 Dashboard', descAm: 'ይህ ትር የዕለታዊ እይታዎን ያሳያል፡ ጠቅላላ እንስሳት፣ የዛሬ ወተት/እንቁላል፣ መጪ ክስተቶች እና የቀን ትርፍ።', descEn: 'Shows daily overview: total animals, today\'s milk/eggs, upcoming events, and daily profit.' },
-            { titleAm: '🔔 ማስታወሻዎች', titleEn: '🔔 Notifications', descAm: 'ከላይ ያለው ደወል ከ7 ቀናት በላይ ያልሆኑ ክስተቶችን ያሳያል።', descEn: 'The bell icon shows events due within the next 7 days.' },
-            { titleAm: '☁️ የደመና ማስቀመጫ', titleEn: '☁️ Cloud Backup', descAm: 'አካውንት መፍጠር አማራጭ ነው። ውሂብዎን በራስዎ Google Sheets ውስጥ ማስቀመጥ ይችላሉ።', descEn: 'Account creation is optional. You can backup your data to your own Google Sheets.' }
+            { titleAm: '👋 እንኳን ደህና መጡ!', titleEn: '👋 Welcome!', descAm: 'ይህ የMER እርሻ መርሐ ግብር ነው። እንስሳትዎን ይመዝግቡ፣ ምርት ይከታተሉ እና ፋይናንስዎን ያስተዳድሩ።',
+                descEn: 'This is the MER Farm Scheduler. Register your animals, track production, and manage your finances.' },
+            { titleAm: '🐄 እንስሳት', titleEn: '🐄 Animals', descAm: 'በዚህ ትር ላይ ሁሉንም እንስሳት ይመዝግቡ። መታወቂያ፣ ስም እና ምድብ ያስፈልጋሉ።',
+                descEn: 'Register all animals here. ID, Name, and Category are required.' },
+            { titleAm: '📊 ዳሽቦርድ', titleEn: '📊 Dashboard', descAm: 'ይህ ትር የዕለታዊ እይታዎን ያሳያል፡ ጠቅላላ እንስሳት፣ የዛሬ ወተት/እንቁላል፣ መጪ ክስተቶች እና የቀን ትርፍ።',
+                descEn: 'Shows daily overview: total animals, today\'s milk/eggs, upcoming events, and daily profit.' },
+            { titleAm: '🔔 ማስታወሻዎች', titleEn: '🔔 Notifications', descAm: 'ከላይ ያለው ደወል ከ7 ቀናት በላይ ያልሆኑ ክስተቶችን ያሳያል።',
+                descEn: 'The bell icon shows events due within the next 7 days.' },
+            { titleAm: '☁️ የደመና ማስቀመጫ', titleEn: '☁️ Cloud Backup', descAm: 'አካውንት መፍጠር አማራጭ ነው። ውሂብዎን በራስዎ Google Sheets ውስጥ ማስቀመጥ ይችላሉ።',
+                descEn: 'Account creation is optional. You can backup your data to your own Google Sheets.' }
         ];
 
-        function startWalkthrough() { walkStep = 0; showWalkStep(); }
+        function startWalkthrough() { walkStep = 0;
+            showWalkStep(); }
+
         function showWalkStep() {
             const step = walkSteps[walkStep];
             const isAm = document.body.classList.contains('lang-am');
@@ -906,8 +923,10 @@
             document.getElementById('walkthrough-overlay').classList.add('active');
         }
         document.querySelector('.walk-btn').addEventListener('click', function() {
-            if (walkStep === walkSteps.length - 1) { skipWalkthrough(); } else { walkStep++; showWalkStep(); }
+            if (walkStep === walkSteps.length - 1) { skipWalkthrough(); } else { walkStep++;
+                showWalkStep(); }
         });
+
         function skipWalkthrough() {
             document.getElementById('walkthrough-overlay').classList.remove('active');
             localStorage.setItem('mer_walkthrough_done', 'true');
@@ -917,15 +936,23 @@
         // 5. DATA HELPERS
         // ================================================================
         function getData(key) { try { return JSON.parse(localStorage.getItem(key)) || []; } catch { return []; } }
+
         function setData(key, data) { localStorage.setItem(key, JSON.stringify(data)); }
+
         function getSettings() {
             try { return JSON.parse(localStorage.getItem('farm_settings')) || { milkPrice: 0, feedPrice: 0, eggPrice: 0,
                     laborCost: 0 }; } catch { return { milkPrice: 0, feedPrice: 0, eggPrice: 0, laborCost: 0 }; }
         }
+
         function genId() { return Date.now().toString(36) + Math.random().toString(36).substr(2, 4); }
+
         function today() { return new Date().toISOString().split('T')[0]; }
-        function formatDate(d) { if (!d) return '—'; const dt = new Date(d + 'T00:00:00'); return dt.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }); }
+
+        function formatDate(d) { if (!d) return '—'; const dt = new Date(d + 'T00:00:00'); return dt.toLocaleDateString('en-GB', { day: '2-digit',
+                month: 'short', year: 'numeric' }); }
+
         function isFattening(cat) { return ['ስብ ኦክስ', 'ስብ በግ', 'ስብ ፍየል', 'ስብ ዶሮ'].includes(cat); }
+
         function getAnimalName(id) { const a = getData('farm_animals').find(x => x._id === id); return a ? a.name : id; }
 
         // ================================================================
@@ -1012,7 +1039,8 @@
             if (search) { animals = animals.filter(a => a.id.toLowerCase().includes(search) || a.name.toLowerCase()
                     .includes(search)); }
             if (animals.length === 0) {
-                list.innerHTML = `<div class="empty-message" style="color:#b0ac98;text-align:center;padding:20px;">${document.body.classList.contains('lang-am') ? 'ምንም እንስሳ የለም' : 'No animals'}</div>`;
+                list.innerHTML =
+                    `<div class="empty-message" style="color:#b0ac98;text-align:center;padding:20px;">${document.body.classList.contains('lang-am') ? 'ምንም እንስሳ የለም' : 'No animals'}</div>`;
                 return;
             }
             const isAm = document.body.classList.contains('lang-am');
@@ -1047,7 +1075,7 @@
             const editId = document.getElementById('edit-animal-id').value;
             if (!id || !name) {
                 showToast(document.body.classList.contains('lang-am') ? 'መታወቂያ እና ስም ያስፈልጋሉ' : 'ID and Name are required',
-                'error');
+                    'error');
                 return;
             }
             let animals = getData('farm_animals');
@@ -1209,7 +1237,7 @@
         }
 
         // ================================================================
-        // 10. FATTENING DAILY (abbreviated for length – full logic in same pattern)
+        // 10. FATTENING DAILY
         // ================================================================
         function populateFatDailyDropdown() {
             const animals = getData('farm_animals').filter(a => isFattening(a.category) && a.status === 'Active');
@@ -1283,7 +1311,7 @@
         }
 
         // ================================================================
-        // 11. DAIRY / EGG DAILY (abbreviated – full logic in same pattern)
+        // 11. DAIRY / EGG DAILY
         // ================================================================
         function populateDairyDropdown() {
             const animals = getData('farm_animals').filter(a => a.category === 'ወተት ላም' || a.category === 'ዶሮ (እንቁላል)');
@@ -1374,7 +1402,7 @@
         }
 
         // ================================================================
-        // 12. EVENTS (abbreviated – full logic in same pattern)
+        // 12. EVENTS
         // ================================================================
         function populateEventDropdown() {
             const animals = getData('farm_animals');
@@ -1449,7 +1477,7 @@
         }
 
         // ================================================================
-        // 13. OTHER COSTS (abbreviated – full logic in same pattern)
+        // 13. OTHER COSTS
         // ================================================================
         function populateCostDropdown() {
             const animals = getData('farm_animals');
@@ -2190,8 +2218,8 @@
         // ================================================================
         applyLanguage(localStorage.getItem('mer_lang') || 'am');
 
-        // Default: portfolio visible
-        document.getElementById('portfolio').classList.add('active');
+        // Portfolio is visible by default; scheduler is hidden
+        document.getElementById('scheduler').style.display = 'none';
 
         // Set default dates
         document.getElementById('fat-weekly-date').value = today();
@@ -2231,7 +2259,7 @@
                 .catch(() => console.log('❌ SW registration failed'));
         }
 
-        console.log('✅ MER Farm Scheduler v4.2 – Full offline app with toggle navigation');
+        console.log('✅ MER Farm Scheduler v5.0 – Destroy & Restore navigation');
     </script>
 </body>
 </html>
