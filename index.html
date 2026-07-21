@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>MER – የእንስሳት እርባታ እና የወተት ምርቶች</title>
     <link rel="manifest" href="/manifest.json" />
-    <!-- Google Fonts and Font Awesome are loaded from CDN – they require internet -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
@@ -166,12 +165,53 @@
             background: #5a3f2a;
         }
 
-        /* ===== PAGES ===== */
+        /* ===== PAGES (Portfolio, Scheduler, Marketplace, Tutorials) ===== */
         #scheduler {
             display: none;
             padding: 12px 12px 100px;
             max-width: 560px;
             margin: 0 auto;
+        }
+
+        #marketplace-page,
+        #tutorials-page {
+            display: none;
+            padding: 12px 12px 20px;
+            max-width: 560px;
+            margin: 0 auto;
+            height: 100vh;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        #marketplace-page iframe,
+        #tutorials-page iframe {
+            flex: 1;
+            width: 100%;
+            border: none;
+            border-radius: 18px;
+            background: #fff;
+            min-height: 0;
+        }
+        .iframe-fallback {
+            display: none;
+            text-align: center;
+            padding: 40px 20px;
+            background: #19291A;
+            border-radius: 18px;
+            border: 1px solid #F7E08A33;
+            margin-top: 20px;
+        }
+        .iframe-fallback a {
+            color: #F7E08A;
+            font-weight: 700;
+            text-decoration: underline;
+            font-size: 18px;
+        }
+        .iframe-fallback i {
+            font-size: 48px;
+            color: #F7E08A;
+            opacity: 0.5;
+            margin-bottom: 10px;
         }
 
         /* ===== PORTFOLIO (HOMEPAGE – AMHARIC ONLY) ===== */
@@ -249,6 +289,26 @@
         #portfolio .btn-grid button.primary:hover {
             background: #ffe49e;
         }
+        #install-btn {
+            display: none;
+            background: #F7E08A;
+            color: #0b2b1f;
+            border: none;
+            padding: 14px 20px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+            width: 100%;
+            max-width: 360px;
+            transition: 0.2s;
+            font-family: 'Montserrat', sans-serif;
+        }
+        #install-btn:hover {
+            transform: scale(1.02);
+            background: #ffe49e;
+        }
         .footer-credit {
             margin-top: 40px;
             font-size: 12px;
@@ -256,7 +316,7 @@
             letter-spacing: 0.5px;
         }
 
-        /* ===== SCHEDULER HEADER & TABS ===== */
+        /* ===== SCHEDULER HEADER & TABS (reused for Marketplace/Tutorials) ===== */
         .sched-header {
             display: flex;
             align-items: center;
@@ -302,6 +362,22 @@
         }
         .sched-header .right .lang-toggle:hover {
             background: rgba(247, 224, 138, 0.1);
+        }
+        .sched-header .right .seller-btn {
+            background: #F7E08A;
+            color: #0b2b1f;
+            border: none;
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 12px;
+            cursor: pointer;
+            transition: 0.2s;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .sched-header .right .seller-btn:hover {
+            background: #ffe49e;
+            transform: scale(1.02);
         }
         .sched-header .right .bell-wrap {
             position: relative;
@@ -410,7 +486,7 @@
             }
         }
 
-        /* ===== CARDS & FORMS ===== */
+        /* ===== CARDS & FORMS (unchanged) ===== */
         .card {
             background: #19291A;
             backdrop-filter: blur(6px);
@@ -717,27 +793,6 @@
         .modal-box .modal-footer .btn {
             flex: 1;
             min-width: 80px;
-        }
-
-        /* ===== IFRAME OVERLAY (for Marketplace & Tutorials) ===== */
-        #iframe-modal .modal-box {
-            max-width: 95%;
-            width: 100%;
-            height: 90vh;
-            padding: 10px;
-        }
-        #iframe-modal .modal-box .modal-header h3 {
-            font-size: 18px;
-        }
-        #iframe-modal .modal-box iframe {
-            width: 100%;
-            height: calc(100% - 60px);
-            border: none;
-            border-radius: 12px;
-            background: #fff;
-        }
-        #iframe-modal .modal-box .modal-footer {
-            margin-top: 10px;
         }
 
         /* ===== DASHBOARD STATS ===== */
@@ -1091,6 +1146,11 @@
             color: #8a8670;
             margin-top: 4px;
             text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
         }
         .sync-status .sync-btn {
             background: none;
@@ -1098,16 +1158,30 @@
             color: #F7E08A;
             cursor: pointer;
             font-size: 14px;
-            margin-left: 6px;
         }
         .sync-status .sync-btn:disabled {
             opacity: 0.4;
             cursor: not-allowed;
         }
+        .sync-status .drive-btn {
+            background: none;
+            border: 1px solid #F7E08A44;
+            color: #F7E08A;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            cursor: pointer;
+            transition: 0.2s;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .sync-status .drive-btn:hover {
+            background: rgba(247, 224, 138, 0.1);
+            border-color: #F7E08A;
+        }
         .cloud-status {
             font-size: 12px;
             color: #6fcf97;
-            margin-left: 6px;
         }
         .cloud-status.offline {
             color: #f28b82;
@@ -1257,11 +1331,14 @@
                 flex-direction: column;
                 align-items: stretch;
             }
-            #iframe-modal .modal-box {
-                max-width: 100%;
-                height: 100vh;
-                border-radius: 0;
+            #marketplace-page,
+            #tutorials-page {
                 padding: 6px;
+                height: 100vh;
+            }
+            #marketplace-page iframe,
+            #tutorials-page iframe {
+                border-radius: 12px;
             }
         }
         .no-scrollbar::-webkit-scrollbar {
@@ -1301,10 +1378,10 @@
             <button class="primary" onclick="openScheduler()">
                 <i class="fas fa-calendar-alt"></i> የእርሻ መርሐ ግብር
             </button>
-            <button onclick="openIframeModal('marketplace')">
+            <button onclick="openMarketplacePage()">
                 <i class="fas fa-store"></i> ገበያ
             </button>
-            <button onclick="openIframeModal('tutorials')">
+            <button onclick="openTutorialsPage()">
                 <i class="fas fa-graduation-cap"></i> ትምህርቶች
             </button>
             <button onclick="openProfile()">
@@ -1317,29 +1394,72 @@
                 <i class="fas fa-users"></i> ተባባሪ መስራቾች
             </button>
         </div>
+
+        <!-- ===== CUSTOM INSTALL BUTTON ===== -->
+        <button id="install-btn">
+            <i class="fas fa-download"></i> 📲 መተግበሪያውን ይጫኑ (Install App)
+        </button>
+
         <div class="footer-credit">MER Farm &bull; ከመስመር ውጪ v2.0</div>
     </div>
 
     <!-- ============================================================ -->
-    <!-- ===== IFRAME OVERLAY (Marketplace & Tutorials) ===== -->
+    <!-- ===== MARKETPLACE PAGE (full-screen, like scheduler) ===== -->
     <!-- ============================================================ -->
-    <div class="modal-overlay" id="iframe-modal">
-        <div class="modal-box">
-            <div class="modal-header">
-                <h3 id="iframe-title"><span class="am-text">🛒 ገበያ</span><span class="en-text">🛒 Marketplace</span></h3>
-                <button class="close-modal" onclick="closeIframeModal()">✕</button>
+    <div id="marketplace-page">
+        <div class="sched-header">
+            <div class="left">
+                <button class="back-btn" onclick="goToPortfolio()">←</button>
+                <h2>🛒 <span class="am-text">ገበያ</span><span class="en-text">Marketplace</span></h2>
             </div>
-            <iframe id="iframe-content" src=""></iframe>
-            <div class="modal-footer">
-                <button class="btn btn-outline btn-block" onclick="goToPortfolioFromIframe()">
-                    ← <span class="am-text">ተመለስ ወደ መነሻ ገጽ</span><span class="en-text">Back to Home</span>
+            <div class="right">
+                <button class="lang-toggle" onclick="toggleLanguage()">🌍 <span id="lang-label-market">Am</span></button>
+                <button class="seller-btn" onclick="showSellerComingSoon()">
+                    👤 <span class="am-text">ሻጭ</span><span class="en-text">Seller</span>
                 </button>
             </div>
+        </div>
+        <iframe id="marketplace-iframe" src=""></iframe>
+        <div class="iframe-fallback" id="marketplace-fallback">
+            <i class="fas fa-external-link-alt"></i>
+            <p style="color:#b0ac98; margin-bottom:10px;">
+                <span class="am-text">ገበያውን በአፕሉ ውስጥ ማሳየት አልተቻለም (Server blocks iframe).</span>
+                <span class="en-text">Unable to load inside the app (Server blocks iframe).</span>
+            </p>
+            <a href="https://eyobed.pythonanywhere.com/" target="_blank">
+                <i class="fas fa-arrow-right"></i> <span class="am-text">በብራውዘር ውስጥ ክፈት</span><span class="en-text">Open in Browser</span>
+            </a>
         </div>
     </div>
 
     <!-- ============================================================ -->
-    <!-- ===== SCHEDULER (full original content) ===== -->
+    <!-- ===== TUTORIALS PAGE (full-screen, like scheduler) ===== -->
+    <!-- ============================================================ -->
+    <div id="tutorials-page">
+        <div class="sched-header">
+            <div class="left">
+                <button class="back-btn" onclick="goToPortfolio()">←</button>
+                <h2>📚 <span class="am-text">ትምህርቶች</span><span class="en-text">Tutorials</span></h2>
+            </div>
+            <div class="right">
+                <button class="lang-toggle" onclick="toggleLanguage()">🌍 <span id="lang-label-tutorial">Am</span></button>
+            </div>
+        </div>
+        <iframe id="tutorials-iframe" src=""></iframe>
+        <div class="iframe-fallback" id="tutorials-fallback">
+            <i class="fas fa-external-link-alt"></i>
+            <p style="color:#b0ac98; margin-bottom:10px;">
+                <span class="am-text">ትምህርቶቹን በአፕሉ ውስጥ ማሳየት አልተቻለም (Server blocks iframe).</span>
+                <span class="en-text">Unable to load inside the app (Server blocks iframe).</span>
+            </p>
+            <a href="https://rodas.pythonanywhere.com/" target="_blank">
+                <i class="fas fa-arrow-right"></i> <span class="am-text">በብራውዘር ውስጥ ክፈት</span><span class="en-text">Open in Browser</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ===== SCHEDULER (full original content – all farm features) ===== -->
     <!-- ============================================================ -->
     <div id="scheduler">
         <!-- ===== SCHEDULER HEADER ===== -->
@@ -1371,6 +1491,9 @@
         <div class="sync-status">
             <span id="sync-text">💾 <span class="am-text">መረጃ በስልክ ላይ ተቀምጧል</span><span class="en-text">Data stored offline</span></span>
             <button class="sync-btn" onclick="syncWithGoogleSheets()" id="sync-btn">☁️</button>
+            <button class="drive-btn" onclick="backupToDrive()">
+                <i class="fas fa-cloud-upload-alt"></i> <span class="am-text">ወደ Google Drive አስቀምጥ</span><span class="en-text">Backup to Drive</span>
+            </button>
             <span class="cloud-status" id="cloud-status"></span>
         </div>
 
@@ -1749,6 +1872,9 @@
                 <div class="inventory-row" id="inventory-counts"></div>
                 <div style="margin-top:12px;">
                     <button class="btn btn-outline btn-sm" onclick="connectGoogleAccount()"><span class="icon">🔗</span> <span id="google-account-btn-text"><span class="am-text">የGoogle መለያ አገናኝ</span><span class="en-text">Connect Google Account</span></span></button>
+                    <button class="btn btn-outline btn-sm" style="margin-top:8px;" onclick="signInWithGoogle()">
+                        <i class="fab fa-google"></i> <span class="am-text">በGoogle ይግቡ</span><span class="en-text">Sign in with Google</span>
+                    </button>
                 </div>
             </div>
             <div class="modal-footer">
@@ -1893,10 +2019,41 @@
         });
 
         // ================================================================
-        // 1. NAVIGATION
+        // 1. PWA INSTALL BUTTON LOGIC
         // ================================================================
+        let deferredPrompt;
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            const btn = document.getElementById('install-btn');
+            if (btn) btn.style.display = 'block';
+        });
+
+        async function installApp() {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const result = await deferredPrompt.userChoice;
+                console.log('User choice:', result.outcome);
+                document.getElementById('install-btn').style.display = 'none';
+                deferredPrompt = null;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const btn = document.getElementById('install-btn');
+            if (btn) btn.addEventListener('click', installApp);
+        });
+
+        // ================================================================
+        // 2. NAVIGATION (Portfolio, Scheduler, Marketplace, Tutorials)
+        // ================================================================
+
+        // --- Open Scheduler (Farm Management) ---
         function openScheduler() {
             document.getElementById('portfolio').style.display = 'none';
+            document.getElementById('marketplace-page').style.display = 'none';
+            document.getElementById('tutorials-page').style.display = 'none';
             document.getElementById('scheduler').style.display = 'block';
             renderAll();
             checkReminders();
@@ -1912,19 +2069,105 @@
             }
         }
 
+        // --- Open Marketplace (full page) ---
+        function openMarketplacePage() {
+            document.getElementById('portfolio').style.display = 'none';
+            document.getElementById('scheduler').style.display = 'none';
+            document.getElementById('tutorials-page').style.display = 'none';
+            const page = document.getElementById('marketplace-page');
+            page.style.display = 'flex';
+            // Show fallback if iframe fails
+            document.getElementById('marketplace-fallback').style.display = 'none';
+            const iframe = document.getElementById('marketplace-iframe');
+            iframe.src = 'https://eyobed.pythonanywhere.com/';
+            // If iframe fails to load (due to X-Frame-Options), show fallback
+            iframe.onerror = function() {
+                document.getElementById('marketplace-fallback').style.display = 'block';
+                iframe.style.display = 'none';
+            };
+            // If iframe loads, hide fallback
+            iframe.onload = function() {
+                document.getElementById('marketplace-fallback').style.display = 'none';
+                iframe.style.display = 'block';
+            };
+            // If after 5 seconds the iframe is still blank (white), show fallback just in case
+            setTimeout(() => {
+                try {
+                    // Check if iframe content is accessible
+                    const doc = iframe.contentDocument || iframe.contentWindow.document;
+                    if (doc && doc.body && doc.body.innerHTML.trim() === '') {
+                        document.getElementById('marketplace-fallback').style.display = 'block';
+                        iframe.style.display = 'none';
+                    }
+                } catch (e) {
+                    // Cross-origin error means it's blocked
+                    document.getElementById('marketplace-fallback').style.display = 'block';
+                    iframe.style.display = 'none';
+                }
+            }, 3000);
+        }
+
+        // --- Open Tutorials (full page) ---
+        function openTutorialsPage() {
+            document.getElementById('portfolio').style.display = 'none';
+            document.getElementById('scheduler').style.display = 'none';
+            document.getElementById('marketplace-page').style.display = 'none';
+            const page = document.getElementById('tutorials-page');
+            page.style.display = 'flex';
+            document.getElementById('tutorials-fallback').style.display = 'none';
+            const iframe = document.getElementById('tutorials-iframe');
+            iframe.src = 'https://rodas.pythonanywhere.com/';
+            iframe.onerror = function() {
+                document.getElementById('tutorials-fallback').style.display = 'block';
+                iframe.style.display = 'none';
+            };
+            iframe.onload = function() {
+                document.getElementById('tutorials-fallback').style.display = 'none';
+                iframe.style.display = 'block';
+            };
+            setTimeout(() => {
+                try {
+                    const doc = iframe.contentDocument || iframe.contentWindow.document;
+                    if (doc && doc.body && doc.body.innerHTML.trim() === '') {
+                        document.getElementById('tutorials-fallback').style.display = 'block';
+                        iframe.style.display = 'none';
+                    }
+                } catch (e) {
+                    document.getElementById('tutorials-fallback').style.display = 'block';
+                    iframe.style.display = 'none';
+                }
+            }, 3000);
+        }
+
+        // --- Seller button (Coming soon) ---
+        function showSellerComingSoon() {
+            showToast('የሻጭ በይነገጽ በቅርቡ ይገኛል (Seller dashboard coming soon)', 'warning');
+            // Also open profile modal
+            openProfileModal();
+        }
+
+        // --- Backup to Drive (Coming soon) ---
+        function backupToDrive() {
+            showToast('ወደ Google Drive ማስቀመጥ በቅርቡ ይገኛል (Backup to Drive coming soon)', 'warning');
+        }
+
+        // --- Sign in with Google (Coming soon) ---
+        function signInWithGoogle() {
+            showToast('በGoogle መግቢያ በቅርቡ ይገኛል (Google Sign-in coming soon)', 'warning');
+        }
+
+        // --- Go back to Portfolio (homepage) ---
         function goToPortfolio() {
             document.getElementById('scheduler').style.display = 'none';
+            document.getElementById('marketplace-page').style.display = 'none';
+            document.getElementById('tutorials-page').style.display = 'none';
+            // Clear iframe sources to stop loading
+            document.getElementById('marketplace-iframe').src = '';
+            document.getElementById('tutorials-iframe').src = '';
             document.getElementById('portfolio').style.display = 'flex';
-            // Close iframe modal if open
-            closeIframeModal();
         }
 
-        // Called from iframe back button – goes to home
-        function goToPortfolioFromIframe() {
-            closeIframeModal();
-            goToPortfolio();
-        }
-
+        // --- Profile / About / Founders ---
         function openProfile() {
             openProfileModal();
         }
@@ -1938,36 +2181,6 @@
         }
 
         // ================================================================
-        // 2. IFRAME OVERLAY (Marketplace & Tutorials)
-        // ================================================================
-        function openIframeModal(type) {
-            const modal = document.getElementById('iframe-modal');
-            const iframe = document.getElementById('iframe-content');
-            const title = document.getElementById('iframe-title');
-            if (type === 'marketplace') {
-                iframe.src = 'https://eyobed.pythonanywhere.com/';
-                title.innerHTML = '<span class="am-text">🛒 ገበያ</span><span class="en-text">🛒 Marketplace</span>';
-            } else if (type === 'tutorials') {
-                iframe.src = 'https://rodas.pythonanywhere.com/';
-                title.innerHTML = '<span class="am-text">📚 ትምህርቶች</span><span class="en-text">📚 Tutorials</span>';
-            }
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeIframeModal() {
-            const modal = document.getElementById('iframe-modal');
-            modal.classList.remove('active');
-            document.getElementById('iframe-content').src = '';
-            document.body.style.overflow = '';
-        }
-
-        // Close iframe modal when clicking overlay background
-        document.getElementById('iframe-modal').addEventListener('click', function(e) {
-            if (e.target === this) closeIframeModal();
-        });
-
-        // ================================================================
         // 3. MODAL HELPERS
         // ================================================================
         function openModal(id) {
@@ -1979,7 +2192,7 @@
             document.getElementById(id).classList.remove('active');
             document.body.style.overflow = '';
         }
-        document.querySelectorAll('.modal-overlay:not(#iframe-modal)').forEach(el => {
+        document.querySelectorAll('.modal-overlay').forEach(el => {
             el.addEventListener('click', function(e) {
                 if (e.target === this) {
                     this.classList.remove('active');
@@ -1997,13 +2210,17 @@
         }
 
         // ================================================================
-        // 5. LANGUAGE TOGGLE – FULL AMHARIC SUPPORT
+        // 5. LANGUAGE TOGGLE (Full Amharic Support)
         // ================================================================
         let currentLang = localStorage.getItem('mer_lang') || 'am';
 
         function applyLanguage(lang) {
             document.body.className = lang === 'am' ? 'lang-am' : 'lang-en';
             document.getElementById('lang-label').textContent = lang === 'am' ? 'አማ' : 'En';
+            const langLabelMarket = document.getElementById('lang-label-market');
+            const langLabelTut = document.getElementById('lang-label-tutorial');
+            if (langLabelMarket) langLabelMarket.textContent = lang === 'am' ? 'አማ' : 'En';
+            if (langLabelTut) langLabelTut.textContent = lang === 'am' ? 'አማ' : 'En';
             localStorage.setItem('mer_lang', lang);
             currentLang = lang;
 
@@ -2086,7 +2303,7 @@
         }
 
         // ================================================================
-        // 7. DATA HELPERS
+        // 7. DATA HELPERS (unchanged)
         // ================================================================
         function getData(key) { try { return JSON.parse(localStorage.getItem(key)) || []; } catch { return []; } }
 
@@ -2220,7 +2437,7 @@
         }
 
         // ================================================================
-        // 11. DASHBOARD SEARCH – only shows on focus, with clear X
+        // 11. DASHBOARD SEARCH (with clear X)
         // ================================================================
         function activateSearchResults() {
             document.getElementById('search-results-wrap').classList.add('active');
@@ -2276,7 +2493,6 @@
             }).join('');
         }
 
-        // Close search results on blur (but allow clicking on results)
         document.getElementById('dashboard-search').addEventListener('blur', function(e) {
             setTimeout(() => {
                 const active = document.activeElement;
@@ -2300,7 +2516,7 @@
         });
 
         // ================================================================
-        // 12. ANIMALS CRUD
+        // 12. ANIMALS CRUD (unchanged)
         // ================================================================
         function toggleFatteningFields() {
             const cat = document.getElementById('animal-category').value;
@@ -2426,7 +2642,7 @@
         }
 
         // ================================================================
-        // 13. ANIMAL PROFILE
+        // 13. ANIMAL PROFILE (unchanged)
         // ================================================================
         let currentProfileAnimalId = null;
 
@@ -3415,7 +3631,7 @@
         }
 
         // ================================================================
-        // 22. SOLD ITEMS – with inventory validation
+        // 22. SOLD ITEMS (with inventory validation)
         // ================================================================
         function toggleSaleFields() {
             const type = document.getElementById('sale-type').value;
@@ -3452,13 +3668,6 @@
                 sel.appendChild(opt);
             });
             sel.value = current;
-        }
-
-        function getTodaysLogForAnimal(animalId, dateStr) {
-            const logs = getData('farm_dailylogs');
-            const matching = logs.filter(l => l.animalId === animalId && l.date === dateStr);
-            if (matching.length > 0) return matching[0];
-            return null;
         }
 
         let soldPeriod = '14';
@@ -3918,7 +4127,16 @@
         }
 
         // ================================================================
-        // 28. INIT
+        // 28. SERVICE WORKER REGISTRATION
+        // ================================================================
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js')
+                .then(() => console.log('✅ SW registered'))
+                .catch(() => console.log('❌ SW registration failed'));
+        }
+
+        // ================================================================
+        // 29. INIT
         // ================================================================
         applyLanguage(localStorage.getItem('mer_lang') || 'am');
 
@@ -3969,15 +4187,7 @@
             });
         });
 
-        // Service worker (optional – for PWA offline support)
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/sw.js')
-                .then(() => console.log('✅ SW registered'))
-                .catch(() => console.log('❌ SW registration failed (optional)'));
-        }
-
-        console.log('✅ MER Farm Scheduler v2.0 – Marketplace & Tutorials open inside app with back button, everything else works offline.');
+        console.log('✅ MER Farm Scheduler v2.0 – Fixed: Seller button, iframe fallback, Google login/backup placeholders.');
     </script>
-
 </body>
 </html>
