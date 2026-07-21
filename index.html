@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>MER – የእንስሳት እርባታ እና የወተት ምርቶች</title>
     <link rel="manifest" href="/manifest.json" />
+    <!-- Google Fonts and Font Awesome are loaded from CDN – they require internet -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
@@ -638,7 +639,6 @@
         .search-wrap .clear-btn.show {
             display: block;
         }
-        /* results wrapper – hidden until user focuses/click */
         .search-results-wrap {
             display: none;
             margin-top: 8px;
@@ -717,6 +717,27 @@
         .modal-box .modal-footer .btn {
             flex: 1;
             min-width: 80px;
+        }
+
+        /* ===== IFRAME OVERLAY (for Marketplace & Tutorials) ===== */
+        #iframe-modal .modal-box {
+            max-width: 95%;
+            width: 100%;
+            height: 90vh;
+            padding: 10px;
+        }
+        #iframe-modal .modal-box .modal-header h3 {
+            font-size: 18px;
+        }
+        #iframe-modal .modal-box iframe {
+            width: 100%;
+            height: calc(100% - 60px);
+            border: none;
+            border-radius: 12px;
+            background: #fff;
+        }
+        #iframe-modal .modal-box .modal-footer {
+            margin-top: 10px;
         }
 
         /* ===== DASHBOARD STATS ===== */
@@ -1236,6 +1257,12 @@
                 flex-direction: column;
                 align-items: stretch;
             }
+            #iframe-modal .modal-box {
+                max-width: 100%;
+                height: 100vh;
+                border-radius: 0;
+                padding: 6px;
+            }
         }
         .no-scrollbar::-webkit-scrollbar {
             display: none;
@@ -1274,10 +1301,10 @@
             <button class="primary" onclick="openScheduler()">
                 <i class="fas fa-calendar-alt"></i> የእርሻ መርሐ ግብር
             </button>
-            <button onclick="window.open('https://eyobed.pythonanywhere.com/','_blank')">
+            <button onclick="openIframeModal('marketplace')">
                 <i class="fas fa-store"></i> ገበያ
             </button>
-            <button onclick="window.open('https://rodas.pythonanywhere.com/','_blank')">
+            <button onclick="openIframeModal('tutorials')">
                 <i class="fas fa-graduation-cap"></i> ትምህርቶች
             </button>
             <button onclick="openProfile()">
@@ -1294,7 +1321,25 @@
     </div>
 
     <!-- ============================================================ -->
-    <!-- ===== SCHEDULER ===== -->
+    <!-- ===== IFRAME OVERLAY (Marketplace & Tutorials) ===== -->
+    <!-- ============================================================ -->
+    <div class="modal-overlay" id="iframe-modal">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3 id="iframe-title"><span class="am-text">🛒 ገበያ</span><span class="en-text">🛒 Marketplace</span></h3>
+                <button class="close-modal" onclick="closeIframeModal()">✕</button>
+            </div>
+            <iframe id="iframe-content" src=""></iframe>
+            <div class="modal-footer">
+                <button class="btn btn-outline btn-block" onclick="goToPortfolioFromIframe()">
+                    ← <span class="am-text">ተመለስ ወደ መነሻ ገጽ</span><span class="en-text">Back to Home</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ===== SCHEDULER (full original content) ===== -->
     <!-- ============================================================ -->
     <div id="scheduler">
         <!-- ===== SCHEDULER HEADER ===== -->
@@ -1620,7 +1665,7 @@
     </div>
 
     <!-- ============================================================ -->
-    <!-- ===== MODALS ===== -->
+    <!-- ===== MODALS (About, Founders, Profile, Animal Profile) ===== -->
     <!-- ============================================================ -->
 
     <!-- About Modal -->
@@ -1830,6 +1875,7 @@
             }, duration);
         }
         let confirmResolve = null;
+
         function showConfirm(message) {
             return new Promise((resolve) => {
                 document.getElementById('confirm-message').textContent = message;
@@ -1852,13 +1898,11 @@
         function openScheduler() {
             document.getElementById('portfolio').style.display = 'none';
             document.getElementById('scheduler').style.display = 'block';
-            // Ensure all dropdowns and lists are populated
             renderAll();
             checkReminders();
             updateNotificationBell();
             updateInventoryCounts();
             updateDashboard();
-            // Do NOT auto-show search results
             document.getElementById('search-results-wrap').classList.remove('active');
             if (!localStorage.getItem('mer_walkthrough_done')) {
                 document.getElementById('walkthrough-overlay').classList.add('active');
@@ -1871,6 +1915,14 @@
         function goToPortfolio() {
             document.getElementById('scheduler').style.display = 'none';
             document.getElementById('portfolio').style.display = 'flex';
+            // Close iframe modal if open
+            closeIframeModal();
+        }
+
+        // Called from iframe back button – goes to home
+        function goToPortfolioFromIframe() {
+            closeIframeModal();
+            goToPortfolio();
         }
 
         function openProfile() {
@@ -1886,17 +1938,48 @@
         }
 
         // ================================================================
-        // 2. MODAL HELPERS
+        // 2. IFRAME OVERLAY (Marketplace & Tutorials)
+        // ================================================================
+        function openIframeModal(type) {
+            const modal = document.getElementById('iframe-modal');
+            const iframe = document.getElementById('iframe-content');
+            const title = document.getElementById('iframe-title');
+            if (type === 'marketplace') {
+                iframe.src = 'https://eyobed.pythonanywhere.com/';
+                title.innerHTML = '<span class="am-text">🛒 ገበያ</span><span class="en-text">🛒 Marketplace</span>';
+            } else if (type === 'tutorials') {
+                iframe.src = 'https://rodas.pythonanywhere.com/';
+                title.innerHTML = '<span class="am-text">📚 ትምህርቶች</span><span class="en-text">📚 Tutorials</span>';
+            }
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeIframeModal() {
+            const modal = document.getElementById('iframe-modal');
+            modal.classList.remove('active');
+            document.getElementById('iframe-content').src = '';
+            document.body.style.overflow = '';
+        }
+
+        // Close iframe modal when clicking overlay background
+        document.getElementById('iframe-modal').addEventListener('click', function(e) {
+            if (e.target === this) closeIframeModal();
+        });
+
+        // ================================================================
+        // 3. MODAL HELPERS
         // ================================================================
         function openModal(id) {
             document.getElementById(id).classList.add('active');
             document.body.style.overflow = 'hidden';
         }
+
         function closeModal(id) {
             document.getElementById(id).classList.remove('active');
             document.body.style.overflow = '';
         }
-        document.querySelectorAll('.modal-overlay').forEach(el => {
+        document.querySelectorAll('.modal-overlay:not(#iframe-modal)').forEach(el => {
             el.addEventListener('click', function(e) {
                 if (e.target === this) {
                     this.classList.remove('active');
@@ -1906,7 +1989,7 @@
         });
 
         // ================================================================
-        // 3. REFRESH
+        // 4. REFRESH
         // ================================================================
         function softRefresh() {
             sessionStorage.setItem('mer_page', 'scheduler');
@@ -1914,18 +1997,16 @@
         }
 
         // ================================================================
-        // 4. LANGUAGE TOGGLE – FULL AMHARIC SUPPORT
+        // 5. LANGUAGE TOGGLE – FULL AMHARIC SUPPORT
         // ================================================================
         let currentLang = localStorage.getItem('mer_lang') || 'am';
 
         function applyLanguage(lang) {
-            // Set body class for language
             document.body.className = lang === 'am' ? 'lang-am' : 'lang-en';
             document.getElementById('lang-label').textContent = lang === 'am' ? 'አማ' : 'En';
             localStorage.setItem('mer_lang', lang);
             currentLang = lang;
 
-            // Update ALL elements with am-text / en-text
             const amElements = document.querySelectorAll('.am-text');
             const enElements = document.querySelectorAll('.en-text');
             if (lang === 'am') {
@@ -1936,7 +2017,6 @@
                 enElements.forEach(el => el.style.display = 'inline');
             }
 
-            // Update placeholders, labels, and dynamic content
             updateDashboard();
             updateInventoryCounts();
             renderAll();
@@ -1946,9 +2026,7 @@
                 showWalkStep();
             }
             updateProfitReport();
-            // Update finance summary
             renderFinanceSummary();
-            // Update animal profile if open
             if (currentProfileAnimalId) {
                 const animal = getData('farm_animals').find(a => a._id === currentProfileAnimalId);
                 if (animal) updateProfileTotals(animal);
@@ -1962,15 +2040,20 @@
         }
 
         // ================================================================
-        // 5. WALKTHROUGH
+        // 6. WALKTHROUGH
         // ================================================================
         let walkStep = 0;
         const walkSteps = [
-            { titleAm: '👋 እንኳን ደህና መጡ!', titleEn: '👋 Welcome!', descAm: 'ይህ የMER እርሻ መርሐ ግብር ነው። እንስሳትዎን ይመዝግቡ፣ ምርት ይከታተሉ እና ፋይናንስዎን ያስተዳድሩ።', descEn: 'This is the MER Farm Scheduler. Register your animals, track production, and manage your finances.' },
-            { titleAm: '🐄 እንስሳት', titleEn: '🐄 Animals', descAm: 'በዚህ ትር ላይ ሁሉንም እንስሳት ይመዝግቡ። መታወቂያ፣ ስም እና ምድብ ያስፈልጋሉ።', descEn: 'Register all animals here. ID, Name, and Category are required.' },
-            { titleAm: '📊 ዳሽቦርድ', titleEn: '📊 Dashboard', descAm: 'ይህ ትር የዕለታዊ እይታዎን ያሳያል፡ ጠቅላላ እንስሳት፣ የዛሬ ወተት/እንቁላል፣ መጪ ክስተቶች እና የቀን ትርፍ።', descEn: 'Shows daily overview: total animals, today\'s milk/eggs, upcoming events, and daily profit.' },
-            { titleAm: '🔔 ማስታወሻዎች', titleEn: '🔔 Notifications', descAm: 'ከላይ ያለው ደወል ከ7 ቀናት በላይ ያልሆኑ ክስተቶችን ያሳያል።', descEn: 'The bell icon shows events due within the next 7 days.' },
-            { titleAm: '☁️ የደመና ማስቀመጫ', titleEn: '☁️ Cloud Backup', descAm: 'አካውንት መፍጠር አማራጭ ነው። ውሂብዎን በራስዎ Google Sheets ውስጥ ማስቀመጥ ይችላሉ።', descEn: 'Account creation is optional. You can backup your data to your own Google Sheets.' }
+            { titleAm: '👋 እንኳን ደህና መጡ!', titleEn: '👋 Welcome!', descAm: 'ይህ የMER እርሻ መርሐ ግብር ነው። እንስሳትዎን ይመዝግቡ፣ ምርት ይከታተሉ እና ፋይናንስዎን ያስተዳድሩ።',
+                descEn: 'This is the MER Farm Scheduler. Register your animals, track production, and manage your finances.' },
+            { titleAm: '🐄 እንስሳት', titleEn: '🐄 Animals', descAm: 'በዚህ ትር ላይ ሁሉንም እንስሳት ይመዝግቡ። መታወቂያ፣ ስም እና ምድብ ያስፈልጋሉ።',
+                descEn: 'Register all animals here. ID, Name, and Category are required.' },
+            { titleAm: '📊 ዳሽቦርድ', titleEn: '📊 Dashboard', descAm: 'ይህ ትር የዕለታዊ እይታዎን ያሳያል፡ ጠቅላላ እንስሳት፣ የዛሬ ወተት/እንቁላል፣ መጪ ክስተቶች እና የቀን ትርፍ።',
+                descEn: 'Shows daily overview: total animals, today\'s milk/eggs, upcoming events, and daily profit.' },
+            { titleAm: '🔔 ማስታወሻዎች', titleEn: '🔔 Notifications', descAm: 'ከላይ ያለው ደወል ከ7 ቀናት በላይ ያልሆኑ ክስተቶችን ያሳያል።',
+                descEn: 'The bell icon shows events due within the next 7 days.' },
+            { titleAm: '☁️ የደመና ማስቀመጫ', titleEn: '☁️ Cloud Backup', descAm: 'አካውንት መፍጠር አማራጭ ነው። ውሂብዎን በራስዎ Google Sheets ውስጥ ማስቀመጥ ይችላሉ።',
+                descEn: 'Account creation is optional. You can backup your data to your own Google Sheets.' }
         ];
 
         function startWalkthrough() { walkStep = 0;
@@ -2003,7 +2086,7 @@
         }
 
         // ================================================================
-        // 6. DATA HELPERS
+        // 7. DATA HELPERS
         // ================================================================
         function getData(key) { try { return JSON.parse(localStorage.getItem(key)) || []; } catch { return []; } }
 
@@ -2026,7 +2109,7 @@
         function getAnimalName(id) { const a = getData('farm_animals').find(x => x._id === id); return a ? a.name : id; }
 
         // ================================================================
-        // 7. DATE HELPERS
+        // 8. DATE HELPERS
         // ================================================================
         function getStartOfWeek(dateStr) {
             const d = new Date(dateStr + 'T00:00:00');
@@ -2061,7 +2144,7 @@
         }
 
         // ================================================================
-        // 8. INVENTORY COUNTS
+        // 9. INVENTORY COUNTS
         // ================================================================
         function updateInventoryCounts() {
             const animals = getData('farm_animals').filter(a => a.status === 'Active');
@@ -2086,7 +2169,7 @@
         }
 
         // ================================================================
-        // 9. DASHBOARD
+        // 10. DASHBOARD
         // ================================================================
         function updateDashboard() {
             const container = document.getElementById('dashboard-content');
@@ -2137,7 +2220,7 @@
         }
 
         // ================================================================
-        // 10. DASHBOARD SEARCH – only shows on focus, with clear X
+        // 11. DASHBOARD SEARCH – only shows on focus, with clear X
         // ================================================================
         function activateSearchResults() {
             document.getElementById('search-results-wrap').classList.add('active');
@@ -2157,14 +2240,12 @@
             const container = document.getElementById('dashboard-search-results');
             const clearBtn = document.getElementById('search-clear-btn');
 
-            // Show/hide clear button
             if (search.length > 0) {
                 clearBtn.classList.add('show');
             } else {
                 clearBtn.classList.remove('show');
             }
 
-            // Only show results if the search wrapper is active (user clicked/focused)
             const wrap = document.getElementById('search-results-wrap');
             if (!wrap.classList.contains('active')) {
                 container.innerHTML = '';
@@ -2197,14 +2278,11 @@
 
         // Close search results on blur (but allow clicking on results)
         document.getElementById('dashboard-search').addEventListener('blur', function(e) {
-            // Delay to allow click events on results
             setTimeout(() => {
-                // Don't close if the user clicked on a result
                 const active = document.activeElement;
                 if (active && active.closest && active.closest('.list-item')) {
                     return;
                 }
-                // Don't close if clicking on clear button
                 if (active && active.id === 'search-clear-btn') {
                     return;
                 }
@@ -2212,7 +2290,6 @@
             }, 150);
         });
 
-        // Also close when clicking outside
         document.addEventListener('click', function(e) {
             const wrap = document.getElementById('search-results-wrap');
             const input = document.getElementById('dashboard-search');
@@ -2223,7 +2300,7 @@
         });
 
         // ================================================================
-        // 11. ANIMALS CRUD
+        // 12. ANIMALS CRUD
         // ================================================================
         function toggleFatteningFields() {
             const cat = document.getElementById('animal-category').value;
@@ -2349,7 +2426,7 @@
         }
 
         // ================================================================
-        // 12. ANIMAL PROFILE
+        // 13. ANIMAL PROFILE
         // ================================================================
         let currentProfileAnimalId = null;
 
@@ -2647,7 +2724,7 @@
         }
 
         // ================================================================
-        // 13. FATTENING WEEKLY
+        // 14. FATTENING WEEKLY
         // ================================================================
         function populateFatWeeklyDropdown() {
             const animals = getData('farm_animals').filter(a => isFattening(a.category) && a.status === 'Active');
@@ -2746,7 +2823,7 @@
         }
 
         // ================================================================
-        // 14. FATTENING DAILY
+        // 15. FATTENING DAILY
         // ================================================================
         function populateFatDailyDropdown() {
             const animals = getData('farm_animals').filter(a => isFattening(a.category) && a.status === 'Active');
@@ -2831,7 +2908,7 @@
         }
 
         // ================================================================
-        // 15. DAIRY / EGG DAILY
+        // 16. DAIRY / EGG DAILY
         // ================================================================
         function populateDairyDropdown() {
             const animals = getData('farm_animals').filter(a => a.category === 'ወተት ላም' || a.category === 'ዶሮ (እንቁላል)');
@@ -2934,7 +3011,7 @@
         }
 
         // ================================================================
-        // 16. EVENTS
+        // 17. EVENTS
         // ================================================================
         function populateEventDropdown() {
             const animals = getData('farm_animals');
@@ -3020,7 +3097,7 @@
         }
 
         // ================================================================
-        // 17. OTHER COSTS
+        // 18. OTHER COSTS
         // ================================================================
         function populateCostDropdown() {
             const animals = getData('farm_animals');
@@ -3102,7 +3179,7 @@
         }
 
         // ================================================================
-        // 18. FINANCE
+        // 19. FINANCE
         // ================================================================
         function renderFinanceSummary() {
             const settings = getSettings();
@@ -3180,7 +3257,7 @@
         }
 
         // ================================================================
-        // 19. PRODUCTION SUMMARY
+        // 20. PRODUCTION SUMMARY
         // ================================================================
         function renderProductionSummary() {
             const animals = getData('farm_animals');
@@ -3210,7 +3287,7 @@
         }
 
         // ================================================================
-        // 20. PROFIT REPORT
+        // 21. PROFIT REPORT
         // ================================================================
         function updateProfitReport() {
             const type = document.getElementById('profit-report-type').value;
@@ -3338,7 +3415,7 @@
         }
 
         // ================================================================
-        // 21. SOLD ITEMS – with inventory validation
+        // 22. SOLD ITEMS – with inventory validation
         // ================================================================
         function toggleSaleFields() {
             const type = document.getElementById('sale-type').value;
@@ -3377,7 +3454,6 @@
             sel.value = current;
         }
 
-        // Helper: get today's production log for a specific animal
         function getTodaysLogForAnimal(animalId, dateStr) {
             const logs = getData('farm_dailylogs');
             const matching = logs.filter(l => l.animalId === animalId && l.date === dateStr);
@@ -3535,14 +3611,12 @@
 
             // ---- INVENTORY VALIDATION ----
             if (type === 'milk' || type === 'eggs') {
-                // We need to find all animals of the appropriate type and check total available
                 let availableQty = 0;
                 const todayStr = today();
                 const categoryFilter = type === 'milk' ? 'ወተት ላም' : 'ዶሮ (እንቁላል)';
                 const allAnimals = getData('farm_animals').filter(a => a.category === categoryFilter && a.status ===
                     'Active');
 
-                // If there are no animals of this type, cannot sell
                 if (allAnimals.length === 0) {
                     showToast(
                         document.body.classList.contains('lang-am') ?
@@ -3552,7 +3626,6 @@
                     return;
                 }
 
-                // Get today's production logs for all relevant animals
                 const todayLogs = getData('farm_dailylogs').filter(l =>
                     l.date === todayStr &&
                     allAnimals.some(a => a._id === l.animalId)
@@ -3560,13 +3633,9 @@
 
                 if (type === 'milk') {
                     availableQty = todayLogs.reduce((sum, l) => sum + (l.milk || 0), 0);
-                } else { // eggs
+                } else {
                     availableQty = todayLogs.reduce((sum, l) => sum + (l.eggs || 0), 0);
                 }
-
-                // Also check if there's any existing sale already deducted from this day's production
-                // Actually we need to check the current production logs after previous sales
-                // The availableQty from logs is the current available amount (already reduced by previous sales)
 
                 if (quantity > availableQty) {
                     const msg = document.body.classList.contains('lang-am') ?
@@ -3575,9 +3644,6 @@
                     showToast(msg, 'error');
                     return;
                 }
-
-                // If this is an edit, we need to handle it differently - but for simplicity, we'll just check
-                // and then subtract in the same way the original code does
             }
 
             if (type === 'animal') {
@@ -3618,7 +3684,7 @@
             }
             setData('farm_sales', sales);
 
-            // Subtract from production logs (only for milk/eggs, and only if we have enough)
+            // Subtract from production logs
             if (type === 'milk' || type === 'eggs') {
                 let logs = getData('farm_dailylogs');
                 const todayStr = today();
@@ -3626,8 +3692,6 @@
                 const allAnimals = getData('farm_animals').filter(a => a.category === categoryFilter && a.status ===
                     'Active');
 
-                // Find today's log for each animal and deduct proportionally
-                // For simplicity, we deduct from the first available log that has enough
                 let remainingToDeduct = quantity;
                 for (const animal of allAnimals) {
                     if (remainingToDeduct <= 0) break;
@@ -3645,7 +3709,6 @@
                     remainingToDeduct -= deduct;
                 }
 
-                // If we couldn't deduct fully (shouldn't happen if validation passed, but just in case)
                 if (remainingToDeduct > 0.01) {
                     showToast(
                         document.body.classList.contains('lang-am') ?
@@ -3660,7 +3723,6 @@
                 updateDashboard();
             }
 
-            // Reset form
             document.getElementById('sale-quantity').value = '';
             document.getElementById('sale-price').value = '';
             document.getElementById('sale-coupon').value = '';
@@ -3695,7 +3757,7 @@
         }
 
         // ================================================================
-        // 22. SYNC WITH GOOGLE SHEETS (placeholder)
+        // 23. SYNC WITH GOOGLE SHEETS (placeholder)
         // ================================================================
         const SPREADSHEET_ID = '2PACX-1vTg5nBJIKHpvotz2jlBmmdvoAte-yWWoZ_nI44i576dOSKPc3_1YfI4T0KuLN6dQcPBkfSuDD53ieea';
 
@@ -3704,7 +3766,7 @@
         }
 
         // ================================================================
-        // 23. NOTIFICATIONS & REMINDERS
+        // 24. NOTIFICATIONS & REMINDERS
         // ================================================================
         function checkReminders() {
             const events = getData('farm_events');
@@ -3777,7 +3839,7 @@
         }
 
         // ================================================================
-        // 24. PROFILE PICTURE
+        // 25. PROFILE PICTURE
         // ================================================================
         function loadProfilePic() {
             const saved = localStorage.getItem('mer_profile_pic');
@@ -3805,7 +3867,7 @@
         }
 
         // ================================================================
-        // 25. GOOGLE ACCOUNT (simulated)
+        // 26. GOOGLE ACCOUNT (simulated)
         // ================================================================
         let googleConnected = false;
 
@@ -3832,7 +3894,7 @@
         }
 
         // ================================================================
-        // 26. RENDER ALL
+        // 27. RENDER ALL
         // ================================================================
         function renderAll() {
             renderAnimals();
@@ -3856,7 +3918,7 @@
         }
 
         // ================================================================
-        // 27. INIT
+        // 28. INIT
         // ================================================================
         applyLanguage(localStorage.getItem('mer_lang') || 'am');
 
@@ -3869,7 +3931,6 @@
             updateNotificationBell();
             updateInventoryCounts();
             updateDashboard();
-            // Do NOT auto-show search results
             document.getElementById('search-results-wrap').classList.remove('active');
             sessionStorage.removeItem('mer_page');
         } else {
@@ -3908,14 +3969,15 @@
             });
         });
 
-        // Service worker
+        // Service worker (optional – for PWA offline support)
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('/sw.js')
                 .then(() => console.log('✅ SW registered'))
-                .catch(() => console.log('❌ SW registration failed'));
+                .catch(() => console.log('❌ SW registration failed (optional)'));
         }
 
-        console.log('✅ MER Farm Scheduler v2.0 – All 5 issues fixed: homepage Amharic only, scheduler buttons working, search with X, inventory validation, full language support.');
+        console.log('✅ MER Farm Scheduler v2.0 – Marketplace & Tutorials open inside app with back button, everything else works offline.');
     </script>
+
 </body>
 </html>
